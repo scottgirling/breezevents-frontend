@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import { Header } from '../header/Header';
+import { Home } from '../home/Home';
 import { UserSignIn } from '../user-sign-in/UserSignIn';
 import './App.css'
 
@@ -9,6 +10,7 @@ function App() {
       <Header></Header>
 
       <Routes>
+        <Route path="/" element={<Home/>} />
         <Route path="/account" element={<UserSignIn/>} />
       </Routes>
     </>

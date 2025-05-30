@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+.home-title {
+    text-align: left;
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin: 1rem 0;
+}
+
+.join {
+    font-size: .75rem;
+}
+
+.italic-green {
+    color: #317575;
+    font-style: italic;
+}
+
+.home-buttons {
+    margin: 1rem 4rem;
+    display: flex;
+    justify-content: space-around;
+}
+
+.btn {
+    @apply py-2 px-4 text-xs;
+}
+
+.btn-green {
+    @apply bg-[#317575] text-white border-0;
+}
+
+.btn-salmon {
+    @apply bg-[#FFB593] border-0;
+}
+
+.btn-green:hover, .btn-salmon:hover {
+    @apply opacity-90;
+}
+
+.features, .effortlessly, .variety, .payments, .discover {
+    margin-top: 2rem;
+    text-align: left;
+}
+
+.features h3, .effortlessly h3, .variety h3, .payments h3, .discover h3 {
+    font-size: 1.75rem;
+    font-weight: 500;
+}
+
+.features p, .effortlessly p, .variety p, .payments p, .discover p {
+    margin-top: .75rem;
+}
+
+.features img, .effortlessly img, .variety img, .payments img {
+    margin: 1rem auto auto auto;
+    max-width: 75vw;
+    box-shadow: 2rem;
+    border-radius: 6px;
+}
+
+.tags-list {
+    margin-top: .5rem;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 6px;
+    background-color: #FFB593;
+    padding: .25rem;
+}
+
+.tag-name {
+    padding: .25rem;
+    font-size: .75rem;
+}
+
+.event-card {
+    background-color: #317575;
+    color: white;
+    text-align: left;
+    padding: .5rem;
+    border-radius: 6px;
+    margin-top: 1rem;
+}
+
+.event-title {
+    font-weight: 600;
+}
+
+.event-overview {
+    font-size: .75rem;
+}
+
+.event-price-date {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.btn-white {
+    @apply bg-white text-black
+}
+
+.free-ticket {
+    background-color: #FFB593;
+    color: black;
+    padding: 0 .5rem;
+    border-radius: 6px;
+}
