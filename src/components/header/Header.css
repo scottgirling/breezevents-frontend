@@ -1,0 +1,26 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.breezevents {
+    color: #317575;
+    font-size: 2rem;
+    font-weight: 400;
+    margin: 1rem 0;
+}
+
+.bold-e {
+    font-weight: 700;
+}
+
+.user-signin {
+    border: 1px solid #317575;
+    border-radius: 50%;
+    padding: 0 5px;
+}
+
+.fa-user {
+    color: #317575;
+}

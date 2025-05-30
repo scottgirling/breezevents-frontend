@@ -1,8 +1,17 @@
+import { Route, Routes } from 'react-router-dom';
+import { Header } from '../header/Header';
+import { UserSignIn } from '../user-sign-in/UserSignIn';
 import './App.css'
 
 function App() {
   return (
-    <p>React is awesome!!</p>
+    <>
+      <Header></Header>
+
+      <Routes>
+        <Route path="/account" element={<UserSignIn/>} />
+      </Routes>
+    </>
   )
 }
 
