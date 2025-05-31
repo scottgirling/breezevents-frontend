@@ -7,7 +7,7 @@
     margin: 1rem 0;
 }
 
-.join {
+.home-subheading {
     font-size: .75rem;
 }
 
@@ -38,21 +38,22 @@
     @apply opacity-90;
 }
 
-.features, .effortlessly, .variety, .payments, .discover {
+.sub-section {
     margin-top: 2rem;
     text-align: left;
 }
 
-.features h3, .effortlessly h3, .variety h3, .payments h3, .discover h3 {
+.sub-section h3 {
+    margin-top: 2rem;
     font-size: 1.75rem;
     font-weight: 500;
 }
 
-.features p, .effortlessly p, .variety p, .payments p, .discover p {
+.sub-section p {
     margin-top: .75rem;
 }
 
-.features img, .effortlessly img, .variety img, .payments img {
+.sub-section img {
     margin: 1rem auto auto auto;
     max-width: 75vw;
     box-shadow: 2rem;
@@ -87,22 +88,43 @@
 }
 
 .event-overview {
-    font-size: .75rem;
+    margin-top: .25rem;
+    font-size: .65rem;
 }
 
 .event-price-date {
+    margin: .25rem 0;
     display: flex;
     justify-content: space-around;
     align-items: center;
+    font-size: .75rem;
+}
+
+.event-date {
+    font-weight: 600;
 }
 
 .btn-white {
-    @apply bg-white text-black
+    @apply bg-white text-black py-1 px-3
 }
 
 .free-ticket {
     background-color: #FFB593;
     color: black;
-    padding: 0 .5rem;
+    padding: .3rem .75rem .25rem;
+    line-height: normal;
     border-radius: 6px;
+}
+
+.btn-tag {
+    @apply bg-[#FFB593] py-0 px-1 text-xs font-normal;
+}
+
+.no-events-found, .events-loading {
+    margin: 1rem 0;
+    font-size: .75rem;
+}
+
+.underline {
+    border-top: 1px solid rgba(0, 0, 0, 0.705);
 }
