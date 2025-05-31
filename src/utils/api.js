@@ -19,5 +19,12 @@ export const fetchEvents = (tag) => {
     })
     .then((response) => {
         return response.data.events;
-    })
+    });
+}
+
+export const fetchEventById = (event_id) => {
+    return eventsApi.get(`events/${event_id}`)
+    .then((response) => {
+        return response.data.event;
+    });
 }
