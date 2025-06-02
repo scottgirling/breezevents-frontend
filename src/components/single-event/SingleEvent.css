@@ -36,6 +36,32 @@
     @apply bg-white text-black py-0.5 px-2 m-1;
 }
 
+.quantity-section {
+    display: flex;
+    padding-top: 1rem;
+    margin: auto;
+    width: max-content;
+}
+
+.drop-down-quantity-box {
+    width: 2.5rem;
+    margin-left: .5rem;
+    background-color: white;
+}
+
+.get-tickets {
+    display: flex;
+    padding-top: 1rem;
+    margin: auto;
+    width: max-content;
+    align-items: center;
+    font-size: .75rem;
+}
+
+.get-tickets-button {
+    @apply bg-[#317575] text-white py-1.5 px-2 ml-2
+}
+
 .event-description-bar {
     display: flex;
     justify-content: space-between;
