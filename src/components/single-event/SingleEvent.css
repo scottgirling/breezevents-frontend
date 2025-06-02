@@ -33,24 +33,56 @@
 }
 
 .btn-buy-tickets {
-    @apply bg-[#FFB593] text-black py-1 px-2 m-1;
+    @apply bg-white text-black py-0.5 px-2 m-1;
 }
 
-.event-description {
+.event-description-bar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top: 1rem;
-    text-align: left;
     background-color: #317575;
     border-radius: 6px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
     color: white;
     padding: .25rem 1rem;
     font-weight: 500;
 }
 
-.event-description button {
+.event-description-bar button, .venue-bar button, .host-bar button {
     background-color: #317575;
     border: 1px solid #317575;
     @apply py-1
+}
+
+.text-showing {
+    margin: 1rem;
+    font-size: .75rem;
+}
+
+.venue-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #317575;
+    color: white;
+    padding: .25rem 1rem;
+    font-weight: 500;
+}
+
+.host-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #317575;
+    color: white;
+    padding: .25rem 1rem;
+    font-weight: 500;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+.host-info {
+    font-weight: 700;
 }
