@@ -28,3 +28,17 @@ export const fetchEventById = (event_id) => {
         return response.data.event;
     });
 }
+
+// export const fetchVenueById = (venue_id) => {
+//     return eventsApi.get(`venues/${venue_id}`)
+//     .then((response) => {
+//         return response.data.venue;
+//     });
+// }
+
+export const fetchHostById = (host_id) => {
+    return eventsApi.get(`users/${host_id}`)
+    .then((response) => {
+        return response.data.user;
+    })
+}
