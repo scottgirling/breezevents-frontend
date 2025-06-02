@@ -8,6 +8,8 @@ export const SingleEvent = () => {
     const [event, setEvent] = useState({});
     const [venue, setVenue] = useState({});
     const [host, setHost] = useState({});
+    const [showTicketQuantity, setShowTicketQuantity] = useState(false);
+    const [ticketQuantity, setTicketQuantity] = useState(2);
     const [showEventDescription, setShowEventDescription] = useState(false);
     const [showVenueDetails, setShowVenueDetails] = useState(false);
     const [showHostDetails, setShowHostDetails] = useState(false);
@@ -24,7 +26,7 @@ export const SingleEvent = () => {
         //     setVenue(returnedVenue);
         // })
         .then(() => {
-            return fetchHostById(6)
+            return fetchHostById(event.host_id)
         })
         .then((returnedHost) => {
             setHost(returnedHost)
@@ -43,8 +45,39 @@ export const SingleEvent = () => {
                 ) : (
                     <p className="free-ticket">FREE</p>
                 )}
-                <button className="btn-buy-tickets">Buy Tickets</button>
+                <button onClick={() => setShowTicketQuantity(!showTicketQuantity)}className="btn-buy-tickets">Buy Tickets</button>
             </section>
+
+            <section>
+                {showTicketQuantity && (
+                    <>
+                    <section className="quantity-section">
+                        <p>Select quantity:</p>
+                        <select onChange={(event) => setTicketQuantity(event.target.value)}className="drop-down-quantity-box" defaultValue="2" name="quantity" id="quantity">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                        </select>
+                    </section>
+                    <section className="get-tickets">
+                        <section className="ticket-quantity-price">
+                            <p>{ticketQuantity} Tickets</p>
+                            {event.price !== 0 && (
+                                <p>£{event.price * ticketQuantity}</p>
+                            )}
+                        </section>
+                        <button className="get-tickets-button">
+                            Get Tickets
+                        </button>
+                    </section>
+
+                    </>
+                )}
+            </section>
+
             <section className="event-description-bar">
                 <p>Description</p>
                 <button onClick={() => setShowEventDescription(!showEventDescription)}>
