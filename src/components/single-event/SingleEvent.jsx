@@ -1,13 +1,11 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { fetchEventById, fetchHostById } from "../../utils/api";
+import { fetchEventById } from "../../utils/api";
 import "./SingleEvent.css";
 
 export const SingleEvent = () => {
     const { event_id } = useParams();
     const [event, setEvent] = useState({});
-    const [venue, setVenue] = useState({});
-    const [host, setHost] = useState({});
     const [showTicketQuantity, setShowTicketQuantity] = useState(false);
     const [ticketQuantity, setTicketQuantity] = useState(2);
     const [showEventDescription, setShowEventDescription] = useState(false);
@@ -18,19 +16,7 @@ export const SingleEvent = () => {
         fetchEventById(event_id)
         .then((returnedEvent) => {
             setEvent(returnedEvent);
-        })
-        // .then(() => {
-        //     fetchVenueById(event.venue_id)
-        // })
-        // .then((returnedVenue) => {
-        //     setVenue(returnedVenue);
-        // })
-        .then(() => {
-            return fetchHostById(event.host_id)
-        })
-        .then((returnedHost) => {
-            setHost(returnedHost)
-        })
+        });
     }, []);
 
     return (
@@ -88,11 +74,13 @@ export const SingleEvent = () => {
                     )}
                 </button>
             </section>
+
             <section>
                 {showEventDescription && (
                     <p className="text-showing">{event.description}</p>
                 )}
             </section>
+
             <section className="venue-bar">
                 <p>Venue</p>
                 <button onClick={() => setShowVenueDetails(!showVenueDetails)}>
@@ -103,6 +91,51 @@ export const SingleEvent = () => {
                     )}
                 </button>
             </section>
+
+            <section>
+                {showVenueDetails && (
+                    <>
+                        <section className="venue-details">
+                            <p className="venue-subtitle">Address</p>
+                            <p className="text-showing">{event.venue_name}, {event.location}</p>
+                        </section>
+
+                        <section className="venue-details">
+                            <p className="venue-subtitle">Facilities</p>
+                            <section className="facilities-list">
+                                <ul>
+                                    {event.facilities.map((facility) => {
+                                        return (
+                                                <li className="facility" key={event.facilities.indexOf(facility)}>{facility}</li>
+                                            )
+                                    })}
+                                </ul>
+                            </section>
+                        </section>
+
+                        <section className="venue-details">
+                            <p className="venue-subtitle">Accessibility</p>
+                            <section className="accessibility-list">
+                                <ul>
+                                    {event.accessibility_features.map((feature) => {
+                                        return (
+                                            <li className="accessibility" key={event.accessibility_features.indexOf(feature)}>{feature}</li>
+                                        )
+                                    })}
+                                </ul>
+                            </section>
+                        </section>
+
+                        <section className="venue-details">
+                            <p className="venue-subtitle">Contact details:</p>
+                            <p>{event.website_url}</p>
+                            <p>{event.contact_email}</p>
+                            <p>{event.contact_phone}</p>
+                        </section>
+                    </>
+                )}
+            </section>
+
             <section className="host-bar">
                 <p>Host</p>
                 <button onClick={() => setShowHostDetails(!showHostDetails)}>
@@ -116,9 +149,9 @@ export const SingleEvent = () => {
             <section>
                 {showHostDetails && (
                     <>
-                        <p className="text-showing">{event.title} is hosted by <span className="host-info">{host.name}.</span></p>
-                        <p className="text-showing">A bit about {host.name}: <span className="host-info">{host.bio}</span></p>
-                        <p className="text-showing">Should you need to contact {host.name}: <span className="host-info">{host.email}</span></p>
+                        <p className="text-showing">{event.title} is hosted by <span className="host-info">{event.name}.</span></p>
+                        <p className="text-showing">A bit about {event.name}: <span className="host-info">{event.bio}</span></p>
+                        <p className="text-showing">Should you need to contact {event.name}: <span className="host-info">{event.email}</span></p>
                     </>
                 )}
             </section>
