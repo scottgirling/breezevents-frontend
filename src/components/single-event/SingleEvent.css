@@ -41,6 +41,7 @@
     padding-top: 1rem;
     margin: auto;
     width: max-content;
+    font-size: .9rem;
 }
 
 .drop-down-quantity-box {
@@ -95,6 +96,37 @@
     color: white;
     padding: .25rem 1rem;
     font-weight: 500;
+}
+
+.venue-details {
+    font-size: .75rem;
+    margin: 1rem 0;
+}
+
+.venue-subtitle {
+    font-size: .9rem;
+    font-weight: 700;
+}
+
+.venue-details p {
+    margin: .5rem;
+}
+
+.facilities-list ul, .accessibility-list ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.facilities-list li, .accessibility-list li {
+    margin: .5rem;
+}
+
+.facility, .accessibility {
+    border: 1px solid #317575;
+    width: max-content;
+    border-radius: 6px;
+    padding: .5rem;
 }
 
 .host-bar {
