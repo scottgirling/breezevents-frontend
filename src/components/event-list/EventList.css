@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+.filter-events {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 1rem auto;
+}
+
+.filter-events button, .filter-events select {
+    font-size: .75rem;
+    background-color: #FFF1EA;
+    border: 1px solid #317575;
+    margin: 0 .1rem;
+    padding: .25rem .5rem;
+    border-radius: 6px;
+    width: max-content;
+    color: black;
+    font-weight: 400;
+}
+
+#button-clicked {
+    background-color: #317575;
+    color: white;
+}
+
+.reset-filters button {
+    background-color: #FFF1EA;
+}
+
+.top-picks-reset {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.top-picks {
+    margin: 1rem auto;
+    text-align: left;
+    font-size: 1rem;
+    padding-left: 1rem;
+    font-weight: 700;
+}
+
+.title-and-online {
+    display: flex;
+    justify-content: space-between;
+}
+
+.online-event {
+    height: max-content;
+    font-size: .75rem;
+    background-color: lightgreen;
+    color: black;
+    padding: .3rem .75rem .25rem;
+    line-height: normal;
+    border-radius: 6px;
+}
+
+.event-image-and-description {
+    display: flex;
+}
+
+.event-image-events-list {
+    margin: .5rem;
+    border-radius: 6px;
+    width: 8rem;
+    height: 8rem;
+}
+
+.event-description-and-date {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    max-width: 50%;
+    margin: .5rem;
+}
+
+.event-date-events-list {
+    font-size: .75rem;
+    font-weight: 600;
+}
+
+.limited-tickets {
+    background-color: #FFB593;
+    color: black;
+    border-radius: 6px;
+    padding: .3rem .75rem .25rem;
+    line-height: normal;
+}
+
+.load-more {
+    background-color: white;
+    margin: 1rem auto;
+    border-radius: 6px;
+    width: max-content;
+    padding: .5rem 2rem;
+    font-size: .75rem;
+}
+
+.load-more button {
+    background-color: #317575;
+    color: white;
+    margin: .5rem auto;
+}
+
+.load-more-disabled {
+    opacity: 50%;
+}
