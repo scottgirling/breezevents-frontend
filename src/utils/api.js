@@ -11,10 +11,29 @@ export const fetchTags = () => {
     });
 }
 
-export const fetchEvents = (tag) => {
+export const fetchEvents = (tag, isFree, isOnline, sortBy, order, limit) => {
     return eventsApi.get("/events", {
         params: {
-            tag: tag
+            tag: tag,
+            is_free: isFree,
+            is_online: isOnline,
+            sort_by: sortBy,
+            order: order,
+            limit: limit || 10
+        }
+    })
+    .then((response) => {
+        return response.data.events;
+    });
+}
+
+export const fetchAllEvents = (eventTag, isFree, isOnline) => {
+    return eventsApi.get("/events", {
+        params: {
+            tag: eventTag,
+            is_free: isFree,
+            is_online: isOnline,
+            limit: 5000
         }
     })
     .then((response) => {

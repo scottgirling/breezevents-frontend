@@ -31,7 +31,7 @@
 }
 
 .btn-salmon {
-    @apply bg-[#FFB593] border-0;
+    @apply bg-[#FFB593] text-black border-0;
 }
 
 .btn-green:hover, .btn-salmon:hover {

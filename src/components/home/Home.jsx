@@ -33,9 +33,11 @@ export const Home = () => {
                         Sign Up
                     </button>
                 </Link>
-                <button className="btn btn-salmon">
-                    Explore
-                </button>
+                <Link to="/events">
+                    <button className="btn btn-salmon">
+                        Explore
+                    </button>
+                </Link>
             </section>
             <section className="sub-section">
                 <img src="../../../home-top.jpg"/>
@@ -64,9 +66,11 @@ export const Home = () => {
                         Sign Up
                     </button>
                 </Link>
-                <button className="btn btn-salmon">
-                    Explore
-                </button>
+                <Link to="/events">
+                    <button className="btn btn-salmon">
+                        Explore
+                    </button>
+                </Link>
             </section>
             <section className="sub-section">
                 <h3>Discover Events</h3>
