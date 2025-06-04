@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { fetchEventById } from "../../utils/api";
+import { fetchEventById, startCheckoutSession } from "../../utils/api";
 import "./SingleEvent.css";
 
 export const SingleEvent = () => {
@@ -55,11 +55,15 @@ export const SingleEvent = () => {
                                 <p>£{event.price * ticketQuantity}</p>
                             )}
                         </section>
-                        <button className="get-tickets-button">
+                        <button 
+                            className="get-tickets-button"
+                            onClick={() => {
+                                startCheckoutSession(event, ticketQuantity);
+                            }}
+                        >
                             Get Tickets
                         </button>
                     </section>
-
                     </>
                 )}
             </section>
@@ -106,8 +110,8 @@ export const SingleEvent = () => {
                                 <ul>
                                     {event.facilities.map((facility) => {
                                         return (
-                                                <li className="facility" key={event.facilities.indexOf(facility)}>{facility}</li>
-                                            )
+                                            <li className="facility" key={event.facilities.indexOf(facility)}>{facility}</li>
+                                        )
                                     })}
                                 </ul>
                             </section>
