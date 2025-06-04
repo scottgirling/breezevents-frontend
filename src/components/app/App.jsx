@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import { Header } from '../header/Header';
 import { Home } from '../home/Home';
+import { EventList } from '../event-list/EventList';
 import { SingleEvent } from '../single-event/SingleEvent';
 import { UserSignIn } from '../user-sign-in/UserSignIn';
 import './App.css'
@@ -12,6 +13,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home/>} />
+        <Route path="/events" element={<EventList/>} />
         <Route path="/events/:event_id" element={<SingleEvent/>} />
         <Route path="/account" element={<UserSignIn/>} />
       </Routes>
