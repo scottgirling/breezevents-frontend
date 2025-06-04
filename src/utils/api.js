@@ -47,3 +47,13 @@ export const fetchEventById = (event_id) => {
         return response.data.event;
     });
 }
+
+export const startCheckoutSession = (event, ticketQuantity) => {
+    return eventsApi.post("/create-checkout-session", {
+        event,
+        ticketQuantity
+    })
+    .then((response) => {
+        return window.location.href = response.data.url;
+    });
+}
