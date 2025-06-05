@@ -112,22 +112,22 @@ export const Home = () => {
                         {events.map((event) => {
                             return (
                                 <li className="event-card" key={event.event_id}>
-                                        <h4 className="event-title">{event.title}</h4>
-                                        <p className="event-overview">{event.event_overview}</p>
-                                        <section className="event-price-date">
-                                            {event.price !== 0 ? (
-                                                <p className="ticket-price">£{event.price}</p>
-                                            ) : (
-                                                <p className="free-ticket">FREE</p>
-                                            )}
-                                            <p className="event-date">{new Date(event.start_time).toDateString()}</p>
-                                            <Link to={`/events/${event.event_id}`}>
-                                                <button className="btn btn-white">
-                                                    Find Tickets
-                                                </button>
-                                            </Link>
-                                        </section>
-                                    </li>
+                                    <h4 className="event-title">{event.title}</h4>
+                                    <p className="event-overview">{event.event_overview}</p>
+                                    <section className="event-price-date">
+                                        {event.price !== 0 ? (
+                                            <p className="ticket-price">£{event.price}</p>
+                                        ) : (
+                                            <p className="free-ticket">FREE</p>
+                                        )}
+                                        <p className="event-date">{new Date(event.start_time).toDateString()}</p>
+                                        <Link to={`/events/${event.event_id}`}>
+                                            <button className="btn btn-white">
+                                                Find Tickets
+                                            </button>
+                                        </Link>
+                                    </section>
+                                </li>
                                 )
                             })}
                             </ul>

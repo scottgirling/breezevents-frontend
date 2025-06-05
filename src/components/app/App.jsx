@@ -6,6 +6,7 @@ import { SingleEvent } from '../single-event/SingleEvent';
 import { Success } from '../success/Success'
 import { Cancel } from '../cancel/Cancel';
 import { UserSignIn } from '../user-sign-in/UserSignIn';
+import { UserProfile } from '../user-profile/UserProfile';
 import './App.css'
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path="/success" element={<Success/>} />
         <Route path="/cancel" element={<Cancel/>} />
         <Route path="/account" element={<UserSignIn/>} />
+        <Route path="/breezer/:user_id" element={<UserProfile/>} />
       </Routes>
     </>
   )

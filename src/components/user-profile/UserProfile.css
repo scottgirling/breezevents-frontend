@@ -1,0 +1,96 @@
+.welcome-back {
+    margin: 1rem auto;
+    text-align: left;
+    font-size: 1.75rem;
+    font-weight: 500;
+}
+
+.users-name {
+    color: #317575;
+}
+
+.profile-section {
+    margin: 1rem auto;
+    text-align: left;
+}
+
+.profile-section h2, .profile-section h3 {
+    font-size: 1.5rem;
+}
+
+.upcoming-past {
+    margin-top: .25rem;
+    display: flex;
+}
+
+.upcoming-past button {
+    background-color: #FFF1EA;
+    padding: 0;
+    margin-right: 1rem;
+}
+
+.active-button {
+    text-decoration: underline;
+}
+
+.inactive-button {
+    opacity: 50%;
+}
+
+.no-past-events {
+    margin: 1rem auto;
+    text-align: center;
+    font-size: .75rem;
+}
+
+.no-past-events button {
+    margin-top: .5rem;
+    background-color: #317575;
+    color: white;
+}
+
+.your-profile-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 1rem auto .5rem;
+}
+
+.edit-profile {
+    display: flex;
+    align-items: center;
+}
+
+.edit-profile button {
+    background-color: #FFF1EA;
+    padding: 0;
+    font-size: .75rem;
+}
+
+.edit-profile p {
+    margin-left: .25rem;
+}
+
+input {
+    margin: .25rem .5rem;
+    width: fit-content;
+    height: fit-content;
+    padding: 0 .25rem;
+}
+
+.fa-user-pen {
+    color: #317575;
+}
+
+.border {
+    border: 1px solid #317575;
+    padding: 0 .25rem;
+    border-radius: 6px;
+}
+
+.discard-changes {
+    background-color: #FFB593;
+    font-size: .75rem;
+    display: block;
+    margin: auto;
+}
