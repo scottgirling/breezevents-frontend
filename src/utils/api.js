@@ -48,6 +48,20 @@ export const fetchEventById = (event_id) => {
     });
 }
 
+export const fetchUserById = (user_id) => {
+    return eventsApi.get(`/users/${user_id}`)
+    .then((response) => {
+        return response.data.user;
+    });
+}
+
+export const fetchEventsByUserId = (user_id) => {
+    return eventsApi.get(`/users/${user_id}/events`)
+    .then((response) => {
+        return response.data.events;
+    });
+}
+
 export const startCheckoutSession = (event, ticketQuantity, user_id) => {
     return eventsApi.post("/create-checkout-session", {
         event,
