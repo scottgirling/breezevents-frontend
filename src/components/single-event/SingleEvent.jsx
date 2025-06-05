@@ -58,7 +58,7 @@ export const SingleEvent = () => {
                         <button 
                             className="get-tickets-button"
                             onClick={() => {
-                                startCheckoutSession(event, ticketQuantity);
+                                startCheckoutSession(event, ticketQuantity, 1);
                             }}
                         >
                             Get Tickets
