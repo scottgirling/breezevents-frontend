@@ -48,12 +48,20 @@ export const fetchEventById = (event_id) => {
     });
 }
 
-export const startCheckoutSession = (event, ticketQuantity) => {
+export const startCheckoutSession = (event, ticketQuantity, user_id) => {
     return eventsApi.post("/create-checkout-session", {
         event,
-        ticketQuantity
+        ticketQuantity,
+        user_id
     })
     .then((response) => {
         return window.location.href = response.data.url;
+    });
+}
+
+export const fetchSessionData = (sessionId) => {
+    return eventsApi.get(`/retrieve-session?session_id=${sessionId}`)
+    .then((response) => {
+        return response.data;
     });
 }
