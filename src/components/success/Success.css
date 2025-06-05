@@ -1,0 +1,33 @@
+.success {
+    margin: 1rem auto;
+}
+
+.confirmation {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.success p {
+    margin-top: .5rem;
+    font-size: 1rem;
+}
+
+.session-info {
+    font-weight: 600;
+}
+
+.calendar {
+    margin: 2rem auto 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.fa-calendar-check {
+    font-size: 2rem;
+}
+
+.calendar button {
+    width: max-content;
+    margin: .5rem auto;
+    background-color: #FFB593;
+}
