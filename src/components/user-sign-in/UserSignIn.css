@@ -1,0 +1,23 @@
+.sign-up {
+    display: flex;
+    flex-direction: column;
+}
+
+.sign-up label {
+    margin-top: 1rem;
+}
+
+.sign-up input {
+    border: 1px solid lightgrey;
+    width: 80vw;
+    margin: auto;
+    border-radius: 4px;
+    padding: .25rem;
+}
+
+.sign-up button {
+    margin: 1rem auto;
+    width: fit-content;
+    background-color: #FFB593;
+    padding: .25rem .75rem;
+}
