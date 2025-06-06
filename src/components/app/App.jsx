@@ -4,8 +4,9 @@ import { Home } from '../home/Home';
 import { EventList } from '../event-list/EventList';
 import { SingleEvent } from '../single-event/SingleEvent';
 import { Success } from '../success/Success'
-import { Cancel } from '../cancel/Cancel';
 import { UserSignIn } from '../user-sign-in/UserSignIn';
+import { CheckEmail } from '../check-email/CheckEmail';
+import { AuthConfirm } from '../auth-confirm/AuthConfirm';
 import { UserProfile } from '../user-profile/UserProfile';
 import './App.css'
 
@@ -19,8 +20,9 @@ function App() {
         <Route path="/events" element={<EventList/>} />
         <Route path="/events/:event_id" element={<SingleEvent/>} />
         <Route path="/success" element={<Success/>} />
-        <Route path="/cancel" element={<Cancel/>} />
         <Route path="/account" element={<UserSignIn/>} />
+        <Route path="/check-email" element={<CheckEmail />} />
+        <Route path="/auth-confirm" element={<AuthConfirm /> } />
         <Route path="/breezer/:user_id" element={<UserProfile/>} />
       </Routes>
     </>
