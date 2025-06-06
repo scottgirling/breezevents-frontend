@@ -6,6 +6,7 @@ import { fetchEventsByUserId, fetchUserById } from "../../utils/api";
 export const UserProfile = () => {
     const { user_id } = useParams();
     const [user, setUser] = useState({});
+    const [role, setRole] = useState(null);
     const [upcomingEvents, setUpcomingEvents] = useState([]);
     const [pastEvents, setPastEvents] = useState([]);
     const [activeTickets, setActiveTickets] = useState("Upcoming");
@@ -15,6 +16,7 @@ export const UserProfile = () => {
         fetchUserById(user_id)
         .then((returnedUser) => {
             setUser(returnedUser);
+            setRole(returnedUser.role)
         })
         fetchEventsByUserId(user_id)
         .then((returnedEvents) => {
@@ -46,14 +48,18 @@ export const UserProfile = () => {
         if (formDisabled === false) {
             return "border";
         }
-        // return "input";
     }
 
     return (
         <section>
+            <section>
+                {role === "host" && (
+                    <p>You're a host!!</p>
+                )}
+            </section>
             <section className="welcome-back">
                 {user.name && (
-                    <h1 className="test">Welcome back, <span className="users-name">{user.name.split(" ")[0]}</span>!</h1>
+                    <h1>Welcome back, <span className="users-name">{user.name.split(" ")[0]}!</span></h1>
                 )}
             </section>
 
@@ -87,27 +93,38 @@ export const UserProfile = () => {
                 <section>
                     <ul>
                         {activeTickets === "Upcoming" ? (
-                            upcomingEvents.map((event) => {
-                                return (
-                                    <li className="event-card" key={event.event_id}>
-                                        <h4 className="event-title">{event.title}</h4>
-                                        <p className="event-overview">{event.event_overview}</p>
-                                        <section className="event-price-date">
-                                            {event.price !== 0 ? (
-                                                <p className="ticket-price">£{event.price}</p>
-                                            ) : (
-                                                <p className="free-ticket">FREE</p>
-                                            )}
-                                            <p className="event-date">{new Date(event.start_time).toDateString()}</p>
-                                            <Link to={`/events/${event.event_id}`}>
-                                                <button className="btn btn-white">
-                                                    View Event
-                                                </button>
-                                            </Link>
-                                        </section>
-                                    </li>
-                                )
-                            })
+                            upcomingEvents.length ? (
+                                upcomingEvents.map((event) => {
+                                    return (
+                                        <li className="event-card" key={event.event_id}>
+                                            <h4 className="event-title">{event.title}</h4>
+                                            <p className="event-overview">{event.event_overview}</p>
+                                            <section className="event-price-date">
+                                                {event.price !== 0 ? (
+                                                    <p className="ticket-price">£{event.price}</p>
+                                                ) : (
+                                                    <p className="free-ticket">FREE</p>
+                                                )}
+                                                <p className="event-date">{new Date(event.start_time).toDateString()}</p>
+                                                <Link to={`/events/${event.event_id}`}>
+                                                    <button className="btn btn-white">
+                                                        View Event
+                                                    </button>
+                                                </Link>
+                                            </section>
+                                        </li>
+                                    )
+                                })
+                            ) : (
+                                <section className="no-past-events">
+                                    <p>No Upcoming Events.</p>
+                                    <Link to="/events">
+                                        <button>
+                                            Find Events
+                                        </button>
+                                    </Link>
+                                </section>
+                            )
                         ) : (
                             pastEvents.length ? (
                                 pastEvents.map((event) => {
@@ -166,19 +183,19 @@ export const UserProfile = () => {
                 <section>
                     <form>
                         <section>
-                            <label for="name">Name:</label>
+                            <label htmlFor="name">Name:</label>
                             <input className={border()} disabled={formDisabled} type="text" id="name" name="name" placeholder={user.name}></input>
                         </section>
                         <section>
-                            <label for="username">Username:</label>
+                            <label htmlFor="username">Username:</label>
                             <input className={border()} disabled={formDisabled} type="text" id="username" name="username" placeholder={user.username}></input>
                         </section>
                         <section>
-                            <label for="email">Email:</label>
+                            <label htmlFor="email">Email:</label>
                             <input className={border()} disabled={formDisabled} type="text" id="email" name="email" placeholder={user.email}></input>
                         </section>
                         <section>
-                            <label for="bio">Bio:</label>
+                            <label htmlFor="bio">Bio:</label>
                             <input className={border()} disabled={formDisabled} type="text" id="bio" name="bio" placeholder={user.bio}></input>
                         </section>
                         <button 
