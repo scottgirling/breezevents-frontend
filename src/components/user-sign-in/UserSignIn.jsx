@@ -60,12 +60,12 @@ export const UserSignIn = () => {
 
             fetchUserById(data.user.id)
             .then((returnedUser) => {
-                if (returnedUser) {
-                    navigate(`/breezer/${data.user.id}`);
-                }
-            })
-            addUser(userDetails)
-            .then(()=> {
+                if (returnedUser === undefined) {
+                    addUser(userDetails)
+                    .then(()=> {
+                        navigate(`/breezer/${data.user.id}`);
+                    });
+                } 
                 navigate(`/breezer/${data.user.id}`);
             });
         }
