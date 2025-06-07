@@ -9,10 +9,11 @@ import { CheckEmail } from '../check-email/CheckEmail';
 import { AuthConfirm } from '../auth-confirm/AuthConfirm';
 import { UserProfile } from '../user-profile/UserProfile';
 import './App.css'
+import { AuthProvider } from '../../contexts/AuthProvider';
 
 function App() {
   return (
-    <>
+    <AuthProvider>
       <Header></Header>
 
       <Routes>
@@ -25,7 +26,7 @@ function App() {
         <Route path="/auth-confirm" element={<AuthConfirm /> } />
         <Route path="/breezer/:user_id" element={<UserProfile/>} />
       </Routes>
-    </>
+    </AuthProvider>
   )
 }
 
