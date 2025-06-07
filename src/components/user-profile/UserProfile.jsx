@@ -168,11 +168,6 @@ export const UserProfile = () => {
                             ) : (
                                 <section className="no-past-events">
                                     <p>No Past Events.</p>
-                                    <Link to="/events">
-                                        <button>
-                                            Find Events
-                                        </button>
-                                    </Link>
                                 </section>
                             )
                         )}
