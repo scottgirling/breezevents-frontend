@@ -1,8 +1,46 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import { fetchEventsByUserId } from "../../../utils/api";
 
-export const AttendeeEvents = ({ upcomingEvents, pastEvents }) => {
+export const AttendeeEvents = () => {
+    const { user_id } = useParams();
+    const [loading, setLoading] = useState(true);
+    const [upcomingEvents, setUpcomingEvents] = useState([]);
+    const [pastEvents, setPastEvents] = useState([]);
     const [activeTickets, setActiveTickets] = useState("Upcoming");
+
+    useEffect(() => {
+        fetchEventsByUserId(user_id)
+        .then((returnedEvents) => {
+            const updatedEvents = returnedEvents.map((event) => {
+                const today = new Date();
+                const eventDate = new Date(event.end_time)
+                const isUpcoming = today < eventDate;
+                return { ...event, isUpcoming }
+            })
+            return updatedEvents;
+        })
+        .then((updatedEvents) => {
+            const eventsInTheFuture = [];
+            const eventsInThePast = [];
+            updatedEvents.filter((event) => {
+                if (event.isUpcoming === true) {
+                    eventsInTheFuture.push(event);
+                } else {
+                    eventsInThePast.push(event);
+                }
+            })
+            setUpcomingEvents(eventsInTheFuture);
+            setPastEvents(eventsInThePast);
+            setLoading(false);
+        })
+    }, []);
+
+    if (loading) {
+        return (
+            <p>Loading your profile...</p>
+        )
+    }
 
     return (
         <section className="profile-section">
