@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchEventById, startCheckoutSession } from "../../utils/api";
 import "./SingleEvent.css";
+import { useAuth } from "../../contexts/AuthProvider";
 
 export const SingleEvent = () => {
+    const { loggedInUser } = useAuth();
     const { event_id } = useParams();
     const [event, setEvent] = useState({});
     const [showTicketQuantity, setShowTicketQuantity] = useState(false);
@@ -58,7 +60,7 @@ export const SingleEvent = () => {
                         <button 
                             className="get-tickets-button"
                             onClick={() => {
-                                startCheckoutSession(event, ticketQuantity, 1);
+                                startCheckoutSession(event, ticketQuantity, loggedInUser.id);
                             }}
                         >
                             Get Tickets
