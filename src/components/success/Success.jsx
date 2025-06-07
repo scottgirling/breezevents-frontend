@@ -6,7 +6,6 @@ import { useAuth } from "../../contexts/AuthProvider";
 
 export const Success = () => {
     const { loggedInUser } = useAuth();
-    console.log(loggedInUser, "<<<<<")
     const [customer, setCustomer] = useState({});
     const [event, setEvent] = useState({});
     const [searchParams] = useSearchParams();
