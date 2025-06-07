@@ -19,11 +19,39 @@ export const Success = () => {
         });
     }, []);
 
+    const generateGoogleCalendarUrl = ({ title, description, location, startDateTime, endDateTime }) => {
+
+        const formatDate = (date) => {
+            let formattedDate = "";
+            if (startDateTime || endDateTime) {
+                formattedDate = date.replaceAll("-", "").replaceAll(":", "");
+            }
+            return formattedDate;
+        }
+
+        const url = new URL("https://calendar.google.com/calendar/render");
+        url.searchParams.set("action", "TEMPLATE")
+        url.searchParams.set("text", title);
+        url.searchParams.set("details", description);
+        url.searchParams.set("location", location);
+        url.searchParams.set("dates", `${formatDate(startDateTime)}/${formatDate(endDateTime)}`);
+
+        return url.toString();
+    }
+
+    const calendarUrl = generateGoogleCalendarUrl({
+        title: event.title,
+        description: event.event_overview,
+        location: `${event.venue_name}, ${event.location}`,
+        startDateTime: event.start_time,
+        endDateTime: event.end_time
+    });
+
     return (
         <section className="success">
             <section>
                 {customer.name ? (
-                    <h1 className="confirmation">Booking confirmed, {customer.name}!</h1>
+                    <h1 className="confirmation">Booking confirmed, {loggedInUser.name}!</h1>
                 ) : (
                     <h1 className="confirmation">Booking Confirmed!</h1>
                 )}
@@ -35,9 +63,11 @@ export const Success = () => {
                     <i className="fa-regular fa-calendar-check"></i>
                     <p>{new Date(event.start_time).toDateString()}</p>
                 </section>
-                <button>
-                    Add to Google Calendar
-                </button>
+                <Link target="_blank" to={calendarUrl}>
+                    <button className="google-calendar-button">
+                        Add to Google Calendar
+                    </button>
+                </Link>
             </section>
 
             <section>

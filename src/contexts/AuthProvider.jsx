@@ -18,7 +18,6 @@ export const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         const { data } = supabase.auth.onAuthStateChange((event, session) => {
-            console.log(event.user)
             if (event === "SIGNED_IN") {
                 loggedInUser.name = session.user.user_metadata.name;
                 loggedInUser.id = session.user.id

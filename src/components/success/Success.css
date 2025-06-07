@@ -26,6 +26,10 @@
     font-size: 2rem;
 }
 
+.google-calendar-button {
+    color: black;
+}
+
 .calendar button {
     width: max-content;
     margin: .5rem auto;
