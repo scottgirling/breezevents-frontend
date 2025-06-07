@@ -31,3 +31,9 @@
     margin: .5rem auto;
     background-color: #FFB593;
 }
+
+.view-events-button {
+    color: black;
+    font-size: 1rem;
+    font-weight: 400;
+}
