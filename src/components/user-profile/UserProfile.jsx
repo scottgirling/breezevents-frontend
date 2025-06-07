@@ -1,18 +1,24 @@
-import { Link, useParams } from "react-router-dom"
-import "./UserProfile.css"
 import { useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom"
+import "./UserProfile.css";
 import { fetchEventsByUserId, fetchUserById } from "../../utils/api";
+import { supabase } from "../../supabase/client";
 
 export const UserProfile = () => {
+    const navigate = useNavigate();
     const { user_id } = useParams();
+
+    const [loading, setLoading] = useState(true);
     const [user, setUser] = useState({});
     const [role, setRole] = useState(null);
+
     const [upcomingEvents, setUpcomingEvents] = useState([]);
     const [pastEvents, setPastEvents] = useState([]);
     const [activeTickets, setActiveTickets] = useState("Upcoming");
     const [formDisabled, setFormDisabled] = useState(true);
 
     useState(() => {
+        setLoading(true);
         fetchUserById(user_id)
         .then((returnedUser) => {
             setUser(returnedUser);
@@ -40,14 +46,25 @@ export const UserProfile = () => {
             })
             setUpcomingEvents(eventsInTheFuture);
             setPastEvents(eventsInThePast);
-            
+            setLoading(false);
         })
     }, []);
+
+    const handleSignOut = async () => {
+        const { error } = await supabase.auth.signOut();
+        navigate("/account")
+    }
 
     const border = () => {
         if (formDisabled === false) {
             return "border";
         }
+    }
+
+    if (loading) {
+        return (
+            <p>Loading your profile...</p>
+        )
     }
 
     return (
@@ -208,6 +225,12 @@ export const UserProfile = () => {
                             Discard Changes
                         </button>
                     </form>
+                </section>
+
+                <section>
+                    <button className="signout" onClick={handleSignOut}>
+                        Sign Out
+                    </button>
                 </section>
 
             </section>

@@ -1,9 +1,11 @@
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { fetchSessionData } from "../../utils/api";
 import { useEffect, useState } from "react";
 import "./Success.css";
+import { useAuth } from "../../contexts/AuthProvider";
 
 export const Success = () => {
+    const { loggedInUser } = useAuth();
     const [customer, setCustomer] = useState({});
     const [event, setEvent] = useState({});
     const [searchParams] = useSearchParams();
@@ -16,8 +18,6 @@ export const Success = () => {
             setEvent(JSON.parse(returnedData.metadata.eventDetails));
         });
     }, []);
-
-    console.log(event)
 
     return (
         <section className="success">
@@ -41,9 +41,11 @@ export const Success = () => {
             </section>
 
             <section>
-                <button>
-                    View My Events
-                </button>
+                <Link to={`/breezer/${loggedInUser.id}`}>
+                    <button className="view-events-button">
+                        View My Events
+                    </button>
+                </Link>
             </section>
         </section>
     )

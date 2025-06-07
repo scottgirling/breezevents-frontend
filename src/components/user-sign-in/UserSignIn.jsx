@@ -1,20 +1,17 @@
-import { createClient } from "@supabase/supabase-js";
-import "./UserSignIn.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { addUser, fetchUserById } from "../../utils/api";
+import { useAuth } from "../../contexts/AuthProvider";
+import { supabase } from "../../supabase/client";
+import "./UserSignIn.css";
 
 export const UserSignIn = () => {
+    const { signInWithEmail } = useAuth();
     const navigate = useNavigate();
     const [userAction, setUserAction] = useState("Sign In");
     const [name, setName] = useState(null);
     const [email, setEmail] = useState(null);
     const [password, setPassword] = useState(null);
-
-    const supabaseUrl = 'https://xvmroxtbmxqhinhufsyx.supabase.co';
-    const serviceRoleKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh2bXJveHRibXhxaGluaHVmc3l4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDgzNTUxMjgsImV4cCI6MjA2MzkzMTEyOH0.WdRWzOvgEOFQpULmlY_6qRVkWnfQ1wbSl957A0oOF1E';
-
-    const supabase = createClient(supabaseUrl, serviceRoleKey);
 
     const handleSignUp = (event) => {
         event.preventDefault();
@@ -38,16 +35,9 @@ export const UserSignIn = () => {
         }
     }
 
-    const handleSignIn = (event) => {
+    const handleSignIn = async (event) => {
         event.preventDefault();
-        signInWithEmail(email, password);
-    }
-
-    const signInWithEmail = async (email, password) => {
-        const { data, error } = await supabase.auth.signInWithPassword({
-            email,
-            password
-        });
+        const { data, error } = await signInWithEmail(email, password);
 
         if (!error) {
             const userDetails = {}

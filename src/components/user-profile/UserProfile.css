@@ -94,3 +94,9 @@ input {
     display: block;
     margin: auto;
 }
+
+.signout {
+    font-size: .75rem;
+    display: block;
+    margin: 2rem auto;
+}
