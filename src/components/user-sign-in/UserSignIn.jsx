@@ -40,24 +40,28 @@ export const UserSignIn = () => {
         const { data, error } = await signInWithEmail(email, password);
 
         if (!error) {
-            const userDetails = {}
+            if (data.user.aud === "authenticated") {
+                const userDetails = {}
+    
+                userDetails.user_id = data.user.id;
+                userDetails.name = data.user.user_metadata.name;
+                userDetails.username = "";
+                userDetails.email = data.user.email;
+                userDetails.role = "attendee";
 
-            userDetails.user_id = data.user.id;
-            userDetails.name = data.user.user_metadata.name;
-            userDetails.username = "";
-            userDetails.email = data.user.email;
-            userDetails.role = "attendee";
-
-            fetchUserById(data.user.id)
-            .then((returnedUser) => {
-                if (returnedUser === undefined) {
+                try {
+                    const returnedUser = await fetchUserById(data.user.id)
+                    
+                    if (returnedUser) {
+                        navigate(`/breezer/${data.user.id}`);
+                    } 
+                } catch {
                     addUser(userDetails)
                     .then(()=> {
                         navigate(`/breezer/${data.user.id}`);
                     });
-                } 
-                navigate(`/breezer/${data.user.id}`);
-            });
+                };
+            }
         }
     }
 
