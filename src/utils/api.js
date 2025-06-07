@@ -62,6 +62,13 @@ export const fetchEventsByUserId = (user_id) => {
     });
 }
 
+export const fetchEventsByHostId = (user_id) => {
+    return eventsApi.get(`/events/host/${user_id}`)
+    .then((response) => {
+        return response.data.events;
+    });
+}
+
 export const startCheckoutSession = (event, ticketQuantity, user_id) => {
     return eventsApi.post("/create-checkout-session", {
         event,

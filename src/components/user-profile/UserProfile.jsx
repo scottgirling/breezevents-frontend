@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import "./UserProfile.css";
 import { fetchEventsByUserId, fetchUserById } from "../../utils/api";
 import { supabase } from "../../supabase/client";
@@ -23,30 +23,7 @@ export const UserProfile = () => {
         fetchUserById(user_id)
         .then((returnedUser) => {
             setUser(returnedUser);
-            setRole(returnedUser.role)
-        })
-        fetchEventsByUserId(user_id)
-        .then((returnedEvents) => {
-            const updatedEvents = returnedEvents.map((event) => {
-                const today = new Date();
-                const eventDate = new Date(event.end_time)
-                const isUpcoming = today < eventDate;
-                return { ...event, isUpcoming}
-            })
-            return updatedEvents;
-        })
-        .then((updatedEvents) => {
-            const eventsInTheFuture = [];
-            const eventsInThePast = [];
-            updatedEvents.filter((event) => {
-                if (event.isUpcoming === true) {
-                    eventsInTheFuture.push(event);
-                } else {
-                    eventsInThePast.push(event);
-                }
-            })
-            setUpcomingEvents(eventsInTheFuture);
-            setPastEvents(eventsInThePast);
+            setRole(returnedUser.role);
             setLoading(false);
         })
     }, []);
@@ -76,18 +53,21 @@ export const UserProfile = () => {
                 )}
             </section>
 
-            {user.role === "attendee" ? (
-                <AttendeeEvents upcomingEvents={ upcomingEvents } pastEvents={ pastEvents }/>
-            ) : (
+            {user.role === "attendee" && (
+                <AttendeeEvents />
+            )}
+            
+            {user.role === "host" && (
                 <HostEvents />
+
             )}
 
             <section className="profile-section">
-                <section className="your-profile-header">
+                <section className="profile-header">
                     <h3>Your Profile</h3>
-                    <section className="edit-profile">
+                    <section className="your-profile-button">
                         <button 
-                            className="edit-profile"
+                            className="your-profile-button"
                             onClick={() => {
                                 setFormDisabled(false)
                                 border();
@@ -135,7 +115,6 @@ export const UserProfile = () => {
                 </section>
 
             </section>
-
         </section>
     )
 }

@@ -8,6 +8,7 @@ import { UserSignIn } from '../user-sign-in/UserSignIn';
 import { CheckEmail } from '../check-email/CheckEmail';
 import { AuthConfirm } from '../auth-confirm/AuthConfirm';
 import { UserProfile } from '../user-profile/UserProfile';
+import { AddEvent } from '../add-event/AddEvent';
 import './App.css'
 import { AuthProvider } from '../../contexts/AuthProvider';
 
@@ -24,7 +25,8 @@ function App() {
         <Route path="/account" element={<UserSignIn/>} />
         <Route path="/check-email" element={<CheckEmail />} />
         <Route path="/auth-confirm" element={<AuthConfirm /> } />
-        <Route path="/breezer/:user_id" element={<UserProfile/>} />
+        <Route path="/breezer/:user_id" element={<UserProfile />} />
+        <Route path="/breezer/:user_id/new-event" element={<AddEvent />} />
       </Routes>
     </AuthProvider>
   )
