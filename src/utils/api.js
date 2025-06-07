@@ -81,10 +81,8 @@ export const fetchSessionData = (sessionId) => {
 }
 
 export const addUser = (userDetails) => {
-    console.log("in the util func")
     return eventsApi.post("/users", userDetails)
     .then((response) => {
-        console.log(response, "<--- response")
         return response.data.user;
     });
 }
