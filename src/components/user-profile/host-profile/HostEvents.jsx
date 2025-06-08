@@ -7,13 +7,27 @@ export const HostEvents = () => {
     const [loading, setLoading] = useState(true);
     const [upcomingHostEvents, setUpcomingHostEvents] = useState([]);
     const [pastHostEvents, setPastHostEvents] = useState([]);
+    const [draftEvents, setDraftEvents] = useState([]);
     const [activeTickets, setActiveTickets] = useState("Upcoming");
 
     useEffect(() => {
         setLoading(true);
         fetchEventsByHostId(user_id)
         .then((returnedEvents) => {
-            const updatedEvents = returnedEvents.map((event) => {
+            const draftEvents = [];
+            const publishedEvents = returnedEvents.filter((event) => {
+                if (event.is_published === false) {
+                    draftEvents.push(event);
+                    return;
+                }
+                return event;
+            })
+            setDraftEvents(draftEvents);
+            return publishedEvents
+        })
+        .then((publishedEvents) => {
+            const updatedEvents = publishedEvents.map((event) => {
+                console.log(event, "<--- event")
                 const today = new Date();
                 const eventDate = new Date(event.end_time)
                 const isUpcoming = today < eventDate;
@@ -79,11 +93,22 @@ export const HostEvents = () => {
                         <p className="inactive-button">Past Events</p>
                     )}
                 </button>
+                <button
+                    onClick={() => {
+                        setActiveTickets("Draft");
+                    }}
+                >
+                    {activeTickets === "Draft" ? (
+                        <p className="active-button">Draft Events</p>
+                    ) : (
+                        <p className="inactive-button">Draft Events</p>
+                    )}
+                </button>
             </section>
 
             <section>
                 <ul>
-                    {activeTickets === "Upcoming" ? (
+                    {activeTickets === "Upcoming" && (
                         upcomingHostEvents.length ? (
                             upcomingHostEvents.map((event) => {
                                 return (
@@ -91,12 +116,10 @@ export const HostEvents = () => {
                                         <h4 className="event-title">{event.title}</h4>
                                         <p className="event-overview">{event.event_overview}</p>
                                         <section className="event-price-date">
-                                            {event.price !== 0 ? (
-                                                <p className="ticket-price">£{event.price}</p>
-                                            ) : (
-                                                <p className="free-ticket">FREE</p>
-                                            )}
                                             <p className="event-date">{new Date(event.start_time).toDateString()}</p>
+                                            <button className="btn btn-white">
+                                                Edit Event
+                                            </button>
                                             <Link to={`/events/${event.event_id}`}>
                                                 <button className="btn btn-white">
                                                     View Event
@@ -116,7 +139,9 @@ export const HostEvents = () => {
                                 </Link>
                             </section>
                         )
-                    ) : (
+                    )}
+
+                    {activeTickets === "Past" && (
                         pastHostEvents.length ? (
                             pastHostEvents.map((event) => {
                                 return (
@@ -142,6 +167,38 @@ export const HostEvents = () => {
                         ) : (
                             <section className="no-past-events">
                                 <p>No Past Events.</p>
+                            </section>
+                        )
+                    )}
+
+                    {activeTickets === "Draft" && (
+                        draftEvents.length ? (
+                            draftEvents.map((event) => {
+                                return (
+                                    <li className="event-card" key={event.event_id}>
+                                        <h4 className="event-title">{event.title}</h4>
+                                        <p className="event-overview">{event.event_overview}</p>
+                                        <section className="event-price-date">
+                                            {event.price !== 0 ? (
+                                                <p className="ticket-price">£{event.price}</p>
+                                            ) : (
+                                                <p className="free-ticket">FREE</p>
+                                            )}
+                                            <p className="event-date">{new Date(event.start_time).toDateString()}</p>
+                                            <button className="btn btn-white">
+                                                Edit Event
+                                            </button>
+                                            <button
+                                                className="btn btn-white">
+                                                Post Event
+                                            </button>
+                                        </section>
+                                    </li>
+                                )
+                            })
+                        ) : (
+                            <section className="no-past-events">
+                                <p>No Draft Events.</p>
                             </section>
                         )
                     )} 
