@@ -69,6 +69,13 @@ export const fetchEventsByHostId = (user_id) => {
     });
 }
 
+export const fetchVenues = () => {
+    return eventsApi.get("/venues")
+    .then((response) => {
+        return response.data.venues;
+    });
+}
+
 export const startCheckoutSession = (event, ticketQuantity, user_id) => {
     return eventsApi.post("/create-checkout-session", {
         event,
@@ -84,6 +91,21 @@ export const fetchSessionData = (sessionId) => {
     return eventsApi.get(`/retrieve-session?session_id=${sessionId}`)
     .then((response) => {
         return response.data;
+    });
+}
+
+export const addEvent = (eventDetails) => {
+    return eventsApi.post("/events", eventDetails)
+    .then((response) => {
+        return response.data.event;
+    });
+}
+
+export const addEventTag = (eventTagDetails) => {
+    console.log(eventTagDetails, "<--- eventTagDetails in utils")
+    return eventsApi.post("/event_tags", eventTagDetails)
+    .then((response) => {
+        return response.data.eventTag;
     });
 }
 

@@ -1,0 +1,87 @@
+.add-event-title {
+    margin: 1rem auto .25rem;
+    font-size: 2rem;
+    font-weight: 500;
+    color: #317575;
+}
+
+.add-event-form {
+    margin: 1rem auto;
+}
+
+.add-event-form section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: .5rem auto;
+}
+
+.add-event-form input, .add-event-form textarea {
+    width: 80vw;
+    border: 1px solid gray;
+    border-radius: 6px;
+}
+
+.add-event-form .event-overview {
+    height: 4rem;
+    font-size: 1rem;
+}
+
+.add-event-form .event-description {
+    height: 8rem;
+    font-size: 1rem;
+}
+
+.add-event-form .date-time-input {
+    width: 60vw;
+}
+
+.add-event-form .narrow-input {
+    width: 20vw;
+}
+
+#single-line {
+    flex-direction: row;
+    justify-content: center;
+}
+
+.add-event-tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.add-event-single-tag {
+    margin: .25rem .5rem;
+}
+
+.add-event-tags input {
+    width: max-content;
+}
+
+.add-event-venue select {
+    border: 1px solid gray;
+    border-radius: 6px;
+    padding: .25rem;
+    width: fit-content;
+    font-size: .75rem;
+}
+
+#add-event-submit-buttons {
+    margin: 1rem auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#add-event-submit-buttons .draft-button {
+    background-color: #317575;
+    color: white;
+    font-size: .75rem;
+}
+
+#add-event-submit-buttons .post-button {
+    background-color: #FFB593;
+    color: black;
+    font-size: .75rem;
+}
