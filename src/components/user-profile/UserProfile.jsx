@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom"
-import "./UserProfile.css";
-import { fetchEventsByUserId, fetchUserById } from "../../utils/api";
+import { fetchUserById } from "../../utils/api";
 import { supabase } from "../../supabase/client";
 import { AttendeeEvents } from "./attendee-profile/AttendeeEvents";
 import { HostEvents } from "./host-profile/HostEvents";
+import "./UserProfile.css";
 
 export const UserProfile = () => {
     const navigate = useNavigate();
@@ -13,9 +13,6 @@ export const UserProfile = () => {
     const [loading, setLoading] = useState(true);
     const [user, setUser] = useState({});
     const [role, setRole] = useState(null);
-
-    const [upcomingEvents, setUpcomingEvents] = useState([]);
-    const [pastEvents, setPastEvents] = useState([]);
     const [formDisabled, setFormDisabled] = useState(true);
 
     useState(() => {
@@ -31,12 +28,6 @@ export const UserProfile = () => {
     const handleSignOut = async () => {
         const { error } = await supabase.auth.signOut();
         navigate("/account")
-    }
-
-    const border = () => {
-        if (formDisabled === false) {
-            return "border";
-        }
     }
 
     if (loading) {
@@ -68,10 +59,6 @@ export const UserProfile = () => {
                     <section className="your-profile-button">
                         <button 
                             className="your-profile-button"
-                            onClick={() => {
-                                setFormDisabled(false)
-                                border();
-                            }}
                         >
                             <i className="fa-solid fa-user-pen"></i>
                             <p>Edit Profile</p>
@@ -79,32 +66,23 @@ export const UserProfile = () => {
                     </section>
                 </section>
                 <section>
-                    <form>
+                    <form className="user-profile-form">
                         <section>
                             <label htmlFor="name">Name:</label>
-                            <input className={border()} disabled={formDisabled} type="text" id="name" name="name" placeholder={user.name}></input>
+                            <input disabled={formDisabled} type="text" id="name" name="name" placeholder={user.name}></input>
                         </section>
                         <section>
                             <label htmlFor="username">Username:</label>
-                            <input className={border()} disabled={formDisabled} type="text" id="username" name="username" placeholder={user.username}></input>
+                            <input disabled={formDisabled} type="text" id="username" name="username" placeholder={user.username}></input>
                         </section>
                         <section>
                             <label htmlFor="email">Email:</label>
-                            <input className={border()} disabled={formDisabled} type="text" id="email" name="email" placeholder={user.email}></input>
+                            <textarea disabled={formDisabled} type="text" id="email" name="email" placeholder={user.email}></textarea>
                         </section>
                         <section>
                             <label htmlFor="bio">Bio:</label>
-                            <input className={border()} disabled={formDisabled} type="text" id="bio" name="bio" placeholder={user.bio}></input>
+                            <textarea disabled={formDisabled} type="text" id="bio" name="bio" placeholder={user.bio}></textarea>
                         </section>
-                        <button 
-                            className="discard-changes"
-                            onClick={(event) => {
-                                event.preventDefault();
-                                setFormDisabled(true);
-                            }}
-                        >
-                            Discard Changes
-                        </button>
                     </form>
                 </section>
 
