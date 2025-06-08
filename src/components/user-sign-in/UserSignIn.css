@@ -15,6 +15,12 @@
     padding: .25rem;
 }
 
+.sign-in-error {
+    margin: .5rem auto;
+    font-weight: 500;
+    text-decoration: underline;
+}
+
 .sign-up button {
     margin: 1rem auto;
     width: fit-content;
