@@ -16,7 +16,7 @@ export const Home = () => {
         .then((returnedTags) => {
             setTags(returnedTags);
         })
-        fetchEvents(eventTag)
+        fetchEvents(eventTag, null, null, null, null, 3)
         .then((returnedEvents) => {
             setEvents(returnedEvents)
             setLoading(false);
@@ -130,11 +130,19 @@ export const Home = () => {
                                 </li>
                                 )
                             })}
-                            </ul>
-                        ) : (
-                            <p className="no-events-found">No events found. Please select another category.</p>
+                        </ul>
+                    ) : (
+                        <p className="no-events-found">No events found. Please select another category.</p>
                     )
                 )}
+            </section>
+
+            <section className="find-more-events">
+                <Link to="/events">
+                    <button className="btn btn-salmon">
+                        View More Events
+                    </button>
+                </Link>
             </section>
         </>
     )

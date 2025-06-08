@@ -128,3 +128,8 @@
 .underline {
     border-top: 1px solid rgba(0, 0, 0, 0.705);
 }
+
+.find-more-events button {
+    margin: 1rem auto;
+    font-weight: 400;
+}
