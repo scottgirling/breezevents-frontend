@@ -20,6 +20,7 @@
     width: 80vw;
     border: 1px solid gray;
     border-radius: 6px;
+    padding: .25rem;
 }
 
 .add-event-form .event-overview {

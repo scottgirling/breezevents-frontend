@@ -63,6 +63,13 @@ export const AddEvent = () => {
             if (event.target.name === "is_free") {
                 setEventDetails({ ...eventDetails, [key]: event.target.value, price: 0 });
             }
+            if (event.target.name === "is_published") {
+                setEventDetails({ ...eventDetails, [key]: event.target.value })
+                if (eventDetails.is_published === false) {
+                    handleSubmit();
+                }
+                
+            }
         });
         return updatedEventDetails;
     }
@@ -87,6 +94,7 @@ export const AddEvent = () => {
                         type="text" 
                         id="title" 
                         name="title"
+                        placeholder="Add an event title"
                         required>
                     </input>
                 </section>
@@ -99,6 +107,7 @@ export const AddEvent = () => {
                         type="text" 
                         id="event_overview" 
                         name="event_overview"
+                        placeholder="Add an event overview"
                         required>
                     </textarea>
                 </section>
@@ -111,12 +120,13 @@ export const AddEvent = () => {
                         type="textarea" 
                         id="description" 
                         name="description"
+                        placeholder="Add an event description"
                         required>
                     </textarea>
                 </section>
 
                 <section>
-                    <label htmlFor="event-tag">Select an event tag:</label>
+                    <label htmlFor="event-tag">Select an Event Tag:</label>
                     <ul className="add-event-tags">
                         {tags.map((tag) => {
                             return (
@@ -126,10 +136,11 @@ export const AddEvent = () => {
                                     <label htmlFor="event-tag">{tag.name}</label>
                                     <input
                                         onChange={(event) => setNewEventTag(event.target.value)}
-                                        type="checkbox"
+                                        type="radio"
                                         id="event-tag"
                                         name="event-tag"
-                                        value={tag.tag_id}>
+                                        value={tag.tag_id}
+                                        required>
                                     </input>
                                 </li>
                             )
@@ -209,6 +220,7 @@ export const AddEvent = () => {
                         type="text" 
                         id="event_type" 
                         name="event_type"
+                        placeholder="Expo, Forum, Conference"
                         required>
                     </input>
                 </section>
@@ -266,11 +278,11 @@ export const AddEvent = () => {
                 <section id="add-event-submit-buttons">
                     <button 
                         className="draft-button"
-                        onBlur={(event) => handleEventDetailsUpdate(event)}
+                        onClick={(event) => handleEventDetailsUpdate(event)}
                         name="is_published"
                         value="false"
                         type="submit"
-                    >Save as draft
+                    >Save Draft
                     </button>
                     <button 
                         className="post-button"
