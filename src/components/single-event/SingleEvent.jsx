@@ -31,7 +31,7 @@ export const SingleEvent = () => {
     }
 
     return (
-        <section>
+        <section className="single-event">
             <h1 className="single-event-title">{event.title}</h1>
             <p className="single-event-overview">{event.event_overview}</p>
             <img className="event-image" src={event.event_image_url} />

@@ -133,3 +133,90 @@
     margin: 1rem auto;
     font-weight: 400;
 }
+
+@media only screen and (min-width: 500px) {
+    .home-title {
+        font-size: 3.5rem;
+        text-align: center;
+    }
+    .home-subheading {
+        font-size: 2rem;
+    }
+    .home-buttons {
+        justify-content: center;
+        margin: 2rem;
+    }
+    .home-buttons .btn {
+        font-size: 1rem;
+        margin: 0 1rem;
+    }
+    .home-top img {
+        width: 45%;
+        margin: auto;
+        border-radius: 6px;
+    }
+    .sub-section img {
+        max-width: 60vw;
+    }
+    #platform-features {
+        margin: 4rem auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+    #platform-features section {
+        width: 50%;
+    }
+    #platform-features h3 {
+        min-width: 40vw;
+        font-size: 2rem;
+    }
+    #platform-features p {
+        font-size: 1.5rem;
+    }
+    #platform-features img {
+        width: 50%;
+        width: 40vw;
+        margin-top: 0;
+        margin-left: 1rem;
+    }
+    .wide-screen {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+    }
+    .wide-screen .sub-section {
+        max-width: 25vw;
+        margin: 0 1rem;
+    }
+    .wide-screen h3 {
+        font-size: 2rem !important;
+    }
+    .wide-screen img {
+        max-width: 24vw;
+    }
+    .sub-section h3 {
+        font-size: 3rem;
+    }
+    .discover-sub-title {
+        font-size: 1.5rem;
+        margin: 0 !important;
+    }
+    .btn-tag {
+        font-size: 1rem;
+    }
+    .event-card {
+        padding: 1rem;
+    }
+    .event-overview {
+        font-size: 1rem;
+    }
+    .event-title {
+        font-size: 1.25rem;
+    }
+    .event-price-date, .btn-white {
+        font-size: 1rem;
+    }
+}

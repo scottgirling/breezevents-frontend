@@ -25,40 +25,48 @@ export const Home = () => {
 
     return (
         <section>
-            <h2 className="home-title">Discover your next <span className="italic-green">unforgettable</span> event today</h2>
-            <p className="home-subheading">Join <span className="italic-green">breez<span className="bold-e">e</span>vents</span> to effortlessly find and book awesome events. Experience the joy of seamless planning.</p>
-            <section className="home-buttons">
-                <Link to="/account">
-                    <button className="btn btn-green">
-                        Sign Up
-                    </button>
-                </Link>
-                <Link to="/events">
-                    <button className="btn btn-salmon">
-                        Find Events
-                    </button>
-                </Link>
-            </section>
-            <section className="sub-section">
+            <section className="home-top">
+                <section>
+                    <h2 className="home-title">Discover your next <span className="italic-green">unforgettable</span> event today</h2>
+                    <p className="home-subheading">Join <span className="italic-green">breez<span className="bold-e">e</span>vents</span> to effortlessly find and book awesome events. Experience the joy of seamless planning.</p>
+                    <section className="home-buttons">
+                        <Link to="/account">
+                            <button className="btn btn-green">
+                                Sign Up
+                            </button>
+                        </Link>
+                        <Link to="/events">
+                            <button className="btn btn-salmon">
+                                Find Events
+                            </button>
+                        </Link>
+                    </section>
+                </section>
                 <img src="../../../home-top.jpg"/>
-                <h3>Discover Our Exciting Event Features</h3>
-                <p>Experience seamless event booking with our user-friendly platform.</p>
+            </section>
+            <section className="sub-section" id="platform-features">
+                <section>
+                    <h3>Discover Our Platform Features</h3>
+                    <p className="discover-sub-title">Experience seamless event booking with our user-friendly platform.</p>
+                </section>
                 <img src="../../../home-features.jpg"/>
             </section>
-            <section className="sub-section">
-                <h3>Effortlessly Book Your Next Event Today</h3>
-                <p><span className="italic-green">breez<span className="bold-e">e</span>vents</span> makes event booking a breeze. Unparalleled convenience allows you to book events with just a few clicks.</p>
-                <img src="../../../home-effortlessly.jpg" />
-            </section>
-            <section className="sub-section">
-                <h3>Explore a Variety of Events</h3>
-                <p>Choose from a wide range of events tailored to your interests.</p>
-                <img src="../../../home-variety.jpg" />
-            </section>
-            <section className="sub-section">
-                <h3>Secure Payments for Peace of Mind</h3>
-                <p>Enjoy safe and reliable payment options for your bookings.</p>
-                <img src="../../../home-payments.jpg" />
+            <section className="wide-screen">
+                <section className="sub-section">
+                    <h3>Effortless</h3>
+                    <p>Unparalleled convenience allows you to book with just a few clicks.</p>
+                    <img src="../../../home-effortlessly.jpg" />
+                </section>
+                <section className="sub-section">
+                    <h3>Variety</h3>
+                    <p>Choose from a wide range of events tailored to your interests.</p>
+                    <img src="../../../home-variety.jpg" />
+                </section>
+                <section className="sub-section">
+                    <h3>Secure</h3>
+                    <p>Enjoy safe and reliable payment options for your bookings.</p>
+                    <img src="../../../home-payments.jpg" />
+                </section>
             </section>
             <section className="home-buttons">
                 <Link to="/account">
@@ -72,9 +80,10 @@ export const Home = () => {
                     </button>
                 </Link>
             </section>
+            
             <section className="sub-section">
                 <h3>Discover Events</h3>
-                <p>Explore upcoming events are secure your spot today!</p>
+                <p className="discover-sub-title">Explore upcoming events are secure your spot today!</p>
             </section>
 
             <section className="discover-events">

@@ -102,3 +102,9 @@ input, textarea {
     display: block;
     margin: 2rem auto;
 }
+
+@media only screen and (min-width: 500px) {
+    .user-profile {
+        min-height: 70vh;
+    }
+}
