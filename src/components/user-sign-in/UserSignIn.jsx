@@ -71,7 +71,7 @@ export const UserSignIn = () => {
     }
 
     return (
-        <section>
+        <section className="sign-in-comp">
             {userAction === "Sign In" ? (
                 <section>
                     <h1>Sign in to your account</h1>
