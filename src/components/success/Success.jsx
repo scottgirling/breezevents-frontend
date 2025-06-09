@@ -17,6 +17,7 @@ export const Success = () => {
         const sessionID = searchParams.get("session_id");
         fetchSessionData(sessionID)
         .then((returnedData) => {
+            console.log(returnedData, "<")
             setCustomer(returnedData.customer_details);
             setEvent(JSON.parse(returnedData.metadata.eventDetails));
         })
@@ -61,7 +62,7 @@ export const Success = () => {
             <p className="loading">Loading...</p>
         )
     }
-
+    
     if (error) {
         return (
             <section className="error">
@@ -73,7 +74,7 @@ export const Success = () => {
         )
     }
 
-    {event && (
+    return (
         <section className="success">
             <section>
             {customer.name ? (
@@ -104,5 +105,5 @@ export const Success = () => {
                 </Link>
             </section>
         </section>
-    )}
+    )
 }
