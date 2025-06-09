@@ -1,5 +1,6 @@
 .success {
     margin: 1rem auto;
+    min-height: 60vh;
 }
 
 .confirmation {
@@ -40,4 +41,16 @@
     color: black;
     font-size: 1rem;
     font-weight: 400;
+}
+
+.error {
+    min-height: 60vh;
+    margin: 2rem;
+}
+
+.error button {
+    background-color: #FFB593;
+    color: black;
+    font-size: .75rem;
+    margin: 1rem;
 }
