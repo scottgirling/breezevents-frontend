@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom'
 import { useAuth } from '../../contexts/AuthProvider';
-import './Header.css'
+import './Header.css';
 
 export const Header = () => {
     const { loggedInUser } = useAuth();
+    console.log(loggedInUser, "<<<<")
 
     return (
         <section className="header">
@@ -12,12 +13,18 @@ export const Header = () => {
             </Link>
             {loggedInUser.name ? (
                 <Link className="user-signin" to={`breezer/${loggedInUser.id}`}>
-                    <p className="fa-user">{loggedInUser.name[0].toUpperCase()}</p>
+                    <p className="fa-user">{loggedInUser.name[0]}</p>
                 </Link>
             ) : (
-                <Link className="user-signin" to="/account">
-                    <i className="fa-solid fa-user"></i>
-                </Link>
+                loggedInUser.id ? (
+                    <Link className="user-signin" to={`breezer/${loggedInUser.id}`}>
+                        <i className="fa-solid fa-user"></i>
+                    </Link>
+                ) : (
+                    <Link className="user-signin" to="/account">
+                        <i className="fa-solid fa-user"></i>
+                    </Link>
+                )
             )}
         </section>
     )
