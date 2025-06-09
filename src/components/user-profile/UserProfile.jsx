@@ -34,7 +34,7 @@ export const UserProfile = () => {
     }
 
     return (
-        <section>
+        <section className="user-profile">
             <section className="welcome-back">
                 {user.name && (
                     <h1>Welcome back, <span className="users-name">{user.name.split(" ")[0]}!</span></h1>

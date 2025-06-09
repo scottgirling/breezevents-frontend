@@ -54,3 +54,9 @@
     font-size: .75rem;
     margin: 1rem;
 }
+
+@media only screen and (min-width: 500px) {
+    .success, .error, .loading {
+        min-height: 70vh;
+    }
+}

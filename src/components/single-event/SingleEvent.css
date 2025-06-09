@@ -144,3 +144,9 @@
 .host-info {
     font-weight: 700;
 }
+
+@media only screen and (min-width: 500px) {
+    .single-event {
+        min-height: 70vh;
+    }
+}
