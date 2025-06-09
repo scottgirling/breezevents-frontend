@@ -1,0 +1,14 @@
+.footer {
+    background-color: #317575;
+    margin: 2rem -1.25rem -.75rem;
+    padding: 1.25rem;
+    display: flex;
+    justify-content: space-around;
+    font-size: .75rem;
+}
+
+.footer p {
+    margin: .5rem;
+    color: white;
+    font-weight: 400;
+}
