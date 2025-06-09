@@ -7,6 +7,7 @@ import { useAuth } from "../../contexts/AuthProvider";
 export const SingleEvent = () => {
     const { loggedInUser } = useAuth();
     const { event_id } = useParams();
+    const [loading, setLoading] = useState(true);
     const [event, setEvent] = useState({});
     const [showTicketQuantity, setShowTicketQuantity] = useState(false);
     const [ticketQuantity, setTicketQuantity] = useState(2);
@@ -15,14 +16,22 @@ export const SingleEvent = () => {
     const [showHostDetails, setShowHostDetails] = useState(false);
 
     useEffect(() => {
+        setLoading(true);
         fetchEventById(event_id)
         .then((returnedEvent) => {
             setEvent(returnedEvent);
+            setLoading(false)
         });
     }, []);
 
+    if (loading) {
+        return (
+            <p className="loading">Loading event...</p>
+        )
+    }
+
     return (
-        <>
+        <section>
             <h1 className="single-event-title">{event.title}</h1>
             <p className="single-event-overview">{event.event_overview}</p>
             <img className="event-image" src={event.event_image_url} />
@@ -161,6 +170,6 @@ export const SingleEvent = () => {
                     </>
                 )}
             </section>
-        </>
+        </section>
     )
 }
