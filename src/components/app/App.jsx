@@ -9,13 +9,14 @@ import { CheckEmail } from '../check-email/CheckEmail';
 import { AuthConfirm } from '../auth-confirm/AuthConfirm';
 import { UserProfile } from '../user-profile/UserProfile';
 import { AddEvent } from '../add-event/AddEvent';
+import { Footer } from '../footer/Footer';
 import './App.css'
 import { AuthProvider } from '../../contexts/AuthProvider';
 
 function App() {
   return (
     <AuthProvider>
-      <Header></Header>
+      <Header />
 
       <Routes>
         <Route path="/" element={<Home/>} />
@@ -28,6 +29,8 @@ function App() {
         <Route path="/breezer/:user_id" element={<UserProfile />} />
         <Route path="/breezer/:user_id/new-event" element={<AddEvent />} />
       </Routes>
+
+      <Footer />
     </AuthProvider>
   )
 }
