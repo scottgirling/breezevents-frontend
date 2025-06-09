@@ -76,7 +76,7 @@ export const AddEvent = () => {
 
     if (loading) {
         return (
-            <p>Loading...</p>
+            <p className="loading">Loading...</p>
         )
     }
 

@@ -10,8 +10,8 @@ import { AuthConfirm } from '../auth-confirm/AuthConfirm';
 import { UserProfile } from '../user-profile/UserProfile';
 import { AddEvent } from '../add-event/AddEvent';
 import { Footer } from '../footer/Footer';
-import './App.css'
 import { AuthProvider } from '../../contexts/AuthProvider';
+import './App.css'
 
 function App() {
   return (

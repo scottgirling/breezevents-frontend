@@ -154,7 +154,7 @@ export const EventList = () => {
                 </section>
 
                 {loading ? (
-                    <p className="events-loading">Loading events...</p>
+                    <p className="loading">Loading events...</p>
                 ) : (
                     events.length ? (
                         <ul>

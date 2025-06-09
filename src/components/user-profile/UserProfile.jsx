@@ -12,15 +12,12 @@ export const UserProfile = () => {
 
     const [loading, setLoading] = useState(true);
     const [user, setUser] = useState({});
-    const [role, setRole] = useState(null);
-    const [formDisabled, setFormDisabled] = useState(true);
 
     useState(() => {
         setLoading(true);
         fetchUserById(user_id)
         .then((returnedUser) => {
             setUser(returnedUser);
-            setRole(returnedUser.role);
             setLoading(false);
         })
     }, []);
@@ -32,7 +29,7 @@ export const UserProfile = () => {
 
     if (loading) {
         return (
-            <p>Loading your profile...</p>
+            <p className="loading">Loading your profile...</p>
         )
     }
 
@@ -69,19 +66,19 @@ export const UserProfile = () => {
                     <form className="user-profile-form">
                         <section>
                             <label htmlFor="name">Name:</label>
-                            <input disabled={formDisabled} type="text" id="name" name="name" placeholder={user.name}></input>
+                            <input type="text" id="name" name="name" placeholder={user.name}></input>
                         </section>
                         <section>
                             <label htmlFor="username">Username:</label>
-                            <input disabled={formDisabled} type="text" id="username" name="username" placeholder={user.username}></input>
+                            <input type="text" id="username" name="username" placeholder={user.username}></input>
                         </section>
                         <section>
                             <label htmlFor="email">Email:</label>
-                            <textarea disabled={formDisabled} type="text" id="email" name="email" placeholder={user.email}></textarea>
+                            <textarea type="text" id="email" name="email" placeholder={user.email}></textarea>
                         </section>
                         <section>
                             <label htmlFor="bio">Bio:</label>
-                            <textarea disabled={formDisabled} type="text" id="bio" name="bio" placeholder={user.bio}></textarea>
+                            <textarea type="text" id="bio" name="bio" placeholder={user.bio}></textarea>
                         </section>
                     </form>
                 </section>
