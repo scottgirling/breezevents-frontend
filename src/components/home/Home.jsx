@@ -24,7 +24,7 @@ export const Home = () => {
     }, [eventTag]);
 
     return (
-        <>
+        <section>
             <h2 className="home-title">Discover your next <span className="italic-green">unforgettable</span> event today</h2>
             <p className="home-subheading">Join <span className="italic-green">breez<span className="bold-e">e</span>vents</span> to effortlessly find and book awesome events. Experience the joy of seamless planning.</p>
             <section className="home-buttons">
@@ -35,7 +35,7 @@ export const Home = () => {
                 </Link>
                 <Link to="/events">
                     <button className="btn btn-salmon">
-                        Explore
+                        Find Events
                     </button>
                 </Link>
             </section>
@@ -68,7 +68,7 @@ export const Home = () => {
                 </Link>
                 <Link to="/events">
                     <button className="btn btn-salmon">
-                        Explore
+                        Find Events
                     </button>
                 </Link>
             </section>
@@ -144,6 +144,6 @@ export const Home = () => {
                     </button>
                 </Link>
             </section>
-        </>
+        </section>
     )
 }
