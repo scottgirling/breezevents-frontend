@@ -17,7 +17,7 @@ Utilising React's component-based architecture and efficient rendering, this pro
 Additionally, this project incorporates the handling of state, context, routing and error handling.
 
 ## The API
-Find my API repo [here](https://github.com/scottgirling/events-platform-be) or the hosted API [here](https://events-platform-be-1fmx.onrender.com/api).
+Find my API repo [here](https://github.com/scottgirling/breezevents-backend) or the hosted API [here](https://events-platform-be-1fmx.onrender.com/api).
 
 Cross Origin Resource Sharing (CORS) has been enabled to allow requests to be made to the server from a different domain.
 
