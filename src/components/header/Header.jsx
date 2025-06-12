@@ -4,7 +4,6 @@ import './Header.css';
 
 export const Header = () => {
     const { loggedInUser } = useAuth();
-    console.log(loggedInUser, "<<<<")
 
     return (
         <section className="header">
