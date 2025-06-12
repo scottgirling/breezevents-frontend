@@ -117,9 +117,11 @@ export const HostEvents = () => {
                                         <p className="event-overview">{event.event_overview}</p>
                                         <section className="event-price-date">
                                             <p className="event-date">{new Date(event.start_time).toDateString()}</p>
-                                            <button className="btn btn-white">
-                                                Edit Event
-                                            </button>
+                                            <Link to={`/breezer/${user_id}/${event.event_id}/amend`}>
+                                                <button className="btn btn-white">
+                                                    Edit Event
+                                                </button>
+                                            </Link>
                                             <Link to={`/events/${event.event_id}`}>
                                                 <button className="btn btn-white">
                                                     View Event
