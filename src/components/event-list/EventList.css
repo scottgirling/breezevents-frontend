@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+.event-list {
+    min-height: 70vh;
+}
+
 .filter-events {
     display: flex;
     flex-wrap: wrap;

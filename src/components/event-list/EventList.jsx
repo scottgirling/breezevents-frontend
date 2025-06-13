@@ -86,7 +86,7 @@ export const EventList = () => {
     }
     
     return (
-        <>
+        <section className="event-list">
             <section className="discover-events">
                 <ul className="tags-list">
                     <li className="tag-name">
@@ -220,6 +220,6 @@ export const EventList = () => {
                     }}>Load More</button>
                 )}
             </section>
-        </>
+        </section>
     )
 }
