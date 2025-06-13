@@ -289,5 +289,3 @@ export const AddEvent = () => {
         </section>
     )
 }
-
-// module.exports = handleEventDetailsUpdate;
