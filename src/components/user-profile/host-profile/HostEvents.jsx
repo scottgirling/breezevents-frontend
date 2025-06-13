@@ -15,7 +15,6 @@ export const HostEvents = () => {
         setLoading(true);
         fetchEventsByHostId(user_id)
         .then((returnedEvents) => {
-            console.log(returnedEvents, "<--- returnedEvents")
             const draftEvents = [];
             const publishedEvents = returnedEvents.filter((event) => {
                 if (event.is_published === false) {
