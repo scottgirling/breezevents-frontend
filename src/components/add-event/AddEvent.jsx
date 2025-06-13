@@ -83,14 +83,12 @@ export const AddEvent = () => {
     return (
         <section>
             <h1 className="add-event-title">Add an Event</h1>
-            <p>Create and share your event with the community – it only takes a minute!</p>
+            <p>Create and share your event with the community - it only takes a minute!</p>
             <form className="add-event-form" onSubmit={(event) => handleSubmit(event)}>
                 <section>
                     <label htmlFor="title">Event Title:</label>
                     <input 
-                        onBlur={(event) => {
-                            handleEventDetailsUpdate(event);
-                        }} 
+                        onBlur={(event) => handleEventDetailsUpdate(event)} 
                         type="text" 
                         id="title" 
                         name="title"
@@ -104,7 +102,6 @@ export const AddEvent = () => {
                     <textarea 
                         className="event-overview"
                         onBlur={(event) => handleEventDetailsUpdate(event)}
-                        type="text" 
                         id="event_overview" 
                         name="event_overview"
                         placeholder="Add an event overview"
@@ -117,7 +114,6 @@ export const AddEvent = () => {
                     <textarea 
                         className="event-description"
                         onBlur={(event) => handleEventDetailsUpdate(event)}
-                        type="textarea" 
                         id="description" 
                         name="description"
                         placeholder="Add an event description"
@@ -149,7 +145,7 @@ export const AddEvent = () => {
                 </section>
 
                 <section>
-                    <label htmlFor="start_time">Start time:</label>
+                    <label htmlFor="start_time">Start Time:</label>
                     <input 
                         className="date-time-input"
                         onBlur={(event) => handleEventDetailsUpdate(event)}
@@ -161,7 +157,7 @@ export const AddEvent = () => {
                 </section>
 
                 <section>
-                    <label htmlFor="end_time">End time:</label>
+                    <label htmlFor="end_time">End Time:</label>
                     <input 
                         className="date-time-input"
                         onBlur={(event) => handleEventDetailsUpdate(event)}
@@ -293,3 +289,5 @@ export const AddEvent = () => {
         </section>
     )
 }
+
+// module.exports = handleEventDetailsUpdate;
