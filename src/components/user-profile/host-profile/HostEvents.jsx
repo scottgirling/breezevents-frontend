@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { fetchEventsByHostId } from "../../../utils/api";
+import { deleteEvent, fetchEventsByHostId } from "../../../utils/api";
 
 export const HostEvents = () => {
     const { user_id } = useParams();
@@ -9,11 +9,13 @@ export const HostEvents = () => {
     const [pastHostEvents, setPastHostEvents] = useState([]);
     const [draftEvents, setDraftEvents] = useState([]);
     const [activeTickets, setActiveTickets] = useState("Upcoming");
+    const [eventToDelete, setEventToDelete] = useState(null);
 
     useEffect(() => {
         setLoading(true);
         fetchEventsByHostId(user_id)
         .then((returnedEvents) => {
+            console.log(returnedEvents, "<--- returnedEvents")
             const draftEvents = [];
             const publishedEvents = returnedEvents.filter((event) => {
                 if (event.is_published === false) {
@@ -49,6 +51,11 @@ export const HostEvents = () => {
             setLoading(false);
         })
     }, []);
+
+    const handleDeleteEvent = (event_id) => {
+        deleteEvent(event_id);
+        window.location.reload();
+    }
 
     if (loading) {
         return (
@@ -114,8 +121,14 @@ export const HostEvents = () => {
                                     <li className="event-card" key={event.event_id}>
                                         <h4 className="event-title">{event.title}</h4>
                                         <p className="event-overview">{event.event_overview}</p>
+                                        <p id="event-date-left" className="event-price-date event-date">{new Date(event.start_time).toDateString()}</p>
                                         <section className="event-price-date">
-                                            <p className="event-date">{new Date(event.start_time).toDateString()}</p>
+                                            <button 
+                                                className="delete-event"
+                                                onClick={() => setEventToDelete(event.event_id)}
+                                            >
+                                                Delete Event
+                                            </button>
                                             <Link to={`/breezer/${user_id}/${event.event_id}/update`}>
                                                 <button className="btn btn-white">
                                                     Update Event
@@ -126,6 +139,30 @@ export const HostEvents = () => {
                                                     View Event
                                                 </button>
                                             </Link>
+                                        </section>
+                                        <section>
+                                            {event.event_id === eventToDelete && (
+                                                <section>
+                                                    <section className="check-delete">
+                                                        <p>Are you sure you want to delete this event?</p>
+                                                        <p className="bold">This action cannot be undone.</p>
+                                                    </section>
+                                                    <section className="delete-buttons">
+                                                        <button 
+                                                            className="btn btn-delete-no"
+                                                            onClick={() => setEventToDelete(null)}
+                                                        >
+                                                            No
+                                                        </button>
+                                                        <button 
+                                                            className="btn btn-white"
+                                                            onClick={() => handleDeleteEvent(event.event_id)}
+                                                        >
+                                                            Yes
+                                                        </button>
+                                                    </section>
+                                                </section>
+                                            )}
                                         </section>
                                     </li>
                                 )
@@ -179,18 +216,43 @@ export const HostEvents = () => {
                                     <li className="event-card" key={event.event_id}>
                                         <h4 className="event-title">{event.title}</h4>
                                         <p className="event-overview">{event.event_overview}</p>
-                                        <section className="event-price-date">
-                                            {event.price !== 0 ? (
-                                                <p className="ticket-price">£{event.price}</p>
-                                            ) : (
-                                                <p className="free-ticket">FREE</p>
-                                            )}
-                                            <p className="event-date">{new Date(event.start_time).toDateString()}</p>
+                                        <p id="event-date-left" className="event-price-date event-date">{new Date(event.start_time).toDateString()}</p>
+                                        <section id="space-between" className="event-price-date">
+                                            <button 
+                                                className="delete-event"
+                                                onClick={() => setEventToDelete(event.event_id)}
+                                            >
+                                                Delete Event
+                                            </button>
                                             <Link to={`/breezer/${user_id}/${event.event_id}/update`}>
                                                 <button className="btn btn-white">
                                                     Update Event
                                                 </button>
                                             </Link>
+                                        </section>
+                                        <section>
+                                            {event.event_id === eventToDelete && (
+                                                <section>
+                                                    <section className="check-delete">
+                                                        <p>Are you sure you want to delete this event?</p>
+                                                        <p className="bold">This action cannot be undone.</p>
+                                                    </section>
+                                                    <section className="delete-buttons">
+                                                        <button 
+                                                            className="btn btn-delete-no"
+                                                            onClick={() => setEventToDelete(null)}
+                                                        >
+                                                            No
+                                                        </button>
+                                                        <button 
+                                                            className="btn btn-white"
+                                                            onClick={() => handleDeleteEvent(event.event_id)}
+                                                        >
+                                                            Yes
+                                                        </button>
+                                                    </section>
+                                                </section>
+                                            )}
                                         </section>
                                     </li>
                                 )
