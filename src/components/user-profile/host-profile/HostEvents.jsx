@@ -27,7 +27,6 @@ export const HostEvents = () => {
         })
         .then((publishedEvents) => {
             const updatedEvents = publishedEvents.map((event) => {
-                console.log(event, "<--- event")
                 const today = new Date();
                 const eventDate = new Date(event.end_time)
                 const isUpcoming = today < eventDate;
@@ -117,9 +116,9 @@ export const HostEvents = () => {
                                         <p className="event-overview">{event.event_overview}</p>
                                         <section className="event-price-date">
                                             <p className="event-date">{new Date(event.start_time).toDateString()}</p>
-                                            <Link to={`/breezer/${user_id}/${event.event_id}/amend`}>
+                                            <Link to={`/breezer/${user_id}/${event.event_id}/update`}>
                                                 <button className="btn btn-white">
-                                                    Edit Event
+                                                    Update Event
                                                 </button>
                                             </Link>
                                             <Link to={`/events/${event.event_id}`}>
@@ -187,13 +186,11 @@ export const HostEvents = () => {
                                                 <p className="free-ticket">FREE</p>
                                             )}
                                             <p className="event-date">{new Date(event.start_time).toDateString()}</p>
-                                            <button className="btn btn-white">
-                                                Edit Event
-                                            </button>
-                                            <button
-                                                className="btn btn-white">
-                                                Post Event
-                                            </button>
+                                            <Link to={`/breezer/${user_id}/${event.event_id}/update`}>
+                                                <button className="btn btn-white">
+                                                    Update Event
+                                                </button>
+                                            </Link>
                                         </section>
                                     </li>
                                 )
