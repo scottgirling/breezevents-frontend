@@ -6,6 +6,7 @@ If you would like to try out the hosted version, click [here](https://breezevent
 ### Log in Details
 If you would like to use the site's host features, log in with the following details:
 - Email: testadmin@gmail.com || Password: ABC123  
+
 If you would like to use the site's attendee features, log in with the following details:
 - Email: testuser@gmail.com || Password: ABC123
 #### Please note, these accounts have been created through the Supabase dashboard and are not legitimate email addresses.
