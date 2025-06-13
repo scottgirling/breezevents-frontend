@@ -109,7 +109,6 @@ export const addEvent = (eventDetails) => {
 }
 
 export const addEventTag = (eventTagDetails) => {
-    console.log(eventTagDetails, "<--- eventTagDetails in utils")
     return eventsApi.post("/event_tags", eventTagDetails)
     .then((response) => {
         return response.data.eventTag;
@@ -120,5 +119,12 @@ export const addUser = (userDetails) => {
     return eventsApi.post("/users", userDetails)
     .then((response) => {
         return response.data.user;
+    });
+}
+
+export const deleteEvent = (event_id) => {
+    return eventsApi.delete(`/events/${event_id}`)
+    .then((response) => {
+        return response.data.event;
     });
 }

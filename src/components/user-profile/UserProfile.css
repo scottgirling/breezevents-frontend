@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 .welcome-back {
     margin: 1rem auto;
     text-align: left;
@@ -70,6 +72,32 @@
 .your-profile-button p {
     margin-left: .25rem;
     color: #317575;
+}
+
+#event-date-left {
+    width: fit-content;
+}
+
+#space-between {
+    justify-content: space-between;
+    margin: .2rem;
+}
+
+.delete-event, .btn-delete-no {
+    @apply bg-[#FFB593] text-black py-1 px-3 text-xs
+}
+
+.check-delete {
+    margin: .5rem auto;
+    font-size: .75rem;
+}
+
+.bold {
+    font-weight: 600;
+}
+
+.delete-buttons button {
+    margin: auto .2rem;
 }
 
 input, textarea {
