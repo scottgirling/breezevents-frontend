@@ -9,7 +9,7 @@ import { CheckEmail } from '../check-email/CheckEmail';
 import { AuthConfirm } from '../auth-confirm/AuthConfirm';
 import { UserProfile } from '../user-profile/UserProfile';
 import { AddEvent } from '../add-event/AddEvent';
-import { AmendEvent } from '../amend-event/AmendEvent';
+import { UpdateEvent } from '../update-event/UpdateEvent';
 import { Footer } from '../footer/Footer';
 import { AuthProvider } from '../../contexts/AuthProvider';
 import './App.css'
@@ -29,7 +29,7 @@ function App() {
         <Route path="/auth-confirm" element={<AuthConfirm /> } />
         <Route path="/breezer/:user_id" element={<UserProfile />} />
         <Route path="/breezer/:user_id/new-event" element={<AddEvent />} />
-        <Route path="/breezer/:user_id/:event_id/amend" element={<AmendEvent />} />
+        <Route path="/breezer/:user_id/:event_id/update" element={<UpdateEvent />} />
       </Routes>
 
       <Footer />

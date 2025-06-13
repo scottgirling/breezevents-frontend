@@ -94,6 +94,13 @@ export const fetchSessionData = (sessionId) => {
     });
 }
 
+export const updateEvent = (event_id, eventDetails) => {
+    return eventsApi.patch(`/events/update/${event_id}`, eventDetails)
+    .then((response) => {
+        return response.data.event;
+    });
+}
+
 export const addEvent = (eventDetails) => {
     return eventsApi.post("/events", eventDetails)
     .then((response) => {
