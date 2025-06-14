@@ -100,12 +100,7 @@
     margin: auto .2rem;
 }
 
-input, textarea {
-    margin: .25rem .5rem;
-    width: fit-content;
-    height: fit-content;
-    padding: 0 .25rem;
-}
+/* Your Profile Section */
 
 .fa-user-pen, .fa-plus {
     color: #317575;
@@ -113,6 +108,13 @@ input, textarea {
 
 .user-profile-form section {
     display: flex;
+}
+
+input, textarea {
+    margin: .25rem .5rem;
+    width: fit-content;
+    height: fit-content;
+    padding: 0 .25rem;
 }
 
 .user-profile-form label {
@@ -123,12 +125,52 @@ input, textarea {
 .user-profile-form input, .user-profile-form textarea {
     display: block;
     width: 60vw;
+    color: darkgray;
+}
+
+.user-profile-form textarea {
+    height: 6rem;
+}
+
+.user-profile-form .form-not-disabled {
+    border: 1px solid darkgray;
+    border-radius: 6px;
+    color: #213547;
+}
+
+.user-profile-buttons {
+    margin: .5rem auto;
+    display: flex;
+    justify-content: space-around;
+    font-size: .75rem;
+}
+
+.discard-changes, .discard-button-disabled {
+    color: black;
+    background-color: #FFB593;
+}
+
+.discard-button-disabled {
+    opacity: 50%;
+}
+
+.save-changes, .submit-button-disabled {
+    background-color: #317575;
+    color: white;
+}
+
+.submit-button-disabled {
+    opacity: 50%;
+}
+
+.update-success {
+    margin: .5rem auto;
 }
 
 .signout {
     font-size: .75rem;
     display: block;
-    margin: 2rem auto;
+    margin: 1rem auto;
 }
 
 @media only screen and (min-width: 500px) {

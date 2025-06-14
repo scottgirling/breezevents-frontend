@@ -101,6 +101,13 @@ export const updateEvent = (event_id, eventDetails) => {
     });
 }
 
+export const updateUser = (user_id, userDetails) => {
+    return eventsApi.patch(`/users/${user_id}`, userDetails)
+    .then((response) => {
+        return response.data.user;
+    });
+}
+
 export const addEvent = (eventDetails) => {
     return eventsApi.post("/events", eventDetails)
     .then((response) => {
