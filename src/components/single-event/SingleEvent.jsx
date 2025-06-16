@@ -30,8 +30,6 @@ export const SingleEvent = () => {
         )
     }
 
-    console.log(event.start_time.replace("Z", "").split("T")[1])
-
     return (
         <section className="single-event">
             <h1 className="single-event-title">{event.title}</h1>
