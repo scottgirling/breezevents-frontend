@@ -92,7 +92,11 @@ export const SingleEvent = () => {
 
             <section>
                 {showEventDescription && (
-                    <p className="text-showing">{event.description}</p>
+                    <section className="text-showing">
+                        <p>{event.description}</p>
+                        <p>Start Time: {event.start_time.replace("Z", "").split("T")[1]} {new Date(event.start_time).toDateString()} </p>
+                        <p>End Time: {event.end_time.replace("Z", "").split("T")[1]} {new Date(event.end_time).toDateString()}</p>
+                    </section>
                 )}
             </section>
 
@@ -109,45 +113,52 @@ export const SingleEvent = () => {
 
             <section>
                 {showVenueDetails && (
-                    <>
-                        <section className="venue-details">
-                            <p className="venue-subtitle">Address</p>
-                            <p className="text-showing">{event.venue_name}, {event.location}</p>
+                    event.venue_id === 7 ? (
+                        <section className="venue-details">  
+                            <p>This is an online event.</p>
+                            <p>Upon confirming your place at this event you will receive more information on how to attend virtually!</p>
                         </section>
+                    ) : (
+                        <section>
+                            <section className="venue-details">
+                                <p className="venue-subtitle">Address</p>
+                                <p className="text-showing">{event.venue_name}, {event.location}</p>
+                            </section>
 
-                        <section className="venue-details">
-                            <p className="venue-subtitle">Facilities</p>
-                            <section className="facilities-list">
-                                <ul>
-                                    {event.facilities.map((facility) => {
-                                        return (
-                                            <li className="facility" key={event.facilities.indexOf(facility)}>{facility}</li>
-                                        )
-                                    })}
-                                </ul>
+                            <section className="venue-details">
+                                <p className="venue-subtitle">Facilities</p>
+                                <section className="facilities-list">
+                                    <ul>
+                                        {event.facilities.map((facility) => {
+                                            return (
+                                                <li className="facility" key={event.facilities.indexOf(facility)}>{facility}</li>
+                                            )
+                                        })}
+                                    </ul>
+                                </section>
+                            </section>
+
+                            <section className="venue-details">
+                                <p className="venue-subtitle">Accessibility</p>
+                                <section className="accessibility-list">
+                                    <ul>
+                                        {event.accessibility_features.map((feature) => {
+                                            return (
+                                                <li className="accessibility" key={event.accessibility_features.indexOf(feature)}>{feature}</li>
+                                            )
+                                        })}
+                                    </ul>
+                                </section>
+                            </section>
+
+                            <section className="venue-details">
+                                <p className="venue-subtitle">Contact details:</p>
+                                <p>{event.website_url}</p>
+                                <p>{event.contact_email}</p>
+                                <p>{event.contact_phone}</p>
                             </section>
                         </section>
-
-                        <section className="venue-details">
-                            <p className="venue-subtitle">Accessibility</p>
-                            <section className="accessibility-list">
-                                <ul>
-                                    {event.accessibility_features.map((feature) => {
-                                        return (
-                                            <li className="accessibility" key={event.accessibility_features.indexOf(feature)}>{feature}</li>
-                                        )
-                                    })}
-                                </ul>
-                            </section>
-                        </section>
-
-                        <section className="venue-details">
-                            <p className="venue-subtitle">Contact details:</p>
-                            <p>{event.website_url}</p>
-                            <p>{event.contact_email}</p>
-                            <p>{event.contact_phone}</p>
-                        </section>
-                    </>
+                    )
                 )}
             </section>
 

@@ -68,6 +68,10 @@
     font-size: .75rem;
 }
 
+.form-input-disabled {
+    opacity: 50%;
+}
+
 #add-event-submit-buttons {
     margin: 1rem auto;
     display: flex;
