@@ -88,6 +88,10 @@
     font-size: .75rem;
 }
 
+.text-showing p {
+    margin: .75rem auto;
+}
+
 .venue-bar {
     display: flex;
     justify-content: space-between;
