@@ -40,7 +40,11 @@ export const AddEvent = () => {
         })
         fetchVenues()
         .then((returnedVenues) => {
-            setVenues(returnedVenues)
+            const validVenues = [];
+            returnedVenues.map((venue) => {
+                venue.venue_name !== "online_event" && validVenues.push(venue);
+            });
+            setVenues(validVenues);
             setLoading(false);
         });
     }, []);
