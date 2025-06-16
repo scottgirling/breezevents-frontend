@@ -80,9 +80,24 @@ export const UserSignIn = () => {
                         onSubmit={(event) => handleSignIn(event)}
                     >
                         <label htmlFor="email">Email Address</label>
-                        <input onChange={(event) => setEmail(event.target.value)} type="text" id="email" name="email" placeholder="Your email address"></input>
+                        <input 
+                            onChange={(event) => setEmail(event.target.value)} 
+                            type="text" 
+                            id="email" 
+                            name="email" 
+                            placeholder="Your email address"
+                        >
+                        </input>
+                        
                         <label htmlFor="password">Password</label>
-                        <input onChange={(event) => setPassword(event.target.value)} type="password" id="password" name="password" placeholder="Your password"></input>
+                        <input 
+                            onChange={(event) => setPassword(event.target.value)} 
+                            type="password" 
+                            id="password" 
+                            name="password" 
+                            placeholder="Your password"
+                        >
+                        </input>
                         {signInError && (
                             <p className="sign-in-error">{signInError}</p>
                         )}
