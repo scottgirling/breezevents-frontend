@@ -9,7 +9,10 @@ export const AddEvent = () => {
     const [loading, setLoading] = useState(true);
     const [tags, setTags] = useState([]);
     const [venues, setVenues] = useState([]);
-    const [isFree, setIsFree] = useState(true);
+    const [isOnline, setIsOnline] = useState(true);
+    const [isFree, setIsFree] = useState(false);
+    const [isTicketPriceDisabled, setIsTicketPriceDisabled] = useState(false);
+    const [isVenueSelectDisabled, setIsVenueSelectDisabled] = useState(true);
     const [eventDetails, setEventDetails] = useState({
         title: null,
         event_overview: null,
@@ -17,12 +20,12 @@ export const AddEvent = () => {
         start_time: null,
         end_time: null,
         timezone: null, 
-        venue_id: null,
-        is_online: false,
+        venue_id: 7,
+        is_online: isOnline,
         host_id: user_id,
         event_type: null,
         capacity: null,
-        is_free: false,
+        is_free: isFree,
         price: null,
         event_image_url: null,
         is_published: true
@@ -60,8 +63,11 @@ export const AddEvent = () => {
             if (key === event.target.name) {
                 setEventDetails({...eventDetails, [key]: event.target.value })
             }
-            if (event.target.name === "is_free") {
-                setEventDetails({ ...eventDetails, [key]: event.target.value, price: 0 });
+            if (event.target.name === "is_online" && event.target.value === "true") {
+                setEventDetails({ ...eventDetails, is_online: true, venue_id: 7 });
+            }
+            if (event.target.name === "is_free" && event.target.value === "true") {
+                setEventDetails({ ...eventDetails, is_free: true, price: 0 });
             }
             if (event.target.name === "is_published") {
                 setEventDetails({ ...eventDetails, [key]: event.target.value })
@@ -72,6 +78,18 @@ export const AddEvent = () => {
             }
         });
         return updatedEventDetails;
+    }
+
+    const handleVenueSelectClassName = () => {
+        if (isVenueSelectDisabled === true) {
+            return "form-input-disabled";
+        }
+    }
+
+    const handleTicketPriceClassName = () => {
+        if (isTicketPriceDisabled === true) {
+            return "form-input-disabled";
+        }
     }
 
     if (loading) {
@@ -88,7 +106,7 @@ export const AddEvent = () => {
                 <section>
                     <label htmlFor="title">Event Title:</label>
                     <input 
-                        onBlur={(event) => handleEventDetailsUpdate(event)} 
+                        onChange={(event) => handleEventDetailsUpdate(event)} 
                         type="text" 
                         id="title" 
                         name="title"
@@ -101,7 +119,7 @@ export const AddEvent = () => {
                     <label htmlFor="event_overview">Event Overview:</label>
                     <textarea 
                         className="event-overview"
-                        onBlur={(event) => handleEventDetailsUpdate(event)}
+                        onChange={(event) => handleEventDetailsUpdate(event)}
                         id="event_overview" 
                         name="event_overview"
                         placeholder="Add an event overview"
@@ -113,7 +131,7 @@ export const AddEvent = () => {
                     <label htmlFor="description">Event Description:</label>
                     <textarea 
                         className="event-description"
-                        onBlur={(event) => handleEventDetailsUpdate(event)}
+                        onChange={(event) => handleEventDetailsUpdate(event)}
                         id="description" 
                         name="description"
                         placeholder="Add an event description"
@@ -148,7 +166,7 @@ export const AddEvent = () => {
                     <label htmlFor="start_time">Start Time:</label>
                     <input 
                         className="date-time-input"
-                        onBlur={(event) => handleEventDetailsUpdate(event)}
+                        onChange={(event) => handleEventDetailsUpdate(event)}
                         type="datetime-local" 
                         id="start_time" 
                         name="start_time"
@@ -160,7 +178,7 @@ export const AddEvent = () => {
                     <label htmlFor="end_time">End Time:</label>
                     <input 
                         className="date-time-input"
-                        onBlur={(event) => handleEventDetailsUpdate(event)}
+                        onChange={(event) => handleEventDetailsUpdate(event)}
                         type="datetime-local" 
                         id="end_time" 
                         name="end_time"
@@ -183,21 +201,31 @@ export const AddEvent = () => {
                     <label htmlFor="is_online">Is the Event Online?</label>
                     <input
                         className="narrow-input"
-                        onBlur={(event) => handleEventDetailsUpdate(event)}
+                        onChange={(event) => {
+                            handleEventDetailsUpdate(event);
+                            setIsOnline(!isOnline);
+                            setIsVenueSelectDisabled(!isVenueSelectDisabled);
+                        }}
                         type="checkbox"
                         id="is_online"
                         name="is_online"
-                        value="true">
+                        defaultChecked={true}
+                        value={!isOnline}>
                     </input>
                 </section>
 
                 <section className="add-event-venue">
-                    <label htmlFor="venue_id">Venue:</label>
+                    <label 
+                        htmlFor="venue_id"
+                        className={handleVenueSelectClassName()}
+                    >
+                        Venue:</label>
                     <select 
-                        onBlur={(event) => handleEventDetailsUpdate(event)}
+                        onChange={(event) => handleEventDetailsUpdate(event)}
                         id="venue_id" 
                         name="venue_id"
-                        required
+                        disabled={isVenueSelectDisabled}
+                        className={handleVenueSelectClassName()}
                     >
                         <option disabled hidden selected>Select Venue</option>
                         {venues.map((venue) => {
@@ -212,7 +240,7 @@ export const AddEvent = () => {
                     <label htmlFor="event_type">Event Type: </label>
                     <input 
                         className="date-time-input"
-                        onBlur={(event) => handleEventDetailsUpdate(event)}
+                        onChange={(event) => handleEventDetailsUpdate(event)}
                         type="text" 
                         id="event_type" 
                         name="event_type"
@@ -225,7 +253,7 @@ export const AddEvent = () => {
                     <label htmlFor="capacity">Capacity: </label>
                     <input 
                         className="narrow-input"
-                        onBlur={(event) => handleEventDetailsUpdate(event)}
+                        onChange={(event) => handleEventDetailsUpdate(event)}
                         type="number" 
                         id="capacity" 
                         name="capacity"
@@ -240,31 +268,32 @@ export const AddEvent = () => {
                         onChange={(event) => {
                             handleEventDetailsUpdate(event);
                             setIsFree(!isFree);
+                            setIsTicketPriceDisabled(!isTicketPriceDisabled);
                         }}
                         type="checkbox"
                         id="is_free"
                         name="is_free"
-                        value={isFree}>
+                        value={!isFree}>
                     </input>
                 </section>
 
-                <section id="single-line">
+                <section id="single-line" className={handleTicketPriceClassName()}>
                     <label htmlFor="price">Ticket Price:</label>
                     <input 
                         className="narrow-input"
-                        onBlur={(event) => handleEventDetailsUpdate(event)}
+                        onChange={(event) => handleEventDetailsUpdate(event)}
                         type="number" 
                         id="price" 
                         name="price"
                         placeholder="£"
-                        disabled={!isFree}>
+                        disabled={isTicketPriceDisabled}>
                     </input>
                 </section>
 
                 <section>
                     <label htmlFor="event_image_url">Event Image: </label>
                     <input 
-                        onBlur={(event) => handleEventDetailsUpdate(event)}
+                        onChange={(event) => handleEventDetailsUpdate(event)}
                         type="text" 
                         id="event_image_url" 
                         name="event_image_url">
