@@ -13,6 +13,7 @@ export const signInWithEmail = async (email, password) => {
 
 export const AuthProvider = ({ children }) => {
     const [loggedInUser] = useState({});
+    const [justLoggedOut, setJustLoggedOut] = useState(false);
     const [supabaseUser, setSupabaseUser] = useState(null);
     const [auth, setAuth] = useState(false);
 
@@ -27,6 +28,7 @@ export const AuthProvider = ({ children }) => {
             if (event === "SIGNED_OUT") {
                 loggedInUser.name = null;
                 loggedInUser.id = null;
+                setJustLoggedOut(true);
                 setSupabaseUser(null);
                 setAuth(false);
             }
@@ -37,7 +39,7 @@ export const AuthProvider = ({ children }) => {
     }, []);
 
     return (
-        <AuthContext.Provider value={{ loggedInUser, supabaseUser, signInWithEmail }}>
+        <AuthContext.Provider value={{ loggedInUser, justLoggedOut, supabaseUser, signInWithEmail }}>
             {children}
         </AuthContext.Provider>
     );
