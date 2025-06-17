@@ -14,7 +14,6 @@ export const UserProfile = () => {
     const [isDisabled, setIsDisabled] = useState(true);
     const [userDetails, setUserDetails] = useState({});
     const [updateSuccess, setUpdateSuccess] = useState(null);
-    const [discardSuccess, setDiscardSuccess] = useState(null);
 
     useState(() => {
         setLoading(true);
@@ -107,7 +106,6 @@ export const UserProfile = () => {
                             onClick={() => {
                                 setIsDisabled(!isDisabled);
                                 setUpdateSuccess(null);
-                                setDiscardSuccess(null);
                                 setUserDetails({});
                             }}
                         >
@@ -189,7 +187,6 @@ export const UserProfile = () => {
                                 disabled={!Object.keys(userDetails).length}
                                 className={isDiscardButtonDisabled()}
                                 onClick={() => {
-                                    setDiscardSuccess("Successfully discarded changes!");
                                     setIsDisabled(true);
                                 }}
                                 type="reset"
@@ -208,9 +205,6 @@ export const UserProfile = () => {
                             {updateSuccess && (
                                 <p className="update-success">{updateSuccess}</p>
                             )}
-                            {/* {discardSuccess && (
-                                <p className="update-success">{discardSuccess}</p>
-                            )} */}
                         </section>
                     </form>
                 </section>
