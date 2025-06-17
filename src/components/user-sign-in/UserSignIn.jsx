@@ -24,7 +24,7 @@ export const UserSignIn = () => {
             email,
             password,
             options: {
-                emailRedirectTo: 'http://localhost:5173/auth-confirm',
+                emailRedirectTo: 'https://breezevents.netlify.app/auth-confirm',
                 data: {
                     name
                 }
