@@ -12,6 +12,8 @@ import { AddEvent } from '../add-event/AddEvent';
 import { UpdateEvent } from '../update-event/UpdateEvent';
 import { Footer } from '../footer/Footer';
 import { AuthProvider } from '../../contexts/AuthProvider';
+import { AuthRoute } from '../auth-route/AuthRoute';
+import { Error } from '../error/Error';
 import './App.css'
 
 function App() {
@@ -20,16 +22,20 @@ function App() {
       <Header />
 
       <Routes>
-        <Route path="/" element={<Home/>} />
-        <Route path="/events" element={<EventList/>} />
-        <Route path="/events/:event_id" element={<SingleEvent/>} />
-        <Route path="/success" element={<Success/>} />
-        <Route path="/account" element={<UserSignIn/>} />
+        <Route path="/" element={<Home />} />
+        <Route path="/events" element={<EventList />} />
+        <Route path="/events/:event_id" element={<SingleEvent />} />
+        <Route path="/success" element={<Success />} />
+        <Route path="/account" element={<UserSignIn />} />
         <Route path="/check-email" element={<CheckEmail />} />
         <Route path="/auth-confirm" element={<AuthConfirm /> } />
-        <Route path="/breezer/:user_id" element={<UserProfile />} />
-        <Route path="/breezer/:user_id/new-event" element={<AddEvent />} />
-        <Route path="/breezer/:user_id/:event_id/update" element={<UpdateEvent />} />
+        <Route path="/error" element={<Error />} />
+
+        <Route element={<AuthRoute/>}>
+          <Route path="/breezer/:user_id" element={<UserProfile />} />
+          <Route path="/breezer/:user_id/new-event" element={<AddEvent />} />
+          <Route path="/breezer/:user_id/:event_id/update" element={<UpdateEvent />} />
+        </Route>
       </Routes>
 
       <Footer />
