@@ -1,20 +1,23 @@
-import { Navigate, Outlet, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Navigate, Outlet, useLocation, useParams } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthProvider";
 import { supabase } from "../../supabase/client";
-import { useEffect, useState } from "react";
 
 export const AuthRoute = () => {
-    const { loggedInUser, justLoggedOut } = useAuth();
+    const { justLoggedOut } = useAuth();
+    const { user_id } = useParams();
     const location = useLocation();
     const [loading, setLoading] = useState(true);
-    const [session, setSession] = useState(null);
+    const [userId, setUserId] = useState(null);
 
     useEffect(() => {
         supabase.auth.getSession()
         .then(({ data: { session }}) => {
-            setSession(session);
+            if (session) {
+                setUserId(session.user.id);
+            }
             setLoading(false);
-        });
+        })
     }, []);
 
     if (loading) {
@@ -23,7 +26,7 @@ export const AuthRoute = () => {
         );
     }
 
-    return loggedInUser.id ? (
+    return userId === user_id ? (
         <Outlet />
     ) : justLoggedOut ? (
         <Navigate to="/account" replace />
