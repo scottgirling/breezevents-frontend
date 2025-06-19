@@ -12,7 +12,7 @@ export const Header = () => {
             </Link>
             {loggedInUser.name ? (
                 <Link className="user-signin" to={`breezer/${loggedInUser.id}`}>
-                    <p className="fa-user">{loggedInUser.name[0]}</p>
+                    <p className="fa-user">{loggedInUser.name[0].toUpperCase()}</p>
                 </Link>
             ) : (
                 loggedInUser.id ? (
