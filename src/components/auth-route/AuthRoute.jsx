@@ -17,6 +17,12 @@ export const AuthRoute = () => {
         });
     }, []);
 
+    if (loading) {
+        return (
+            <p className="loading">Loading your profile...</p>
+        );
+    }
+
     return loggedInUser.id ? (
         <Outlet />
     ) : justLoggedOut ? (
