@@ -2,8 +2,10 @@ import { Link } from 'react-router-dom';
 import './Home.css';
 import { useEffect, useState } from 'react';
 import { fetchEvents, fetchTags } from '../../utils/api';
+import { useAuth } from '../../contexts/AuthProvider';
 
 export const Home = () => {
+    const { loggedInUser } = useAuth();
     const [loading, setLoading] = useState(true);
     const [tags, setTags] = useState([]);
     const [eventTag, setEventTag] = useState("");
@@ -30,11 +32,19 @@ export const Home = () => {
                     <h2 className="home-title">Discover your next <span className="italic-green">unforgettable</span> event today</h2>
                     <p className="home-subheading">Join <span className="italic-green">breez<span className="bold-e">e</span>vents</span> to effortlessly find and book awesome events. Experience the joy of seamless planning.</p>
                     <section className="home-buttons">
-                        <Link to="/account">
-                            <button className="btn btn-green">
-                                Sign Up
-                            </button>
-                        </Link>
+                        {loggedInUser.id ? (
+                            <Link to={`/breezer/${loggedInUser.id}`}>
+                                <button className="btn btn-green">
+                                    Sign In
+                                </button>
+                            </Link>
+                        ) : (
+                            <Link to="/account">
+                                <button className="btn btn-green">
+                                    Sign In
+                                </button>
+                            </Link>
+                        )}
                         <Link to="/events">
                             <button className="btn btn-salmon">
                                 Find Events
@@ -69,11 +79,19 @@ export const Home = () => {
                 </section>
             </section>
             <section className="home-buttons">
-                <Link to="/account">
-                    <button className="btn btn-green">
-                        Sign Up
-                    </button>
-                </Link>
+                {loggedInUser.id ? (
+                    <Link to={`/breezer/${loggedInUser.id}`}>
+                        <button className="btn btn-green">
+                            Sign In
+                        </button>
+                    </Link>
+                ) : (
+                    <Link to="/account">
+                        <button className="btn btn-green">
+                            Sign In
+                        </button>
+                    </Link>
+                )}
                 <Link to="/events">
                     <button className="btn btn-salmon">
                         Find Events
