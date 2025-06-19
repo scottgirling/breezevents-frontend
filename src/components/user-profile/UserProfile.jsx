@@ -68,10 +68,13 @@ export const UserProfile = () => {
     }
 
     const handleSignOut = async () => {
-        supabase.auth.signOut()
-        .then(() => {
-            navigate("/account")
-        });
+        const { error } = await supabase.auth.signOut()
+        if (error) {
+            console.log("Supabase Sign Out Error: ", error)
+        }
+
+        await supabase.auth.refreshSession();
+        navigate("/account");
     }
 
     if (loading) {
