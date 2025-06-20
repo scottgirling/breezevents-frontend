@@ -34,7 +34,10 @@ export const SingleEvent = () => {
         <section className="single-event">
             <h1 className="single-event-title">{event.title}</h1>
             <p className="single-event-overview">{event.event_overview}</p>
-            <img className="event-image" src={event.event_image_url} />
+            <img 
+            className="event-image" 
+            src={event.event_image_url} 
+            alt={`${event.title} event poster`}/>
             <section className="event-info">
                 <p className="event-start-time">{new Date(event.start_time).toDateString()}</p>
                 {event.price !== 0 ? (
@@ -81,11 +84,13 @@ export const SingleEvent = () => {
 
             <section className="event-description-bar">
                 <p>Description</p>
-                <button onClick={() => setShowEventDescription(!showEventDescription)}>
+                <button 
+                onClick={() => setShowEventDescription(!showEventDescription)}
+                aria-label="View event description">
                     {!showEventDescription ? (
-                        <i className="fa-solid fa-angle-down"></i>
+                        <i className="fa-solid fa-angle-down" aria-hidden="true"></i>
                     ) : (
-                        <i className="fa-solid fa-angle-up"></i>
+                        <i className="fa-solid fa-angle-up" aria-hidden="true"></i>
                     )}
                 </button>
             </section>
@@ -102,11 +107,13 @@ export const SingleEvent = () => {
 
             <section className="venue-bar">
                 <p>Venue</p>
-                <button onClick={() => setShowVenueDetails(!showVenueDetails)}>
+                <button 
+                onClick={() => setShowVenueDetails(!showVenueDetails)}
+                aria-label="View venue details">
                     {!showVenueDetails ? (
-                        <i className="fa-solid fa-angle-down"></i>
+                        <i className="fa-solid fa-angle-down" aria-hidden="true"></i>
                     ) : (
-                        <i className="fa-solid fa-angle-up"></i>
+                        <i className="fa-solid fa-angle-up" aria-hidden="true"></i>
                     )}
                 </button>
             </section>
@@ -164,21 +171,23 @@ export const SingleEvent = () => {
 
             <section className="host-bar">
                 <p>Host</p>
-                <button onClick={() => setShowHostDetails(!showHostDetails)}>
+                <button 
+                onClick={() => setShowHostDetails(!showHostDetails)}
+                aria-label="View host details">
                     {!showHostDetails ? (
-                        <i className="fa-solid fa-angle-down"></i>
+                        <i className="fa-solid fa-angle-down" aria-hidden="true"></i>
                     ) : (
-                        <i className="fa-solid fa-angle-up"></i>
+                        <i className="fa-solid fa-angle-up" aria-hidden="true"></i>
                     )}
                 </button>
             </section>
             <section>
                 {showHostDetails && (
-                    <>
+                    <section>
                         <p className="text-showing">{event.title} is hosted by <span className="host-info">{event.name}.</span></p>
                         <p className="text-showing">A bit about {event.name}: <span className="host-info">{event.bio}</span></p>
                         <p className="text-showing">Should you need to contact {event.name}: <span className="host-info">{event.email}</span></p>
-                    </>
+                    </section>
                 )}
             </section>
         </section>

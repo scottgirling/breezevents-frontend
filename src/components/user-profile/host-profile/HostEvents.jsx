@@ -125,16 +125,19 @@ export const HostEvents = () => {
                                             <button 
                                                 className="delete-event"
                                                 onClick={() => setEventToDelete(event.event_id)}
+                                                aria-label={`Delete ${event.title}`}
                                             >
                                                 Delete Event
                                             </button>
                                             <Link to={`/breezer/${user_id}/${event.event_id}/update`}>
-                                                <button className="btn btn-white">
+                                                <button className="btn btn-white"
+                                                aria-label={`Update ${event.title}`}>
                                                     Update Event
                                                 </button>
                                             </Link>
                                             <Link to={`/events/${event.event_id}`}>
-                                                <button className="btn btn-white">
+                                                <button className="btn btn-white"
+                                                aria-label={`View ${event.title}`}>
                                                     View Event
                                                 </button>
                                             </Link>
@@ -193,7 +196,8 @@ export const HostEvents = () => {
                                             )}
                                             <p className="event-date">{new Date(event.start_time).toDateString()}</p>
                                             <Link to={`/events/${event.event_id}`}>
-                                                <button className="btn btn-white">
+                                                <button className="btn btn-white"
+                                                aria-label={`View ${event.title}`}>
                                                     View Event
                                                 </button>
                                             </Link>
@@ -218,13 +222,15 @@ export const HostEvents = () => {
                                         <p id="event-date-left" className="event-price-date event-date">{new Date(event.start_time).toDateString()}</p>
                                         <section id="space-between" className="event-price-date">
                                             <button 
-                                                className="delete-event"
-                                                onClick={() => setEventToDelete(event.event_id)}
+                                            className="delete-event"
+                                            onClick={() => setEventToDelete(event.event_id)}
+                                            aria-label={`Delete ${event.title}`}
                                             >
                                                 Delete Event
                                             </button>
                                             <Link to={`/breezer/${user_id}/${event.event_id}/update`}>
-                                                <button className="btn btn-white">
+                                                <button className="btn btn-white"
+                                                aria-label={`Update ${event.title}`}>
                                                     Update Event
                                                 </button>
                                             </Link>

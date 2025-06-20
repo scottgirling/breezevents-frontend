@@ -9,7 +9,7 @@ export const Error = () => {
     return (
         <section className="error">
             <i className="fa-solid fa-circle-exclamation"></i>
-            <p>Oops... it looks like you're trying to visit a page you are not authorised to access.</p>
+            <h1>Oops... it looks like you're trying to visit a page you are not authorised to access.</h1>
             <section className="error-redirect-buttons">
                 <button 
                     id="error-button-home"

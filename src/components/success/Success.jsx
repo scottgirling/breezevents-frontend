@@ -66,7 +66,7 @@ export const Success = () => {
     if (error) {
         return (
             <section className="error">
-                <p>{error}</p>
+                <h1>{error}</h1>
                 <Link to={route}>
                     <button>Your Account</button>
                 </Link>
@@ -77,24 +77,23 @@ export const Success = () => {
     return (
         <section className="success">
             <section>
-            {customer.name ? (
-                <h1 className="confirmation">Booking confirmed, {loggedInUser.name}!</h1>
-            ) : (
-                <h1 className="confirmation">Booking Confirmed!</h1>
-            )}
-            <p>You're going to: <span className="session-info">{event.title}</span></p>
-            <p>A confirmation email will be sent to <span className="session-info">{customer.email}</span></p>
+                {customer.name ? (
+                    <h1 className="confirmation">Booking confirmed, {loggedInUser.name}!</h1>
+                ) : (
+                    <h1 className="confirmation">Booking Confirmed!</h1>
+                )}
+                <p>You're going to: <span className="session-info">{event.title}</span></p>
+                <p>A confirmation email will be sent to <span className="session-info">{customer.email}</span></p>
             </section>
+
             <section className="calendar">
-            <section>
-            <i className="fa-regular fa-calendar-check"></i>
-            <p>{new Date(event.start_time).toDateString()}</p>
-            </section>
-            <Link target="_blank" to={calendarUrl}>
-            <button className="google-calendar-button">
-            Add to Google Calendar
-            </button>
-            </Link>
+                <i className="fa-regular fa-calendar-check"></i>
+                <p>{new Date(event.start_time).toDateString()}</p>
+                <Link target="_blank" to={calendarUrl}>
+                    <button className="google-calendar-button">
+                        Add to Google Calendar
+                    </button>
+                </Link>
             </section>
             
             <section>

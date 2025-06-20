@@ -4,7 +4,7 @@ import "./AuthConfirm.css";
 export const AuthConfirm = () => {
     return (
         <section className="auth-confirm">
-            <p>Email confirmed!</p>
+            <h1>Email confirmed!</h1>
             <Link to="/account">
                 <button className="btn btn-salmon">
                     Sign In

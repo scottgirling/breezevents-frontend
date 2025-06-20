@@ -193,6 +193,7 @@ export const UserProfile = () => {
                                     setIsDisabled(true);
                                 }}
                                 type="reset"
+                                aria-label="Discard changes to your profile"
                             >
                                 Discard Changes
                             </button>
@@ -200,6 +201,7 @@ export const UserProfile = () => {
                                 disabled={!Object.keys(userDetails).length}
                                 className={isSubmitButtonDisabled()}
                                 onClick={(event) => handleSubmit(event)}
+                                aria-label="Save changes to your profile"
                             >
                                 Save Changes
                             </button>
