@@ -90,10 +90,13 @@ export const EventList = () => {
             <section className="discover-events">
                 <ul className="tags-list">
                     <li className="tag-name">
-                        <button className="btn btn-tag" onClick={() => {
+                        <button 
+                        className="btn btn-tag" 
+                        onClick={() => {
                             setEventTagQuery("");
                             setActiveEventTag("View all");
-                        }}>
+                        }}
+                        aria-label="View all events">
                             View all
                             {activeEventTag === "View all" && <p className="underline"></p>}
                         </button>
@@ -101,10 +104,14 @@ export const EventList = () => {
                     {tags.map((tag) => {
                         return (
                             <li className="tag-name" key={tag.tag_id}>
-                                <button className="btn btn-tag" value={tag.slug} onClick={(event) => {
+                                <button 
+                                className="btn btn-tag" 
+                                value={tag.slug} 
+                                onClick={(event) => {
                                     setEventTagQuery(event.target.value);
                                     setActiveEventTag(tag.name);
-                                }}>
+                                }}
+                                aria-label={`View ${tag.name} events`}>
                                     {tag.name}
                                     {tag.name === activeEventTag && <p className="underline"></p>}
                                 </button>
@@ -147,7 +154,9 @@ export const EventList = () => {
                         <h1 className="top-picks">Our Top Picks</h1>
                     </section>
                     <section className="reset-filters">
-                        <button onClick={() => handleResetFilters()}>
+                        <button 
+                        onClick={() => handleResetFilters()}
+                        aria-label="Reset event filters">
                             <i className="fa-solid fa-arrows-rotate"></i>
                         </button>
                     </section>
@@ -162,7 +171,7 @@ export const EventList = () => {
                             return (
                                 <li className="event-card" key={event.event_id}>
                                     <section className="title-and-online">
-                                        <h4 className="event-title">{event.title}</h4>
+                                        <h2 className="event-title">{event.title}</h2>
                                         {event.is_online && (
                                             <p className="online-event">ONLINE</p>
                                         )}
@@ -170,7 +179,10 @@ export const EventList = () => {
 
                                     <section className="event-image-and-description">
                                         <section>
-                                            <img className="event-image-events-list" src={event.event_img_url} />
+                                            <img 
+                                            className="event-image-events-list" 
+                                            src={event.event_img_url}
+                                            alt={`${event.title} event poster`} />
                                         </section>
                                         <section className="event-description-and-date">
                                             <p className="event-overview">{event.event_overview}</p>
@@ -189,7 +201,9 @@ export const EventList = () => {
                                                 <p></p>
                                             )}
                                             <Link to={`/events/${event.event_id}`}>
-                                                <button className="btn btn-white">
+                                                <button 
+                                                className="btn btn-white"
+                                                aria-label={`Find tickets for ${event.title}`}>
                                                     Find Tickets
                                                 </button>
                                             </Link>
