@@ -154,3 +154,71 @@
         min-height: 70vh;
     }
 }
+
+@media only screen and (min-width: 1200px) {
+    .single-event {
+        margin: auto 3rem;
+    }
+
+    .single-event-title {
+        font-size: 2.5rem;
+    }
+
+    .single-event-overview {
+        margin: .5rem;
+        font-size: 1.25rem;
+    }
+
+    .event-image {
+        width: 60vw;
+        height: 60vh;
+    }
+
+    .event-info {
+        margin: 2rem auto;
+        font-size: 1.25rem;
+        padding: .75rem;
+    }
+
+    .quantity-section {
+        margin-top: -1.5rem;
+        font-size: 1rem;
+    }
+
+    .get-tickets {
+        font-size: 1rem;
+    }
+
+    .get-tickets-button {
+        @apply ml-4
+    }
+
+    .event-description-bar, .venue-bar, .host-bar {
+        font-size: 1.5rem;
+        padding: .5rem 2rem;
+    }
+
+    .text-showing {
+        font-size: 1.2rem;
+        width: 75vw;
+        margin: 1rem auto;
+    }
+
+    .text-showing p, .venue-details p {
+        margin: 1rem auto;
+    }
+
+    .venue-details {
+        font-size: 1rem;
+    }
+
+    .venue-subtitle {
+        font-size: 1.25rem;
+    }
+}
+
+@media only screen and (min-width: 1600px) {
+    .single-event {
+        margin: auto 6rem;
+    }
+}
