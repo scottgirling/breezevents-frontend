@@ -111,3 +111,96 @@
 .load-more-disabled {
     opacity: 50%;
 }
+
+@media only screen and (min-width: 1200px) {
+    .event-list {
+        margin: auto 3rem;
+    }
+
+    .tags-list {
+        max-width: 80rem;
+        margin: auto;
+    }
+
+    .tag-name {
+        margin: auto .5rem;
+    }
+
+    .filter-events {
+        max-width: 80rem;
+        display: block;
+    }
+
+    .top-picks-reset {
+        margin: auto;
+        max-width: 90rem;
+    }
+
+    .filter-events button, .filter-events select {
+        font-size: 1rem;
+        margin: auto 1rem;
+    }
+
+    .reset-filters button {
+        font-size: 1.25rem;
+    }
+
+    .top-picks {
+        font-size: 2rem;
+    }
+
+    .event-grid {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .event-card {
+        max-width: 25vw;
+        margin: .5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .online-event {
+        font-size: .9rem;
+    }
+
+    .event-image-and-description {
+        display: block;
+    }
+
+    .event-image-events-list {
+        width: auto;
+        height: 25vh;
+        border: 1px solid lightgray;
+    }
+
+    .event-description-and-date {
+        min-width: fit-content;
+    }
+
+    .event-date-events-list {
+        font-size: 1rem;
+        margin: .5rem 0;
+    }
+
+    .event-price-date {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .event-price-date p, .event-price-date button {
+        margin: .25rem;
+    }
+
+    .load-more {
+        margin: 2rem auto;
+        font-size: 1rem;
+    }
+
+    .no-events-found {
+        font-size: 1rem;
+    }
+}

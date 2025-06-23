@@ -166,29 +166,32 @@ export const EventList = () => {
                     <p className="loading">Loading events...</p>
                 ) : (
                     events.length ? (
-                        <ul>
+                        <ul className="event-grid">
                         {events.map((event) => {
                             return (
                                 <li className="event-card" key={event.event_id}>
-                                    <section className="title-and-online">
-                                        <h2 className="event-title">{event.title}</h2>
-                                        {event.is_online && (
-                                            <p className="online-event">ONLINE</p>
-                                        )}
-                                    </section>
+                                    <section>
+                                        <section className="title-and-online">
+                                            <h2 className="event-title">{event.title}</h2>
+                                            {event.is_online && (
+                                                <p className="online-event">ONLINE</p>
+                                            )}
+                                        </section>
 
-                                    <section className="event-image-and-description">
-                                        <section>
-                                            <img 
-                                            className="event-image-events-list" 
-                                            src={event.event_img_url}
-                                            alt={`${event.title} event poster`} />
-                                        </section>
-                                        <section className="event-description-and-date">
-                                            <p className="event-overview">{event.event_overview}</p>
-                                            <p className="event-date-events-list">{new Date(event.start_time).toDateString()}</p>
+                                        <section className="event-image-and-description">
+                                            <section>
+                                                <img 
+                                                className="event-image-events-list" 
+                                                src={event.event_img_url}
+                                                alt={`${event.title} event poster`} />
+                                            </section>
+                                            <section className="event-description-and-date">
+                                                <p className="event-overview">{event.event_overview}</p>
+                                                <p className="event-date-events-list">{new Date(event.start_time).toDateString()}</p>
+                                            </section>
                                         </section>
                                     </section>
+                                    <section>
                                         <section className="event-price-date">
                                             {event.price !== 0 ? (
                                                 <p className="ticket-price">£{event.price}</p>
@@ -208,7 +211,8 @@ export const EventList = () => {
                                                 </button>
                                             </Link>
                                         </section>
-                                    </li>
+                                    </section>
+                                </li>
                                 )
                             })}
                             </ul>
