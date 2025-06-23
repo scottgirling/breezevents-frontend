@@ -36,4 +36,30 @@
     .sign-in-comp {
         min-height: 70vh;
     }
+
+    .sign-up input {
+        margin-top: .5rem;
+        width: 60vw;
+    }
+}
+
+@media only screen and (min-width: 1000px) {
+    .sign-in-comp {
+        margin: auto;
+        max-width: 50vw;
+    }
+
+    .sign-in-comp h1 {
+        font-size: 1.5rem;
+    }
+
+    .sign-up input {
+        width: 40vw;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .sign-up input {
+        max-width: 30vw;
+    }
 }

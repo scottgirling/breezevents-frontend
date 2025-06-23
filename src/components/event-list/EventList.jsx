@@ -88,7 +88,7 @@ export const EventList = () => {
     return (
         <section className="event-list">
             <section className="discover-events">
-                <ul className="tags-list">
+                <ul className="tags-list-home">
                     <li className="tag-name">
                         <button 
                         className="btn btn-tag" 

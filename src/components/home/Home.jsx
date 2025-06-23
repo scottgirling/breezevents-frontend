@@ -99,13 +99,13 @@ export const Home = () => {
                 </Link>
             </section>
             
-            <section className="sub-section">
-                <h4>Discover Events</h4>
-                <p className="discover-sub-title">Explore upcoming events are secure your spot today!</p>
-            </section>
-
             <section className="discover-events">
-                <ul className="tags-list">
+                <section className="sub-section">
+                    <h4>Discover Events</h4>
+                    <p className="discover-sub-title">Explore upcoming events are secure your spot today!</p>
+                </section>
+
+                <ul className="tags-list-home">
                     <li className="tag-name">
                         <button 
                         className="btn btn-tag" 
@@ -142,7 +142,7 @@ export const Home = () => {
                     <p className="events-loading">Loading events...</p>
                 ) : (
                     events.length ? (
-                        <ul>
+                        <ul className="event-grid">
                         {events.map((event) => {
                             return (
                                 <li className="event-card" key={event.event_id}>
