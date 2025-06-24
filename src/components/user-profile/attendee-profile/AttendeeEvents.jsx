@@ -71,7 +71,7 @@ export const AttendeeEvents = () => {
             </section>
 
             <section>
-                <ul>
+                <ul className="event-grid">
                     {activeTickets === "Upcoming" ? (
                         upcomingEvents.length ? (
                             upcomingEvents.map((event) => {
