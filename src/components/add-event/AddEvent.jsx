@@ -103,7 +103,7 @@ export const AddEvent = () => {
     }
 
     return (
-        <section className="add-event">
+        <section className="upload-event">
             <h1 className="add-event-title">Add an Event</h1>
             <p>Create and share your event with the community - it only takes a minute!</p>
             <form className="add-event-form" onSubmit={(event) => handleSubmit(event)}>

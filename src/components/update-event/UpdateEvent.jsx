@@ -66,7 +66,7 @@ export const UpdateEvent = () => {
     }
 
     return (
-        <section>
+        <section className="upload-event">
             <h1 className="add-event-title">Update an Event</h1>
             <p>Keep your attendees excited and informed - take a moment to update your event with the latest details!</p>
             <form className="add-event-form" onSubmit={(event) => handleSubmit(event)}>
