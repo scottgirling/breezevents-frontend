@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchEventById, startCheckoutSession } from "../../utils/api";
-import "./SingleEvent.css";
 import { useAuth } from "../../contexts/AuthProvider";
+import { NotFound } from "../not-found/NotFound";
+import "./SingleEvent.css";
 
 export const SingleEvent = () => {
     const { loggedInUser } = useAuth();
@@ -14,20 +15,32 @@ export const SingleEvent = () => {
     const [showEventDescription, setShowEventDescription] = useState(false);
     const [showVenueDetails, setShowVenueDetails] = useState(false);
     const [showHostDetails, setShowHostDetails] = useState(false);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         setLoading(true);
         fetchEventById(event_id)
         .then((returnedEvent) => {
             setEvent(returnedEvent);
-            setLoading(false)
+        })
+        .catch((error) => {
+            setError(error);
+        })
+        .finally(() => {
+            setLoading(false);
         });
     }, []);
-
+    
     if (loading) {
         return (
             <p className="loading">Loading event...</p>
         )
+    }
+
+    if (error) {
+        return (
+            <NotFound />
+        );
     }
 
     return (
