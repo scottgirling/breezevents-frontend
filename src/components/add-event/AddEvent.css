@@ -92,7 +92,7 @@
 }
 
 @media only screen and (min-width: 1200px) {
-    .add-event {
+    .upload-event {
         margin: auto 10rem;
     }
 
@@ -135,6 +135,11 @@
 
     .add-event-form .date-time-input {
         width: 20vw;
+    }
+
+    .add-event-venue select {
+        font-size: 1rem;
+        margin: .5rem;
     }
 
     #single-line {
