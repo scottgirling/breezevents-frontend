@@ -15,6 +15,7 @@ import { AuthProvider } from '../../contexts/AuthProvider';
 import { AuthRoute } from '../auth-route/AuthRoute';
 import { Error } from '../error/Error';
 import './App.css'
+import { NotFound } from '../not-found/NotFound';
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
           <Route path="/breezer/:user_id/new-event" element={<AddEvent />} />
           <Route path="/breezer/:user_id/:event_id/update" element={<UpdateEvent />} />
         </Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
 
       <Footer />
