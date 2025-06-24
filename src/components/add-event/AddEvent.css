@@ -90,3 +90,63 @@
     color: black;
     font-size: .75rem;
 }
+
+@media only screen and (min-width: 1200px) {
+    .add-event {
+        margin: auto 10rem;
+    }
+
+    .add-event-form {
+        margin: auto 5rem;
+    }
+
+    .add-event-form section {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .add-event-form label {
+        width: 12vw;
+    }
+
+    .add-event-form input, .add-event-form textarea {
+        width: 50vw;
+    }
+
+    .add-event-form .event-overview {
+        height: 4rem;
+    }
+
+    .add-event-form .event-description {
+        height: 8rem;
+    }
+
+    .form-event-tag .form-subtitle {
+        min-width: 12vw;
+    }
+
+    .add-event-tags {
+        justify-content: left;
+    }
+
+    .add-event-tags input {
+        width: max-content;
+    }
+
+    .add-event-form .date-time-input {
+        width: 20vw;
+    }
+
+    #single-line {
+        flex-direction: row;
+        justify-content: left;
+    }
+
+    #add-event-submit-buttons {
+        justify-content: center;
+    }
+
+    #add-event-submit-buttons button {
+        margin: auto 1rem;
+    }
+}
