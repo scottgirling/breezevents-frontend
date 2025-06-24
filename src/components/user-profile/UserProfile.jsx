@@ -171,7 +171,7 @@ export const UserProfile = () => {
                             >
                             </textarea>
                         </section>
-                        <section >
+                        <section>
                             <label htmlFor="avatar_url">Avatar URL:</label>
                             <input 
                                 type="text" 
@@ -216,7 +216,7 @@ export const UserProfile = () => {
 
                 <section>
                     <button className="signout" onClick={handleSignOut}>
-                        Sign Out
+                        Sign Out <i className="fa-solid fa-arrow-right-from-bracket"></i>
                     </button>
                 </section>
             </section>

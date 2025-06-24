@@ -103,7 +103,7 @@ export const AddEvent = () => {
     }
 
     return (
-        <section>
+        <section className="upload-event">
             <h1 className="add-event-title">Add an Event</h1>
             <p>Create and share your event with the community - it only takes a minute!</p>
             <form className="add-event-form" onSubmit={(event) => handleSubmit(event)}>
@@ -143,8 +143,8 @@ export const AddEvent = () => {
                     </textarea>
                 </section>
 
-                <section>
-                    <label htmlFor="event-tag">Select an Event Tag:</label>
+                <section className="form-event-tag">
+                    <label className="form-subtitle" htmlFor="event-tag">Select an Event Tag:</label>
                     <ul className="add-event-tags">
                         {tags.map((tag) => {
                             return (

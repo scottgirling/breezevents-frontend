@@ -112,7 +112,7 @@ export const HostEvents = () => {
             </section>
 
             <section>
-                <ul>
+                <ul className="event-grid">
                     {activeTickets === "Upcoming" && (
                         upcomingHostEvents.length ? (
                             upcomingHostEvents.map((event) => {
@@ -220,7 +220,7 @@ export const HostEvents = () => {
                                         <h4 className="event-title">{event.title}</h4>
                                         <p className="event-overview">{event.event_overview}</p>
                                         <p id="event-date-left" className="event-price-date event-date">{new Date(event.start_time).toDateString()}</p>
-                                        <section id="space-between" className="event-price-date">
+                                        <section className="event-price-date">
                                             <button 
                                             className="delete-event"
                                             onClick={() => setEventToDelete(event.event_id)}
