@@ -51,6 +51,8 @@
     color: white;
 }
 
+/* Your Profile Section */
+
 .profile-header {
     display: flex;
     align-items: center;
@@ -78,11 +80,6 @@
     width: fit-content;
 }
 
-#space-between {
-    justify-content: space-between;
-    margin: .2rem;
-}
-
 .delete-event, .btn-delete-no {
     @apply bg-[#FFB593] text-black py-1 px-3 text-xs
 }
@@ -99,8 +96,6 @@
 .delete-buttons button {
     margin: auto .2rem;
 }
-
-/* Your Profile Section */
 
 .fa-user-pen, .fa-plus {
     color: #317575;
@@ -176,5 +171,64 @@ input, textarea {
 @media only screen and (min-width: 500px) {
     .user-profile {
         min-height: 70vh;
+    }
+
+    button.btn.btn-white {
+        font-size: .75rem;
+    }
+
+    .check-delete {
+        font-size: .9rem;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .welcome-back {
+        font-size: 2.5rem;
+    }
+
+    .profile-section h2, .profile-section h3 {
+        font-size: 2rem;
+    }
+
+    .upcoming-past {
+        font-size: 1rem;
+    }
+
+    .no-past-events {
+        margin: 2rem auto;
+        font-size: 1rem;
+    }
+
+    .your-profile-button button, .delete-event, .btn-delete-no, button.btn.btn-white, .signout {
+        font-size: 1rem;
+    }
+
+    .user-profile-form label {
+        width: 8vw;
+    }
+
+    .user-profile-form input, .user-profile-form textarea {
+        width: 40vw;
+    }
+
+    .user-profile-form textarea {
+        height: 4rem;
+    }
+
+    .user-profile-buttons {
+        margin: 2rem 6rem;
+        justify-content: left;
+        font-size: .9rem;
+    }
+
+    .user-profile-buttons button {
+        margin: auto 1rem;
+    }
+}
+
+@media only screen and (min-width: 1800px) {
+    .user-profile {
+        margin: auto 5rem;
     }
 }
