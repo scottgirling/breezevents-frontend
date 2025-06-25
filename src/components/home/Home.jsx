@@ -52,30 +52,30 @@ export const Home = () => {
                         </Link>
                     </section>
                 </section>
-                <img src="../../../home-top.jpg" alt=""/>
+                <img src="../../../home-top.avif" fetchPriority="high" alt=""/>
             </section>
             <section className="sub-section" id="platform-features">
                 <section>
                     <h2 className="platform-features-heading">Discover Our Platform Features</h2>
                     <p className="discover-sub-title">Experience seamless event booking with our user-friendly platform.</p>
                 </section>
-                <img src="../../../home-features.jpg" alt=""/>
+                <img src="../../../home-features.avif" alt=""/>
             </section>
             <section className="wide-screen">
                 <section className="sub-section">
                     <h3>Effortless</h3>
                     <p>Unparalleled convenience allows you to book with just a few clicks.</p>
-                    <img src="../../../home-effortlessly.jpg" alt=""/>
+                    <img src="../../../home-effortlessly.avif" loading="lazy" alt=""/>
                 </section>
                 <section className="sub-section">
                     <h3>Variety</h3>
                     <p>Choose from a wide range of events tailored to your interests.</p>
-                    <img src="../../../home-variety.jpg" alt=""/>
+                    <img src="../../../home-variety.avif" loading="lazy" alt=""/>
                 </section>
                 <section className="sub-section">
                     <h3>Secure</h3>
                     <p>Enjoy safe and reliable payment options for your bookings.</p>
-                    <img src="../../../home-payments.jpg" alt=""/>
+                    <img src="../../../home-payments.avif" loading="lazy" alt=""/>
                 </section>
             </section>
             <section className="home-buttons">
