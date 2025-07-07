@@ -232,3 +232,9 @@ input, textarea {
         margin: auto 5rem;
     }
 }
+
+@media (prefers-color-scheme: dark) {
+  .signout {
+    background-color: white;
+  }
+}
