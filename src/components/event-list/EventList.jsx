@@ -4,7 +4,8 @@ import { fetchAllEvents, fetchEvents, fetchTags } from "../../utils/api";
 import "./EventList.css";
 
 export const EventList = () => {
-    const [loading, setLoading] = useState(true);
+    const [loadingTags, setLoadingTags] = useState(true);
+    const [loadingEvents, setLoadingEvents] = useState(true);
     const [tags, setTags] = useState([]);
     const [numberOfEvents, setNumberOfEvents] = useState(null);
     const [events, setEvents] = useState([]);
@@ -56,10 +57,12 @@ export const EventList = () => {
     }
 
     useEffect(() => {
-        setLoading(true);
+        setLoadingTags(true);
+        setLoadingEvents(true);
         fetchTags()
         .then((returnedTags) => {
             setTags(returnedTags)
+            setLoadingTags(false);
         })
         fetchAllEvents(eventTagQuery, isFreeQuery, isOnlineQuery)
         .then((returnedEvents) => {
@@ -68,7 +71,7 @@ export const EventList = () => {
         fetchEvents(eventTagQuery, isFreeQuery, isOnlineQuery, sortByQuery, orderQuery, limitQuery)
         .then((returnedEvents) => {
             setEvents(returnedEvents);
-            setLoading(false);
+            setLoadingEvents(false);
         })
     }, [eventTagQuery, isFreeQuery, isOnlineQuery, sortByQuery, orderQuery, limitQuery]);
 
@@ -89,35 +92,45 @@ export const EventList = () => {
         <section className="event-list">
             <section className="discover-events">
                 <ul className="tags-list-home">
-                    <li className="tag-name">
-                        <button 
-                        className="btn btn-tag" 
-                        onClick={() => {
-                            setEventTagQuery("");
-                            setActiveEventTag("View all");
-                        }}
-                        aria-label="View all events">
-                            View all
-                            {activeEventTag === "View all" && <p className="underline"></p>}
-                        </button>
-                    </li>
-                    {tags.map((tag) => {
-                        return (
-                            <li className="tag-name" key={tag.tag_id}>
+                    {loadingTags ? (
+                        <li className="tag-name">
+                            <button className="btn btn-tag">
+                                Loading tags...
+                            </button>
+                        </li>
+                    ) : (
+                        <>
+                            <li className="tag-name">
                                 <button 
                                 className="btn btn-tag" 
-                                value={tag.slug} 
-                                onClick={(event) => {
-                                    setEventTagQuery(event.target.value);
-                                    setActiveEventTag(tag.name);
+                                onClick={() => {
+                                    setEventTagQuery("");
+                                    setActiveEventTag("View all");
                                 }}
-                                aria-label={`View ${tag.name} events`}>
-                                    {tag.name}
-                                    {tag.name === activeEventTag && <p className="underline"></p>}
+                                aria-label="View all events">
+                                    View all
+                                    {activeEventTag === "View all" && <p className="underline"></p>}
                                 </button>
                             </li>
-                        )
-                    })}
+                            {tags.map((tag) => {
+                                return (
+                                    <li className="tag-name" key={tag.tag_id}>
+                                        <button 
+                                        className="btn btn-tag" 
+                                        value={tag.slug} 
+                                        onClick={(event) => {
+                                            setEventTagQuery(event.target.value);
+                                            setActiveEventTag(tag.name);
+                                        }}
+                                        aria-label={`View ${tag.name} events`}>
+                                            {tag.name}
+                                            {tag.name === activeEventTag && <p className="underline"></p>}
+                                        </button>
+                                    </li>
+                                )
+                            })}
+                        </>
+                    ) }
                 </ul>
             </section>
 
@@ -162,7 +175,7 @@ export const EventList = () => {
                     </section>
                 </section>
 
-                {loading ? (
+                {loadingEvents ? (
                     <p className="loading">Loading events...</p>
                 ) : (
                     events.length ? (
