@@ -21,3 +21,9 @@ body {
     padding: .75rem 4rem;
   }
 }
+
+@media (prefers-color-scheme: dark) {
+  #root {
+    color: #213547;
+  }
+}

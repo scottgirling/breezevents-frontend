@@ -1,5 +1,5 @@
 .sign-in-comp {
-    min-height: 60vh;
+    min-height: 65vh;
 }
 
 .sign-up {
@@ -62,4 +62,10 @@
     .sign-up input {
         max-width: 30vw;
     }
+}
+
+@media (prefers-color-scheme: dark) {
+  .switch-mode {
+    background-color: white;
+  }
 }

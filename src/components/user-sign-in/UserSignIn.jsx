@@ -105,7 +105,10 @@ export const UserSignIn = () => {
                             Sign In
                         </button>
                     </form>
-                    <button onClick={() => setUserAction("Sign Up")}>Don't have an account? Sign up.</button>
+                    <button 
+                        onClick={() => setUserAction("Sign Up")}
+                        className="switch-mode"
+                    >Don't have an account? Sign up.</button>
                 </section>
             ) : (
                 <section>
@@ -126,7 +129,10 @@ export const UserSignIn = () => {
                             Sign Up
                         </button>
                     </form>
-                    <button onClick={() => setUserAction("Sign In")}>Already have an account? Sign in.</button>
+                    <button 
+                        onClick={() => setUserAction("Sign In")}
+                        className="switch-mode"
+                    >Already have an account? Sign in.</button>
                 </section>
             )}
         </section>
