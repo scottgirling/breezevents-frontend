@@ -15,9 +15,8 @@
 
 .event-image {
     margin: 1rem auto;
-    background-color: lightgrey;
-    width: 75vw;
-    height: 250px;
+    border-radius: 6px;
+    max-width: 75vw;
 }
 
 .event-info {
@@ -153,6 +152,20 @@
     .single-event {
         min-height: 70vh;
     }
+
+    .event-image {
+        width: 60vw;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .single-event-title {
+        font-size: 2rem;
+    }
+
+    .single-event-overview {
+        font-size: 1rem;
+    }
 }
 
 @media only screen and (min-width: 1200px) {
@@ -170,8 +183,7 @@
     }
 
     .event-image {
-        width: 60vw;
-        height: 60vh;
+        width: 50vw;
     }
 
     .event-info {
