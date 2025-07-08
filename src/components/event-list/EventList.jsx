@@ -192,11 +192,12 @@ export const EventList = () => {
                                         </section>
 
                                         <section className="event-image-and-description">
-                                            <section>
+                                            <section className="img-section">
                                                 <img 
-                                                className="event-image-events-list" 
-                                                src={event.event_img_url}
-                                                alt={`${event.title} event poster`} />
+                                                    className="event-image-events-list" 
+                                                    src={event.event_image_url}
+                                                    alt={`${event.title} event poster`} 
+                                                />
                                             </section>
                                             <section className="event-description-and-date">
                                                 <p className="event-overview">{event.event_overview}</p>
