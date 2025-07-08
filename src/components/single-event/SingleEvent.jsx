@@ -48,9 +48,10 @@ export const SingleEvent = () => {
             <h1 className="single-event-title">{event.title}</h1>
             <p className="single-event-overview">{event.event_overview}</p>
             <img 
-            className="event-image" 
-            src={event.event_image_url} 
-            alt={`${event.title} event poster`}/>
+                className="event-image" 
+                src={event.event_image_url} 
+                alt={`${event.title} event poster`}
+            />
             <section className="event-info">
                 <p className="event-start-time">{new Date(event.start_time).toDateString()}</p>
                 {event.price !== 0 ? (

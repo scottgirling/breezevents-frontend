@@ -65,11 +65,13 @@
     display: flex;
 }
 
+.event-image-and-description .img-section {
+    margin: auto;
+}
+
 .event-image-events-list {
-    margin: .5rem;
     border-radius: 6px;
-    width: 8rem;
-    height: 8rem;
+    width: 36vw;
 }
 
 .event-description-and-date {
@@ -110,6 +112,20 @@
 
 .load-more-disabled {
     opacity: 50%;
+}
+
+@media only screen and (min-width: 800px) {
+    .event-image-and-description {
+        margin: 1rem auto;
+    }
+
+    .event-overview {
+        font-size: 1.25rem;
+    }
+
+    .event-date-events-list {
+        font-size: 1rem;
+    }
 }
 
 @media only screen and (min-width: 1200px) {
@@ -173,8 +189,8 @@
 
     .event-image-events-list {
         width: auto;
-        height: 25vh;
-        border: 1px solid lightgray;
+        max-height: 25vh;
+        margin: auto;
     }
 
     .event-description-and-date {
