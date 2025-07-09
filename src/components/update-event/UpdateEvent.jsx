@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { fetchEventById, fetchVenues, updateEvent } from "../../utils/api";
+import { supabase } from "../../supabase/client";
 
 export const UpdateEvent = () => {
     const navigate = useNavigate();
@@ -9,6 +10,7 @@ export const UpdateEvent = () => {
     const [venues, setVenues] = useState([]);
     const [isFree, setIsFree] = useState(true);
     const [eventDetails, setEventDetails] = useState({});
+    const [eventImage, setEventImage] = useState({});
 
     useEffect(() => {
         setLoading(true);
@@ -38,8 +40,22 @@ export const UpdateEvent = () => {
         });
     }, []);
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
+
+        const fileName = eventDetails.event_image_url.split("/").reverse()[0];
+        const filePath = `admin-uploads/${fileName}`;
+
+        const { error } = await supabase.storage.from("event-images").upload(filePath, eventImage, {
+            upsert: true
+        });
+        
+        if (error) {
+            console.error("Failed to update image:", error.message);
+        } else {
+            console.log("Image updated successfully!");
+        }
+
         updateEvent(event_id, eventDetails)
         .then(() => {
             navigate(`/breezer/${user_id}`);
@@ -59,10 +75,17 @@ export const UpdateEvent = () => {
         return updatedEventDetails;
     }
 
+    const handleEventImageText = () => {
+        if (eventImage.name) {
+            return eventImage.name;
+        }
+        return eventDetails.event_image_url ? "File uploaded" : "No file chosen";
+    }
+
     if (loading) {
         return (
             <p>Loading event...</p>
-        )
+        );
     }
 
     return (
@@ -222,14 +245,19 @@ export const UpdateEvent = () => {
                 </section>
 
                 <section>
-                    <label htmlFor="event_image_url">Event Image: </label>
-                    <input 
-                        onBlur={(event) => handleEventDetailsUpdate(event)}
-                        type="text" 
-                        id="event_image_url" 
-                        name="event_image_url"
-                        defaultValue={eventDetails.event_image_url}>
-                    </input>
+                    <label>Event Image: </label>
+                    <section className="image-file">
+                        <label htmlFor="event_image_url" className="choose-file">Choose file</label>
+                        <input 
+                            onChange={(event) => setEventImage(event.target.files[0])}
+                            type="file" 
+                            accept="image/*"
+                            id="event_image_url"
+                            name="event_image_url"
+                            >
+                        </input>
+                        <p className="image-upload">{handleEventImageText()}</p>
+                    </section>
                 </section>
 
                 <section id="add-event-submit-buttons">

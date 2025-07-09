@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import "./AddEvent.css";
-import { addEvent, addEventTag, fetchTags, fetchVenues } from "../../utils/api";
 import { useNavigate, useParams } from "react-router-dom";
+import { addEvent, addEventTag, fetchTags, fetchVenues } from "../../utils/api";
+import { supabase } from "../../supabase/client";
+import "./AddEvent.css";
 
 export const AddEvent = () => {
     const { user_id } = useParams();
@@ -31,6 +32,7 @@ export const AddEvent = () => {
         is_published: true
     });
     const [newEventTag, setNewEventTag] = useState(null);
+    const [eventImage, setEventImage] = useState({});
 
     useEffect(() => {
         setLoading(true);
@@ -49,10 +51,23 @@ export const AddEvent = () => {
         });
     }, []);
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         const generatedslug = eventDetails.title.replaceAll(" ", "-").toLowerCase();
-        addEvent({ ...eventDetails, slug: generatedslug })
+
+        const fileExt = eventImage.name.split(".").pop();
+        const fileName = `${Date.now()}.${fileExt}`;
+        const filePath = `admin-uploads/${fileName}`;
+
+        const { error: uploadError } = await supabase.storage.from("event-images").upload(filePath, eventImage)
+
+        if (uploadError) {
+            console.error("Upload failed:", uploadError.message);
+        }
+
+        const { data: { publicUrl } } = supabase.storage.from("event-images").getPublicUrl(filePath);
+
+        addEvent({ ...eventDetails, event_image_url: publicUrl, slug: generatedslug })
         .then((returnedEvent) => {
             addEventTag({ event_id: returnedEvent.event_id, tag_id: newEventTag })
         })
@@ -295,13 +310,18 @@ export const AddEvent = () => {
                 </section>
 
                 <section>
-                    <label htmlFor="event_image_url">Event Image: </label>
-                    <input 
-                        onChange={(event) => handleEventDetailsUpdate(event)}
-                        type="text" 
-                        id="event_image_url" 
-                        name="event_image_url">
-                    </input>
+                    <label>Event Image: </label>
+                    <section className="image-file">
+                        <label htmlFor="event_image_url" className="choose-file">Choose file</label>
+                        <input 
+                            onChange={(event) => setEventImage(event.target.files[0])}
+                            type="file" 
+                            accept="image/*"
+                            id="event_image_url"
+                            name="event_image_url">
+                        </input>
+                        <p className="image-upload">{eventImage.name ? eventImage.name : "No file chosen"}</p>
+                    </section>
                 </section>
 
                 <section id="add-event-submit-buttons">

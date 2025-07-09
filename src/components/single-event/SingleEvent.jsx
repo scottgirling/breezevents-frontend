@@ -49,7 +49,7 @@ export const SingleEvent = () => {
             <p className="single-event-overview">{event.event_overview}</p>
             <img 
                 className="event-image" 
-                src={event.event_image_url} 
+                src={`${event.event_image_url}?v=${Date.now()}`}
                 alt={`${event.title} event poster`}
             />
             <section className="event-info">
