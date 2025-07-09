@@ -72,6 +72,32 @@
     opacity: 50%;
 }
 
+#event_image_url {
+    display: none;
+}
+
+.image-file {
+    flex-direction: row !important;
+    margin: .25rem .5rem !important;
+}
+
+.choose-file {
+    border: 1px solid grey;
+    width: max-content !important;
+    padding: .25rem;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.image-upload {
+    margin: .25rem .5rem;
+    min-width: fit-content;
+    text-align: left;
+    border: 1px solid gray;
+    border-radius: 6px;
+    padding: .25rem;
+}
+
 #add-event-submit-buttons {
     margin: 1rem auto;
     display: flex;
