@@ -1,27 +1,5 @@
 @import "tailwindcss";
 
-.home-title {
-    text-align: left;
-    font-size: 1.75rem;
-    font-weight: 600;
-    margin: 1rem 0;
-}
-
-.home-subheading {
-    font-size: .75rem;
-}
-
-.italic-green {
-    color: #317575;
-    font-style: italic;
-}
-
-.home-buttons {
-    margin: 1rem 4rem;
-    display: flex;
-    justify-content: space-around;
-}
-
 .btn {
     @apply py-2 px-4 text-xs;
 }
@@ -38,226 +16,78 @@
     @apply opacity-90;
 }
 
-.sub-section {
-    margin-top: 2rem;
-    text-align: left;
+.feature-sub-heading {
+    @apply text-left mt-6 font-medium text-3xl;
 }
 
-.sub-section h3, .sub-section h4, .platform-features-heading {
-    margin-top: 2rem;
-    font-size: 1.75rem;
-    font-weight: 500;
-}
-
-.sub-section p {
-    margin-top: .75rem;
+#platform-features p, .sub-section p {
+    @apply mt-2 text-left
 }
 
 .sub-section img {
-    margin: 1rem auto auto auto;
-    max-width: 75vw;
-    box-shadow: 2rem;
-    border-radius: 6px;
-}
-
-.tags-list-home {
-    margin-top: .5rem;
-    display: flex;
-    flex-wrap: wrap;
-    border-radius: 6px;
-    background-color: #FFB593;
-    padding: .25rem;
-}
-
-.tag-name {
-    padding: .25rem;
-    font-size: .75rem;
-}
-
-.event-card {
-    background-color: #317575;
-    color: white;
-    text-align: left;
-    padding: .5rem;
-    border-radius: 6px;
-    margin-top: 1rem;
-}
-
-.event-title {
-    font-weight: 600;
-}
-
-.event-overview {
-    margin-top: .25rem;
-    font-size: .65rem;
-}
-
-.event-price-date {
-    margin: .25rem 0;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    font-size: .75rem;
-}
-
-.event-date {
-    font-weight: 600;
+    @apply mt-3 m-auto max-w-[75vw] shadow-xl rounded-md
 }
 
 .btn-white {
     @apply bg-white text-black py-1 px-3
 }
 
-.free-ticket {
-    background-color: #FFB593;
-    color: black;
-    padding: .3rem .75rem .25rem;
-    line-height: normal;
-    border-radius: 6px;
-}
-
 .btn-tag {
     @apply bg-[#FFB593] py-0 px-1 text-xs font-normal;
 }
 
-.no-events-found, .events-loading {
-    margin: 1rem 0;
-    font-size: .75rem;
+#font-normal {
+    @apply font-normal sm:text-base
 }
 
-.underline {
-    border-top: 1px solid rgba(0, 0, 0, 0.705);
-}
-
-.find-more-events button {
-    margin: 1rem auto;
-    font-weight: 400;
-}
-
-@media only screen and (min-width: 500px) {
-    .home-title {
-        font-size: 3.5rem;
-        text-align: center;
+@media only screen and (min-width: 40rem) {
+    #text-base {
+        @apply sm:text-base
     }
 
-    .home-subheading {
-        font-size: 2rem;
-    }
-
-    .home-buttons {
-        justify-content: center;
-        margin: 2rem;
-    }
-
-    .home-buttons .btn {
-        font-size: 1rem;
-        margin: 0 1rem;
-    }
-
-    .home-top img {
-        width: 45%;
-        margin: auto;
-        border-radius: 6px;
+    .feature-sub-heading {
+        @apply sm:text-5xl
     }
 
     .sub-section img {
-        max-width: 60vw;
-    }
-
-    #platform-features {
-        margin: 4rem auto;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-    }
-
-    #platform-features section {
-        width: 50%;
-    }
-
-    #platform-features h3 {
-        min-width: 40vw;
-        font-size: 2rem;
-    }
-
-    #platform-features p {
-        font-size: 1.5rem;
-    }
-
-    #platform-features img {
-        width: 50%;
-        width: 40vw;
-        margin-top: 0;
-        margin-left: 1rem;
-    }
-
-    .wide-screen {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .wide-screen .sub-section {
-        max-width: 25vw;
-        margin: 0 1rem;
-    }
-
-    .wide-screen h3 {
-        font-size: 2rem !important;
-    }
-
-    .wide-screen img {
-        max-width: 24vw;
+        @apply sm:max-w-[60vw]
     }
 
     .sub-section h3 {
-        font-size: 3rem;
-    }
-
-    .discover-sub-title {
-        font-size: 1.5rem;
-        margin: 0 !important;
+        @apply sm:text-5xl
     }
 
     .btn-tag {
-        font-size: 1rem;
-    }
-
-    .event-card {
-        padding: 1rem;
-    }
-
-    .event-overview {
-        font-size: 1rem;
-    }
-
-    .event-title {
-        font-size: 1.25rem;
-    }
-
-    .event-price-date, .btn-white {
-        font-size: 1rem;
-    }
-
-    .find-more-events button {
-        font-size: 1rem;
+        @apply text-base
     }
 }
 
-@media only screen and (min-width: 1200px) {
-    .discover-events {
-        max-width: 80vw;
-        margin: auto;
-    }
-    
-    .tags-list-home {
-        margin: 1em auto;
-        max-width: 80rem;
+@media only screen and (min-width: 64rem) {
+    #platform-features {
+        @apply lg:flex my-16 mx-auto items-center sm:justify-center text-center
     }
 
-    .events-loading {
-        font-size: 1rem;
+    #platform-features section {
+        @apply lg:w-[50%]
+    }
+
+    #platform-features h3 {
+        @apply lg:min-w-[40vw] text-3xl
+    }
+
+    #platform-features img {
+        @apply lg:w-[80%] mt-0 m-auto
+    }
+
+    #wide-screen .sub-section {
+        @apply lg:max-w-[25vw] my-0 mx-4
+    }
+
+    #wide-screen h3 {
+        @apply lg:text-3xl
+    }
+
+    #wide-screen img {
+        @apply lg:max-w-[24vw]
     }
 }
