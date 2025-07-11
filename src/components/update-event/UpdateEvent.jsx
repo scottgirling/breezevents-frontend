@@ -35,7 +35,11 @@ export const UpdateEvent = () => {
         })
         fetchVenues()
         .then((returnedVenues) => {
-            setVenues(returnedVenues)
+            const validVenues = [];
+            returnedVenues.map((venue) => {
+                venue.venue_name !== "online_event" && validVenues.push(venue);
+            });
+            setVenues(validVenues);
             setLoading(false);
         });
     }, []);
@@ -180,7 +184,7 @@ export const UpdateEvent = () => {
                         onBlur={(event) => handleEventDetailsUpdate(event)}
                         id="venue_id" 
                         name="venue_id"
-                        defaultValue={eventDetails.venue_name}
+                        defaultValue={eventDetails.venue_id}
                     >
                         <option disabled hidden selected>Select Venue</option>
                         {venues.map((venue) => {
