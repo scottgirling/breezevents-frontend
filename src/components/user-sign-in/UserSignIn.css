@@ -1,71 +1,15 @@
-.sign-in-comp {
-    min-height: 65vh;
+@import "tailwindcss";
+
+.account-input {
+    @apply border-1 border-[#d3d3d3] w-[80vw] m-auto p-1 rounded-sm sm:mt-2 sm:w-[60vw] lg:w-[40vw] xl:max-w-[30vw]
 }
 
-.sign-up {
-    display: flex;
-    flex-direction: column;
-}
-
-.sign-up label {
-    margin-top: 1rem;
-}
-
-.sign-up input {
-    border: 1px solid lightgrey;
-    width: 80vw;
-    margin: auto;
-    border-radius: 4px;
-    padding: .25rem;
-}
-
-.sign-in-error {
-    margin: .5rem auto;
-    font-weight: 500;
-    text-decoration: underline;
-}
-
-.sign-up button {
-    margin: 1rem auto;
-    width: fit-content;
-    background-color: #FFB593;
-    padding: .25rem .75rem;
-}
-
-@media only screen and (min-width: 500px) {
-    .sign-in-comp {
-        min-height: 70vh;
-    }
-
-    .sign-up input {
-        margin-top: .5rem;
-        width: 60vw;
-    }
-}
-
-@media only screen and (min-width: 1000px) {
-    .sign-in-comp {
-        margin: auto;
-        max-width: 50vw;
-    }
-
-    .sign-in-comp h1 {
-        font-size: 1.5rem;
-    }
-
-    .sign-up input {
-        width: 40vw;
-    }
-}
-
-@media only screen and (min-width: 1200px) {
-    .sign-up input {
-        max-width: 30vw;
-    }
+.sign-in-up {
+    @apply my-4 mx-auto w-fit bg-[#FFB593] py-1 px-3
 }
 
 @media (prefers-color-scheme: dark) {
-  .switch-mode {
-    background-color: white;
+  .dark-mode {
+    @apply bg-white
   }
 }
