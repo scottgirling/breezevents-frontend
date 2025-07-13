@@ -1,10 +1,8 @@
-import "./CheckEmail.css";
-
 export const CheckEmail = () => {
     return (
-        <section className="check-email">
+        <section className="mt-4 min-h-[60vh] sm:min-h-[70vh]">
             <h1>Almost there!</h1>
-            <p>Please check your email to activate your account.</p>
+            <p className="m-4">Please check your email to activate your account.</p>
         </section>
     )
 }
