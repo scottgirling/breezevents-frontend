@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { addUser, fetchUserById } from "../../utils/api";
 import { useAuth } from "../../contexts/AuthProvider";
 import { supabase } from "../../supabase/client";
@@ -8,7 +8,7 @@ import "./UserSignIn.css";
 export const UserSignIn = () => {
     const { signInWithEmail } = useAuth();
     const navigate = useNavigate();
-    const [userAction, setUserAction] = useState("Sign In");
+    const [userAction, setUserAction] = useState("Sign Up");
     const [name, setName] = useState(null);
     const [email, setEmail] = useState(null);
     const [password, setPassword] = useState(null);
@@ -112,13 +112,96 @@ export const UserSignIn = () => {
 
     return (
         <section className="min-h-[65vh] sm:min-h-[70vh] lg:max-w-[50%] m-auto">
-            {userAction === "Sign In" ? (
-                <>
+            <section>
+                <h1 className="text-2xl font-medium my-2 sm:text-3xl">Hello event-goer</h1>
+            </section>
+            {userAction === "Sign Up" ? (
+                <section>
+                    <h1 className="sm:text-xl lg:text-2xl">Create your account to get started</h1>
+                    <button 
+                        className="google-sign-in"
+                        onClick={() => handleGoogleSignIn()}
+                    >
+                        <i className="fa-brands fa-google"></i> Continue with Google
+                    </button>
+                    <p className="text-xs scroll-m-3.5 sm:text-base">or</p>
                     <section>
-                        <button onClick={() => handleGoogleSignIn()}><i className="fa-brands fa-google"></i> Continue with Google</button>
+                        <form 
+                            className="flex flex-col"
+                            onSubmit={(event) => handleSignUp(event)}
+                        >
+                            <label 
+                                htmlFor="name"
+                                className="mt-4"
+                            />
+                            <input 
+                                className="account-input"
+                                onChange={(event) => setName(event.target.value)} 
+                                type="text" 
+                                id="name" 
+                                name="name" 
+                                placeholder="Name"
+                            >
+                            </input>
+
+                            <label 
+                                htmlFor="email"
+                                className="mt-4"
+                            />
+                            <input 
+                                className="account-input"
+                                onChange={(event) => setEmail(event.target.value)} 
+                                type="text" 
+                                id="email" 
+                                name="email" 
+                                placeholder="Email"
+                            >
+                            </input>
+                            
+                            <label 
+                                htmlFor="password"
+                                className="mt-4"
+                            />
+                            <input 
+                                className="account-input"
+                                onChange={(event) => setPassword(event.target.value)} 
+                                type="password" 
+                                id="password" 
+                                name="password" 
+                                placeholder="Password"
+                            >
+                            </input>
+                            <button 
+                                className="continue"
+                                type="submit"
+                            >
+                                Continue
+                            </button>
+                        </form>
+                        <section className="text-xs flex flex-row items-center mt-1 justify-center sm:text-base">
+                            <p>Already have an account?</p>
+                            <button 
+                                className="switch-btn"
+                                onClick={() => setUserAction("Sign In")}
+                                id="dark-mode"
+                            >Sign in.</button>
+                        </section>
+                        <Link to="/">
+                            <p className="text-xs mt-4 flex items-center justify-center text-black font-normal sm:text-base"><i className="fa-solid fa-arrow-left mr-1"></i> Back to Home</p>
+                        </Link>
                     </section>
+                </section>
+            ) : (
+                <section>
+                    <h1 className="lg:text-2xl">Sign in to your account to get started</h1>
+                    <button 
+                        className="google-sign-in"
+                        onClick={() => handleGoogleSignIn()}
+                    >
+                        <i className="fa-brands fa-google"></i> Continue with Google
+                    </button>
+                    <p className="text-xs">or</p>
                     <section>
-                        <h1 className="lg:text-2xl">Sign in to your account</h1>
                         <form 
                             className="flex flex-col"
                             onSubmit={(event) => handleSignIn(event)}
@@ -126,119 +209,58 @@ export const UserSignIn = () => {
                             <label 
                                 htmlFor="email"
                                 className="mt-4"
-                            >
-                                Email Address
-                            </label>
+                            />
                             <input 
                                 className="account-input"
                                 onChange={(event) => setEmail(event.target.value)} 
                                 type="text" 
                                 id="email" 
                                 name="email" 
-                                placeholder="Your email address"
+                                placeholder="Email"
                             >
                             </input>
                             
                             <label 
                                 htmlFor="password"
                                 className="mt-4"
-                            >
-                                Password
-                            </label>
+                            />
                             <input 
                                 className="account-input"
                                 onChange={(event) => setPassword(event.target.value)} 
                                 type="password" 
                                 id="password" 
                                 name="password" 
-                                placeholder="Your password"
+                                placeholder="Password"
                             >
                             </input>
                             {signInError && (
                                 <p 
-                                className="my-2 mx-auto font-medium underline"
+                                className="mt-2 mx-auto text-sm font-medium underline"
                                 >{signInError}</p>
                             )}
                             <button 
-                                className="sign-in-up"
+                                className="continue"
                                 type="submit"
                             >
-                                Sign In
+                                Continue
                             </button>
                         </form>
-                        <button 
-                            onClick={() => setUserAction("Sign Up")}
-                            className="dark-mode"
-                        >Don't have an account? Sign up.</button>
-                    </section>
-                </>
-            ) : (
-                <section>
-                    <h1 className="lg:text-2xl">Create an account</h1>
-                    <form 
-                        className="flex flex-col"
-                        onSubmit={(event) => handleSignUp(event)}
-                    >
-                        <label 
-                            htmlFor="name"
-                            className="mt-4"
-                        >
-                            Name
-                        </label>
-                        <input 
-                            className="account-input"
-                            onChange={(event) => setName(event.target.value)} 
-                            type="text" 
-                            id="name" 
-                            name="name" 
-                            placeholder="Your name"
-                        >
-                        </input>
 
-                        <label 
-                            htmlFor="email"
-                            className="mt-4"
-                        >
-                            Email Address
-                        </label>
-                        <input 
-                            className="account-input"
-                            onChange={(event) => setEmail(event.target.value)} 
-                            type="text" 
-                            id="email" 
-                            name="email" 
-                            placeholder="Your email address"
-                        >
-                        </input>
-                        
-                        <label 
-                            htmlFor="password"
-                            className="mt-4"
-                        >
-                            Password
-                        </label>
-                        <input 
-                            className="account-input"
-                            onChange={(event) => setPassword(event.target.value)} 
-                            type="password" 
-                            id="password" 
-                            name="password" 
-                            placeholder="Your password"
-                        >
-                        </input>
-                        <button 
-                            className="sign-in-up"
-                            type="submit"
-                        >
-                            Sign Up
-                        </button>
-                    </form>
-                    <button 
-                        onClick={() => setUserAction("Sign In")}
-                        className="dark-mode"
-                    >Already have an account? Sign in.</button>
+                        <section className="text-xs flex flex-row items-center mt-1 justify-center sm:text-base">
+                            <p>Don't have an account?</p>
+                            <button 
+                                className="switch-btn"
+                                onClick={() => setUserAction("Sign Up")}
+                                id="dark-mode"
+                            >Sign up.</button>
+                        </section>
+                        <Link to="/">
+                            <p className="text-xs mt-4 flex items-center justify-center text-black font-normal sm:text-base"><i className="fa-solid fa-arrow-left mr-1"></i> Back to Home</p>
+                        </Link>
+                    </section>
                 </section>
             )}
+            
         </section>
     )
 }
