@@ -111,20 +111,26 @@ export const UserSignIn = () => {
     }
 
     return (
-        <section className="sign-in-comp">
+        <section className="min-h-[65vh] sm:min-h-[70vh] lg:max-w-[50%] m-auto">
             {userAction === "Sign In" ? (
                 <>
                     <section>
                         <button onClick={() => handleGoogleSignIn()}><i className="fa-brands fa-google"></i> Continue with Google</button>
                     </section>
                     <section>
-                        <h1>Sign in to your account</h1>
+                        <h1 className="lg:text-2xl">Sign in to your account</h1>
                         <form 
-                            className="sign-up"
+                            className="flex flex-col"
                             onSubmit={(event) => handleSignIn(event)}
                         >
-                            <label htmlFor="email">Email Address</label>
+                            <label 
+                                htmlFor="email"
+                                className="mt-4"
+                            >
+                                Email Address
+                            </label>
                             <input 
+                                className="account-input"
                                 onChange={(event) => setEmail(event.target.value)} 
                                 type="text" 
                                 id="email" 
@@ -133,8 +139,14 @@ export const UserSignIn = () => {
                             >
                             </input>
                             
-                            <label htmlFor="password">Password</label>
+                            <label 
+                                htmlFor="password"
+                                className="mt-4"
+                            >
+                                Password
+                            </label>
                             <input 
+                                className="account-input"
                                 onChange={(event) => setPassword(event.target.value)} 
                                 type="password" 
                                 id="password" 
@@ -143,40 +155,87 @@ export const UserSignIn = () => {
                             >
                             </input>
                             {signInError && (
-                                <p className="sign-in-error">{signInError}</p>
+                                <p 
+                                className="my-2 mx-auto font-medium underline"
+                                >{signInError}</p>
                             )}
-                            <button type="submit">
+                            <button 
+                                className="sign-in-up"
+                                type="submit"
+                            >
                                 Sign In
                             </button>
                         </form>
                         <button 
                             onClick={() => setUserAction("Sign Up")}
-                            className="switch-mode"
+                            className="dark-mode"
                         >Don't have an account? Sign up.</button>
                     </section>
                 </>
             ) : (
                 <section>
-                    <h1>Create an account</h1>
+                    <h1 className="lg:text-2xl">Create an account</h1>
                     <form 
-                        className="sign-up"
+                        className="flex flex-col"
                         onSubmit={(event) => handleSignUp(event)}
                     >
-                        <label htmlFor="name">Name</label>
-                        <input onChange={(event) => setName(event.target.value)} type="text" id="name" name="name" placeholder="Your name"></input>
+                        <label 
+                            htmlFor="name"
+                            className="mt-4"
+                        >
+                            Name
+                        </label>
+                        <input 
+                            className="account-input"
+                            onChange={(event) => setName(event.target.value)} 
+                            type="text" 
+                            id="name" 
+                            name="name" 
+                            placeholder="Your name"
+                        >
+                        </input>
 
-                        <label htmlFor="email">Email Address</label>
-                        <input onChange={(event) => setEmail(event.target.value)} type="text" id="email" name="email" placeholder="Your email address"></input>
+                        <label 
+                            htmlFor="email"
+                            className="mt-4"
+                        >
+                            Email Address
+                        </label>
+                        <input 
+                            className="account-input"
+                            onChange={(event) => setEmail(event.target.value)} 
+                            type="text" 
+                            id="email" 
+                            name="email" 
+                            placeholder="Your email address"
+                        >
+                        </input>
                         
-                        <label htmlFor="password">Password</label>
-                        <input onChange={(event) => setPassword(event.target.value)} type="password" id="password" name="password" placeholder="Your password"></input>
-                        <button type="submit">
+                        <label 
+                            htmlFor="password"
+                            className="mt-4"
+                        >
+                            Password
+                        </label>
+                        <input 
+                            className="account-input"
+                            onChange={(event) => setPassword(event.target.value)} 
+                            type="password" 
+                            id="password" 
+                            name="password" 
+                            placeholder="Your password"
+                        >
+                        </input>
+                        <button 
+                            className="sign-in-up"
+                            type="submit"
+                        >
                             Sign Up
                         </button>
                     </form>
                     <button 
                         onClick={() => setUserAction("Sign In")}
-                        className="switch-mode"
+                        className="dark-mode"
                     >Already have an account? Sign in.</button>
                 </section>
             )}
