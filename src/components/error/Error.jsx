@@ -7,26 +7,25 @@ export const Error = () => {
     const navigate = useNavigate();
 
     return (
-        <section className="error">
-            <i className="fa-solid fa-circle-exclamation"></i>
+        <section className="my-8 mx-auto min-h-[60vh]">
+            <i className="fa-solid fa-circle-exclamation text-[#317575] text-2xl mb-4"></i>
             <h1>Oops... it looks like you're trying to visit a page you are not authorised to access.</h1>
-            <section className="error-redirect-buttons">
+            <section className="flex items-center justify-center text-xs my-6">
                 <button 
-                    id="error-button-home"
+                    className="home-btn"
                     onClick={() => navigate("/")}
                 >
                     Home
                 </button>
                 {loggedInUser.id ? (
                     <button 
-                        id="error-button-account"
                         onClick={() => navigate(`/breezer/${loggedInUser.id}`)}
                     >
                         Your Account
                     </button>
                 ) : (
                     <button 
-                        id="error-button-account"
+                        className="account-btn"
                         onClick={() => navigate("/account")}
                     >
                         Sign In
