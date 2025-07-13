@@ -105,7 +105,9 @@ export const Home = () => {
                         </button>
                     </Link>
                 )}
-                <Link to="/events">
+                <Link to="/events"
+                    onClick={() => window.scroll(0,0)}
+                >
                     <button className="btn btn-salmon sm:mx-4" id="text-base">
                         Find Events
                     </button>
@@ -193,7 +195,9 @@ export const Home = () => {
             </section>
 
             <section>
-                <Link to="/events">
+                <Link to="/events"
+                    onClick={() => window.scroll(0,0)}
+                >
                     <button className="btn btn-salmon my-4 mx-auto" id="font-normal">
                         View More Events
                     </button>
