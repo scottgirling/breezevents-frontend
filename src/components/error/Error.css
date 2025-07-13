@@ -1,24 +1,9 @@
-.error {
-    margin: 2rem auto;
+@import "tailwindcss";
+
+.home-btn {
+    @apply bg-[#FFB593] text-black mx-4 font-normal
 }
 
-.fa-circle-exclamation {
-    color: #317575;
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-}
-
-.error-redirect-buttons {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-#error-button-home {
-    font-weight: 400;
-}
-
-#error-button-account {
-    background-color: #317575;
-    color: white;
+.account-btn {
+    @apply bg-[#317575] text-white mx-4 font-normal
 }
