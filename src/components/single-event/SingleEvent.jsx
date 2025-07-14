@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { fetchEventById, startCheckoutSession } from "../../utils/api";
 import { useAuth } from "../../contexts/AuthProvider";
 import { NotFound } from "../not-found/NotFound";
@@ -64,35 +64,49 @@ export const SingleEvent = () => {
 
             <section>
                 {showTicketQuantity && (
-                    <>
-                    <section className="quantity-section">
-                        <p>Select quantity:</p>
-                        <select onChange={(event) => setTicketQuantity(event.target.value)}className="drop-down-quantity-box" defaultValue="2" name="quantity" id="quantity">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                        </select>
-                    </section>
-                    <section className="get-tickets">
-                        <section className="ticket-quantity-price">
-                            <p>{ticketQuantity} Tickets</p>
-                            {event.price !== 0 && (
-                                <p>£{event.price * ticketQuantity}</p>
+                    <section>
+                        <section className="quantity-section">
+                            <p>Select quantity:</p>
+                            <select onChange={(event) => setTicketQuantity(event.target.value)}className="drop-down-quantity-box" defaultValue="2" name="quantity" id="quantity">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                            </select>
+                        </section>
+
+                        <section className="get-tickets">
+                            <section className="ticket-quantity-price mx-2">
+                                <p>{ticketQuantity} Tickets</p>
+                                {event.price !== 0 && (
+                                    <p>£{event.price * ticketQuantity}</p>
+                                )}
+                            </section>
+                            {loggedInUser.id !== null ? (
+                                <button 
+                                    className="get-tickets-button"
+                                    onClick={() => {
+                                        startCheckoutSession(event, ticketQuantity, loggedInUser.id);
+                                    }}
+                                >
+                                    Get Tickets
+                                </button>
+                            ) : (
+                                <section className="mx-2">
+                                    <p className="mb-1">Sign In To Book</p>
+                                    <Link to="/account"
+                                        onClick={() => window.scroll(0,0)}
+                                    >
+                                        <button className="btn btn-green sm:mx-4">
+                                            Sign In
+                                        </button>
+                                    </Link>
+                                </section>
                             )}
                         </section>
-                        <button 
-                            className="get-tickets-button"
-                            onClick={() => {
-                                startCheckoutSession(event, ticketQuantity, loggedInUser.id);
-                            }}
-                        >
-                            Get Tickets
-                        </button>
                     </section>
-                    </>
                 )}
             </section>
 
