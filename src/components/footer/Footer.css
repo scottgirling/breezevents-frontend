@@ -1,21 +1,13 @@
+@import "tailwindcss";
+
 .footer {
-    background-color: #317575;
-    margin: 2rem -1.25rem -.75rem;
-    padding: 1.25rem;
-    display: flex;
-    justify-content: space-around;
-    font-size: .75rem;
+    @apply bg-[#317575] mt-8 -mb-3 -mx-5 p-5 flex justify-around text-xs sm:-mx-20 sm:text-base xl:justify-center;
+}
+
+.footer section {
+    @apply xl:mx-30;
 }
 
 .footer p {
-    margin: .5rem;
-    color: white;
-    font-weight: 400;
-}
-
-@media only screen and (min-width: 500px) {
-    .footer {
-        margin: 2rem -4rem -2rem;
-        font-size: 1rem;
-    }
+    @apply m-2 text-white font-normal;
 }
