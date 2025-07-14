@@ -118,10 +118,13 @@ export const AddEvent = () => {
     }
 
     return (
-        <section className="upload-event">
-            <h1 className="add-event-title">Add an Event</h1>
+        <section className="xl:mx-40">
+            <h1 className="text-[#317575] text-3xl font-medium mt-4 mb-1">Add an Event</h1>
             <p>Create and share your event with the community - it only takes a minute!</p>
-            <form className="add-event-form" onSubmit={(event) => handleSubmit(event)}>
+            <form 
+                className="add-event-form" 
+                onSubmit={(event) => handleSubmit(event)}
+            >
                 <section>
                     <label htmlFor="title">Event Title:</label>
                     <input 
@@ -137,7 +140,7 @@ export const AddEvent = () => {
                 <section>
                     <label htmlFor="event_overview">Event Overview:</label>
                     <textarea 
-                        className="event-overview"
+                        className="min-h-24 text-base xl:min-h-16"
                         onChange={(event) => handleEventDetailsUpdate(event)}
                         id="event_overview" 
                         name="event_overview"
@@ -149,7 +152,7 @@ export const AddEvent = () => {
                 <section>
                     <label htmlFor="description">Event Description:</label>
                     <textarea 
-                        className="event-description"
+                        className="min-h-48 text-base xl:min-h-32"
                         onChange={(event) => handleEventDetailsUpdate(event)}
                         id="description" 
                         name="description"
@@ -159,15 +162,21 @@ export const AddEvent = () => {
                 </section>
 
                 <section className="form-event-tag">
-                    <label className="form-subtitle" htmlFor="event-tag">Select an Event Tag:</label>
-                    <ul className="add-event-tags">
+                    <label 
+                        className="xl:min-w-[12vw]"
+                        htmlFor="event-tag"
+                    >
+                        Select an Event Tag:
+                    </label>
+                    <ul className="flex flex-wrap justify-around xl:justify-start">
                         {tags.map((tag) => {
                             return (
                                 <li 
-                                    className="add-event-single-tag"
+                                    className="my-1 mx-2"
                                     key={tag.tag_id}>
                                     <label htmlFor="event-tag">{tag.name}</label>
                                     <input
+                                        className="max-w-max"
                                         onChange={(event) => setNewEventTag(event.target.value)}
                                         type="radio"
                                         id="event-tag"
@@ -184,7 +193,7 @@ export const AddEvent = () => {
                 <section>
                     <label htmlFor="start_time">Start Time:</label>
                     <input 
-                        className="date-time-input"
+                        className="max-w-[60vw] xl:max-w-[20vw]"
                         onChange={(event) => handleEventDetailsUpdate(event)}
                         type="datetime-local" 
                         id="start_time" 
@@ -196,7 +205,7 @@ export const AddEvent = () => {
                 <section>
                     <label htmlFor="end_time">End Time:</label>
                     <input 
-                        className="date-time-input"
+                        className="max-w-[60vw] xl:max-w-[20vw]"
                         onChange={(event) => handleEventDetailsUpdate(event)}
                         type="datetime-local" 
                         id="end_time" 
@@ -208,7 +217,7 @@ export const AddEvent = () => {
                 <section id="single-line">
                     <label htmlFor="timezone">Timezone: </label>
                     <input 
-                        className="date-time-input"
+                        className="max-w-[60vw] xl:max-w-[20vw]"
                         onChange={(event) => handleEventDetailsUpdate(event)}
                         type="text" 
                         id="timezone" 
@@ -219,7 +228,7 @@ export const AddEvent = () => {
                 <section id="single-line">
                     <label htmlFor="is_online">Is the Event Online?</label>
                     <input
-                        className="narrow-input"
+                        className="max-w-[20vw]"
                         onChange={(event) => {
                             handleEventDetailsUpdate(event);
                             setIsOnline(!isOnline);
@@ -240,11 +249,11 @@ export const AddEvent = () => {
                     >
                         Venue:</label>
                     <select 
+                        className={handleVenueSelectClassName()}
                         onChange={(event) => handleEventDetailsUpdate(event)}
                         id="venue_id" 
                         name="venue_id"
                         disabled={isVenueSelectDisabled}
-                        className={handleVenueSelectClassName()}
                     >
                         <option disabled hidden selected>Select Venue</option>
                         {venues.map((venue) => {
@@ -258,7 +267,7 @@ export const AddEvent = () => {
                 <section id="single-line">
                     <label htmlFor="event_type">Event Type: </label>
                     <input 
-                        className="date-time-input"
+                        className="max-w-[60vw] xl:max-w-[20vw]"
                         onChange={(event) => handleEventDetailsUpdate(event)}
                         type="text" 
                         id="event_type" 
@@ -271,7 +280,7 @@ export const AddEvent = () => {
                 <section id="single-line">
                     <label htmlFor="capacity">Capacity: </label>
                     <input 
-                        className="narrow-input"
+                        className="max-w-[20vw]"
                         onChange={(event) => handleEventDetailsUpdate(event)}
                         type="number" 
                         id="capacity" 
@@ -283,7 +292,7 @@ export const AddEvent = () => {
                 <section id="single-line">
                     <label htmlFor="is_free">Is the Event Free?</label>
                     <input
-                        className="narrow-input"
+                        className="max-w-[20vw]"
                         onChange={(event) => {
                             handleEventDetailsUpdate(event);
                             setIsFree(!isFree);
@@ -299,7 +308,7 @@ export const AddEvent = () => {
                 <section id="single-line" className={handleTicketPriceClassName()}>
                     <label htmlFor="price">Ticket Price:</label>
                     <input 
-                        className="narrow-input"
+                        className="max-w-[20vw]"
                         onChange={(event) => handleEventDetailsUpdate(event)}
                         type="number" 
                         id="price" 
@@ -311,8 +320,13 @@ export const AddEvent = () => {
 
                 <section>
                     <label>Event Image: </label>
-                    <section className="image-file">
-                        <label htmlFor="event_image_url" className="choose-file">Choose file</label>
+                    <section id="image-file">
+                        <label 
+                            htmlFor="event_image_url" 
+                            className="border-1 border-[#808080] p-1 rounded-md max-w-max cursor-pointer"
+                        >
+                            Choose file
+                        </label>
                         <input 
                             onChange={(event) => setEventImage(event.target.files[0])}
                             type="file" 
@@ -320,13 +334,13 @@ export const AddEvent = () => {
                             id="event_image_url"
                             name="event_image_url">
                         </input>
-                        <p className="image-upload">{eventImage.name ? eventImage.name : "No file chosen"}</p>
+                        <p className="my1 mx-2 min-w-fit text-left border-1 border-[#808080] rounded-md p-1">{eventImage.name ? eventImage.name : "No file chosen"}</p>
                     </section>
                 </section>
 
                 <section id="add-event-submit-buttons">
                     <button 
-                        className="draft-button"
+                        className="draft-btn xl:mx-4"
                         onClick={(event) => handleEventDetailsUpdate(event)}
                         name="is_published"
                         value="false"
@@ -334,7 +348,7 @@ export const AddEvent = () => {
                     >Save Draft
                     </button>
                     <button 
-                        className="post-button"
+                        className="post-button xl:mx-4"
                         type="submit"
                     >Post Event</button>
                 </section>
