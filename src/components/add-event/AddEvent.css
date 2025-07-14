@@ -1,183 +1,49 @@
-.add-event-title {
-    margin: 1rem auto .25rem;
-    font-size: 2rem;
-    font-weight: 500;
-    color: #317575;
-}
+@import "tailwindcss";
 
 .add-event-form {
-    margin: 1rem auto;
+    @apply my-4 xl:mx-40;
 }
 
 .add-event-form section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: .5rem auto;
+    @apply flex flex-col items-center my-2 xl:flex-row;
+}
+
+.add-event-form label {
+    @apply xl:w-[12vw];
 }
 
 .add-event-form input, .add-event-form textarea {
-    width: 80vw;
-    border: 1px solid gray;
-    border-radius: 6px;
-    padding: .25rem;
-}
-
-.add-event-form .event-overview {
-    height: 6rem;
-    font-size: 1rem;
-}
-
-.add-event-form .event-description {
-    height: 12rem;
-    font-size: 1rem;
-}
-
-.add-event-form .date-time-input {
-    width: 60vw;
-}
-
-.add-event-form .narrow-input {
-    width: 20vw;
+    @apply border-1 border-[#808080] rounded-md w-[80vw] p-1 xl:w-[40vw];
 }
 
 #single-line {
-    flex-direction: row;
-    justify-content: center;
-}
-
-.add-event-tags {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
-
-.add-event-single-tag {
-    margin: .25rem .5rem;
-}
-
-.add-event-tags input {
-    width: max-content;
+    @apply flex-row justify-center xl:justify-start;
 }
 
 .add-event-venue select {
-    border: 1px solid gray;
-    border-radius: 6px;
-    padding: .25rem;
-    width: fit-content;
-    font-size: .75rem;
+    @apply border-1 border-[#808080] rounded-md p-1 w-fit text-xs xl:text-base m-2;
 }
 
 .form-input-disabled {
-    opacity: 50%;
+    @apply opacity-50;
 }
 
 #event_image_url {
-    display: none;
+    @apply hidden;
 }
 
-.image-file {
-    flex-direction: row !important;
-    margin: .25rem .5rem !important;
-}
-
-.choose-file {
-    border: 1px solid grey;
-    width: max-content !important;
-    padding: .25rem;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
-.image-upload {
-    margin: .25rem .5rem;
-    min-width: fit-content;
-    text-align: left;
-    border: 1px solid gray;
-    border-radius: 6px;
-    padding: .25rem;
+#image-file {
+    @apply flex-row my-1 mx-2;
 }
 
 #add-event-submit-buttons {
-    margin: 1rem auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    @apply flex flex-row justify-around m-4 xl:justify-center;
 }
 
-#add-event-submit-buttons .draft-button {
-    background-color: #317575;
-    color: white;
-    font-size: .75rem;
+#add-event-submit-buttons .draft-btn {
+    @apply bg-[#317575] text-white text-xs;
 }
 
 #add-event-submit-buttons .post-button {
-    background-color: #FFB593;
-    color: black;
-    font-size: .75rem;
-}
-
-@media only screen and (min-width: 1200px) {
-    .upload-event {
-        margin: auto 10rem;
-    }
-
-    .add-event-form {
-        margin: auto 5rem;
-    }
-
-    .add-event-form section {
-        flex-direction: row;
-        align-items: center;
-    }
-
-    .add-event-form label {
-        width: 12vw;
-    }
-
-    .add-event-form input, .add-event-form textarea {
-        width: 50vw;
-    }
-
-    .add-event-form .event-overview {
-        height: 4rem;
-    }
-
-    .add-event-form .event-description {
-        height: 8rem;
-    }
-
-    .form-event-tag .form-subtitle {
-        min-width: 12vw;
-    }
-
-    .add-event-tags {
-        justify-content: left;
-    }
-
-    .add-event-tags input {
-        width: max-content;
-    }
-
-    .add-event-form .date-time-input {
-        width: 20vw;
-    }
-
-    .add-event-venue select {
-        font-size: 1rem;
-        margin: .5rem;
-    }
-
-    #single-line {
-        flex-direction: row;
-        justify-content: left;
-    }
-
-    #add-event-submit-buttons {
-        justify-content: center;
-    }
-
-    #add-event-submit-buttons button {
-        margin: auto 1rem;
-    }
+    @apply bg-[#FFB593] text-black text-xs;
 }
