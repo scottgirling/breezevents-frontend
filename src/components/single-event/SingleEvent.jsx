@@ -84,7 +84,7 @@ export const SingleEvent = () => {
                                     <p>£{event.price * ticketQuantity}</p>
                                 )}
                             </section>
-                            {loggedInUser.id !== null ? (
+                            {loggedInUser.id ? (
                                 <button 
                                     className="get-tickets-button"
                                     onClick={() => {
