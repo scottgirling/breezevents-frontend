@@ -1,32 +1,5 @@
-.not-found {
-    min-height: 40vh;
-    margin: 10rem 2rem;
-    text-align: left;
-}
+@import "tailwindcss";
 
-.not-found h1 {
-    font-size: 2rem;
-    font-weight: 500;
-}
-
-.not-found p {
-    margin: .5rem auto;
-}
-
-.not-found button {
-    margin: 1rem auto;
-    background-color: #FFB593;
-    color: black;
-    font-weight: 400;
-}
-
-.not-found button:hover {
-    border: 1px solid #FFB593;
-    text-decoration: underline;
-}
-
-@media only screen and (min-width: 1800px) {
-    .not-found {
-        margin: 10rem 5rem;
-    }
+.rtn-home-btn {
+    @apply bg-[#FFB593] text-black font-normal border-0 2xl:mt-2;
 }
