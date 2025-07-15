@@ -1,8 +1,8 @@
 import { Link, useSearchParams } from "react-router-dom";
 import { fetchSessionData } from "../../utils/api";
 import { useEffect, useState } from "react";
-import "./Success.css";
 import { useAuth } from "../../contexts/AuthProvider";
+import "./Success.css";
 
 export const Success = () => {
     const { loggedInUser } = useAuth();
@@ -59,38 +59,38 @@ export const Success = () => {
 
     if (loading) {
         return (
-            <p className="loading">Loading...</p>
+            <p className="loading sm:min-h-[70vh]">Loading...</p>
         )
     }
     
     if (error) {
         return (
-            <section className="error">
-                <h1>{error}</h1>
+            <section className="min-h-[60vh] m-8 sm:min-h-[70vh] 2xl:my-20 2xl:min-h-[60vh]">
+                <h1 className="2xl:text-xl">{error}</h1>
                 <Link to={route}>
-                    <button>Your Account</button>
+                    <button className="your-account-btn">Your Account</button>
                 </Link>
             </section>
         )
     }
 
     return (
-        <section className="success">
+        <section className="my-4 min-h-[60vh] sm:min-h-[70vh] 2xl:my-20 2xl:min-h-[60vh]">
             <section>
                 {customer.name ? (
-                    <h1 className="confirmation">Booking confirmed, {loggedInUser.name}!</h1>
+                    <h1 className="text-2xl mb-4">Booking confirmed, {loggedInUser.name}!</h1>
                 ) : (
-                    <h1 className="confirmation">Booking Confirmed!</h1>
+                    <h1 className="text-2xl mb-4">Booking Confirmed!</h1>
                 )}
-                <p>You're going to: <span className="session-info">{event.title}</span></p>
-                <p>A confirmation email will be sent to <span className="session-info">{customer.email}</span></p>
+                <p className="mt-2">You're going to: <span className="font-semibold">{event.title}</span></p>
+                <p className="mt-2">A confirmation email will be sent to <span className="session-info">{customer.email}</span></p>
             </section>
 
-            <section className="calendar">
-                <i className="fa-regular fa-calendar-check"></i>
+            <section className="flex flex-col mt-8 mb-4">
+                <i className="fa-regular fa-calendar-check text-3xl"></i>
                 <p>{new Date(event.start_time).toDateString()}</p>
                 <Link target="_blank" to={calendarUrl}>
-                    <button className="google-calendar-button">
+                    <button className="calendar-btn">
                         Add to Google Calendar
                     </button>
                 </Link>
@@ -98,7 +98,7 @@ export const Success = () => {
             
             <section>
                 <Link to={`/breezer/${loggedInUser.id}`}>
-                    <button className="view-events-button">
+                    <button className="view-events-btn">
                         View My Events
                     </button>
                 </Link>

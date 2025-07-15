@@ -1,62 +1,13 @@
-.success {
-    margin: 1rem auto;
-    min-height: 60vh;
+@import "tailwindcss";
+
+.calendar-btn {
+    @apply text-black my-2 bg-[#FFB593] font-normal;
 }
 
-.confirmation {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+.view-events-btn {
+    @apply text-black text-base font-normal;
 }
 
-.success p {
-    margin-top: .5rem;
-    font-size: 1rem;
-}
-
-.session-info {
-    font-weight: 600;
-}
-
-.calendar {
-    margin: 2rem auto 1rem;
-    display: flex;
-    flex-direction: column;
-}
-
-.fa-calendar-check {
-    font-size: 2rem;
-}
-
-.google-calendar-button {
-    color: black;
-}
-
-.calendar button {
-    width: max-content;
-    margin: .5rem auto;
-    background-color: #FFB593;
-}
-
-.view-events-button {
-    color: black;
-    font-size: 1rem;
-    font-weight: 400;
-}
-
-.error {
-    min-height: 60vh;
-    margin: 2rem;
-}
-
-.error button {
-    background-color: #FFB593;
-    color: black;
-    font-size: .75rem;
-    margin: 1rem;
-}
-
-@media only screen and (min-width: 500px) {
-    .success, .error, .loading {
-        min-height: 70vh;
-    }
+.your-account-btn {
+    @apply bg-[#FFB593] text-black text-xs m-4 font-normal border-0 2xl:text-base;
 }
