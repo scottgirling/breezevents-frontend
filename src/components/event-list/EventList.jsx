@@ -89,42 +89,46 @@ export const EventList = () => {
     }
     
     return (
-        <section className="event-list">
-            <section className="discover-events">
-                <ul className="tags-list-home">
+        <section className="min-h-[70vh] xl:mx-12">
+            <section className="xl:max-w-[80vw] m-auto">
+                <ul className="mt-2 flex flex-wrap bg-[#FFB593] rounded-md p-1 lg:my-4 mx-auto max-w-[80rem]">
                     {loadingTags ? (
-                        <li className="tag-name">
+                        <li className="p-1 text-xs xl:mx-2">
                             <button className="btn btn-tag">
                                 Loading tags...
                             </button>
                         </li>
                     ) : (
                         <>
-                            <li className="tag-name">
+                            <li className="p-1 text-xs xl:mx-2">
                                 <button 
-                                className="btn btn-tag" 
-                                onClick={() => {
-                                    setEventTagQuery("");
-                                    setActiveEventTag("View all");
-                                }}
-                                aria-label="View all events">
+                                    className="btn btn-tag" 
+                                    onClick={() => {
+                                        setEventTagQuery("");
+                                        setActiveEventTag("View all");
+                                    }}
+                                    aria-label="View all events"
+                                >
                                     View all
-                                    {activeEventTag === "View all" && <p className="underline"></p>}
+                                    {activeEventTag === "View all" && <p className="border-t-1"></p>}
                                 </button>
                             </li>
                             {tags.map((tag) => {
                                 return (
-                                    <li className="tag-name" key={tag.tag_id}>
+                                    <li 
+                                        className="p-1 text-xs xl:mx-2"
+                                        key={tag.tag_id}>
                                         <button 
-                                        className="btn btn-tag" 
-                                        value={tag.slug} 
-                                        onClick={(event) => {
-                                            setEventTagQuery(event.target.value);
-                                            setActiveEventTag(tag.name);
-                                        }}
-                                        aria-label={`View ${tag.name} events`}>
+                                            className="btn btn-tag" 
+                                            value={tag.slug} 
+                                            onClick={(event) => {
+                                                setEventTagQuery(event.target.value);
+                                                setActiveEventTag(tag.name);
+                                            }}
+                                            aria-label={`View ${tag.name} events`}
+                                        >
                                             {tag.name}
-                                            {tag.name === activeEventTag && <p className="underline"></p>}
+                                            {tag.name === activeEventTag && <p className="border-t-1"></p>}
                                         </button>
                                     </li>
                                 )
@@ -135,42 +139,71 @@ export const EventList = () => {
             </section>
 
             <section>
-                <section className="filter-events">
+                <section className="flex flex-wrap justify-around my-4 mx-auto xl:max-w-[80vw] xl:block">
                     {isFreeQuery ? (
-                        <button id="button-clicked" onClick={() => setIsFree("")}>Free</button>
+                        <button 
+                            className="filter-btn"
+                            id="button-clicked" 
+                            onClick={() => setIsFree("")}
+                        >
+                            Free
+                        </button>
                     ) : (
-                        <button onClick={() => setIsFree(true)}>Free</button>
+                        <button 
+                            className="filter-btn"
+                            onClick={() => setIsFree(true)}
+                        >
+                            Free
+                        </button>
 
                     )}
                     {isOnlineQuery ? (
-                        <button id="button-clicked" onClick={() => setIsOnline("")}>Online</button>
+                        <button 
+                            className="filter-btn"
+                            id="button-clicked" 
+                            onClick={() => setIsOnline("")}
+                        >
+                            Online
+                        </button>
                     ) : (
-                        <button onClick={() => setIsOnline(true)}>Online</button>
+                        <button 
+                            className="filter-btn"
+                            onClick={() => setIsOnline(true)}
+                        >
+                            Online
+                        </button>
                     )}
 
-                    <select onChange={(event) => setSortBy(event.target.value)}>
+                    <select 
+                        className="filter-btn"
+                        onChange={(event) => setSortBy(event.target.value)}
+                    >
                         <option disabled selected hidden value="">Sort By</option>
                         <option value="start_time">Event Date</option>
                         <option value="price">Price</option>
                         <option value="created_at">Date Added</option>
                     </select>
 
-                    <select onChange={(event) => setOrder(event.target.value)}>
+                    <select 
+                        className="filter-btn"
+                        onChange={(event) => setOrder(event.target.value)}
+                    >
                         <option disabled selected hidden value="">Order</option>
                         <option value="asc">Ascending</option>
                         <option value="desc">Descending</option>
                     </select>
                 </section>
 
-                <section className="top-picks-reset">
+                <section className="flex items-center justify-between xl:mx-auto xl:max-w-[90rem]">
                     <section>
-                        <h1 className="top-picks">Our Top Picks</h1>
+                        <h1 className="my-4 pl-4 font-bold xl:text-3xl">Our Top Picks</h1>
                     </section>
-                    <section className="reset-filters">
+                    <section>
                         <button 
-                        onClick={() => handleResetFilters()}
-                        aria-label="Reset event filters">
-                            <i className="fa-solid fa-arrows-rotate"></i>
+                            className="bg-inherit"
+                            onClick={() => handleResetFilters()}
+                            aria-label="Reset event filters">
+                                <i className="fa-solid fa-arrows-rotate xl:text-xl"></i>
                         </button>
                     </section>
                 </section>
@@ -179,47 +212,49 @@ export const EventList = () => {
                     <p className="loading">Loading events...</p>
                 ) : (
                     events.length ? (
-                        <ul className="event-grid">
+                        <ul className="xl:flex xl:flex-wrap xl:max-w-[80vw] xl:mx-auto xl:justify-center" >
                         {events.map((event) => {
                             return (
-                                <li className="event-card" key={event.event_id}>
+                                <li 
+                                    className="bg-[#317575] text-white text-left p-2 rounded-md mt-3 mx-0 sm:p-4 xl:max-w-[25vw] lg:m-2 xl:flex xl:flex-col xl:justify-between"
+                                    key={event.event_id}>
                                     <section>
-                                        <section className="title-and-online">
-                                            <h2 className="event-title">{event.title}</h2>
+                                        <section className="flex justify-between">
+                                            <h2 className="font-semibold sm:text-xl">{event.title}</h2>
                                             {event.is_online && (
-                                                <p className="online-event">ONLINE</p>
+                                                <p className="bg-[#90ee90] h-max text-xs text-black rounded-md py-1 px-2 xl:text-sm">ONLINE</p>
                                             )}
                                         </section>
 
-                                        <section className="event-image-and-description">
-                                            <section className="img-section">
+                                        <section className="flex md:my-4 xl:block">
+                                            <section className="m-auto">
                                                 <img 
-                                                    className="event-image-events-list"
+                                                    className="rounded-md max-w-[36vw] xl: w-auto xl:max-h-[25vh] xl:m-auto"
                                                     src={`${event.event_image_url}?v=${Date.now()}`}
                                                     alt={`${event.title} event poster`} 
                                                 />
                                             </section>
-                                            <section className="event-description-and-date">
-                                                <p className="event-overview">{event.event_overview}</p>
-                                                <p className="event-date-events-list">{new Date(event.start_time).toDateString()}</p>
+                                            <section className="flex flex-col justify-around max-w-[50%] m-2 xl:min-w-fit">
+                                                <p className="mt-1 text-xs sm:text-base lg:text-xl">{event.event_overview}</p>
+                                                <p className="text-xs font-semibold my-2 md:text-base">{new Date(event.start_time).toDateString()}</p>
                                             </section>
                                         </section>
                                     </section>
                                     <section>
-                                        <section className="event-price-date">
+                                        <section className="my-1 flex justify-around items-center text-xs sm:text-base lg:flex lg:flex-wrap">
                                             {event.price !== 0 ? (
-                                                <p className="ticket-price">£{event.price}</p>
+                                                <p className="ticket-price xl:m-1">£{event.price}</p>
                                             ) : (
-                                                <p className="free-ticket">FREE</p>
+                                                <p className="bg-[#FFB593] text-black rounded-md py-1 px-3 xl:m-1">FREE</p>
                                             )}
                                             {(event.capacity - event.attendees_count) < 100 ? (
-                                                <p className="limited-tickets">LIMITED TICKETS</p>
+                                                <p className="bg-[#FFB593] text-black rounded-md py-1 px-3 xl:m-1">LIMITED TICKETS</p>
                                             ) : (
                                                 <p></p>
                                             )}
                                             <Link to={`/events/${event.event_id}`}>
                                                 <button 
-                                                className="btn btn-white"
+                                                className="btn btn-white xl:m-1"
                                                 aria-label={`Find tickets for ${event.title}`}>
                                                     Find Tickets
                                                 </button>
@@ -231,25 +266,37 @@ export const EventList = () => {
                             })}
                             </ul>
                         ) : (
-                            <p className="no-events-found">No events found. Please select another category.</p>
+                            <p className="my-4 text-xs lg:text-base xl:text-xl">No events found. Please select another category.</p>
                     )
                 )}
             </section>
 
-            <section className="load-more">
+            <section className="bg-white my-4 mx-auto rounded-md w-max py-2 px-8 text-xs xl:text-base xl:my-8">
                 <p>Showing {events.length} of {numberOfEvents} events.</p>
                 {handleLoadMoreButton() ? (
-                    <button className="load-more-disabled">Load More</button>
+                    <button 
+                        className="load-more-btn"
+                        disabled={true}
+                        id="opacity-50"
+                    >
+                        Load More
+                    </button>
                 ) : (
-                    <button disabled={handleLoadMoreButton()} onClick={() => {
-                        if (eventBatch == 1) {
-                            setLimit(20);
-                            setEventBatch(eventBatch + 1);
-                        } else {
-                            setEventBatch(eventBatch + 1);
-                            setLimit(10 * eventBatch);
-                        }
-                    }}>Load More</button>
+                    <button 
+                        className="load-more-btn"
+                        disabled={handleLoadMoreButton()} 
+                        onClick={() => {
+                            if (eventBatch == 1) {
+                                setLimit(20);
+                                setEventBatch(eventBatch + 1);
+                            } else {
+                                setEventBatch(eventBatch + 1);
+                                setLimit(10 * eventBatch);
+                            }
+                        }}
+                    >
+                        Load More
+                    </button>
                 )}
             </section>
         </section>
