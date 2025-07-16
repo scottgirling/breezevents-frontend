@@ -61,7 +61,7 @@ export const EventList = () => {
         setLoadingEvents(true);
         fetchTags()
         .then((returnedTags) => {
-            setTags(returnedTags)
+            setTags(returnedTags);
             setLoadingTags(false);
         })
         fetchAllEvents(eventTagQuery, isFreeQuery, isOnlineQuery)
@@ -70,7 +70,12 @@ export const EventList = () => {
         })
         fetchEvents(eventTagQuery, isFreeQuery, isOnlineQuery, sortByQuery, orderQuery, limitQuery)
         .then((returnedEvents) => {
-            setEvents(returnedEvents);
+            let updatedEvents = [];
+            returnedEvents.map((event) => {
+                const imgFileName = event.event_image_url.split("/")[9];
+                return updatedEvents.push({ ...event, event_image_url: imgFileName });
+            })
+            setEvents(updatedEvents);
             setLoadingEvents(false);
         })
     }, [eventTagQuery, isFreeQuery, isOnlineQuery, sortByQuery, orderQuery, limitQuery]);
@@ -230,7 +235,7 @@ export const EventList = () => {
                                             <section className="m-auto">
                                                 <img 
                                                     className="rounded-md max-w-[36vw] xl: w-auto xl:max-h-[25vh] xl:m-auto"
-                                                    src={`${event.event_image_url}?v=${Date.now()}`}
+                                                    src={`https://ik.imagekit.io/scott/${event.event_image_url}?tr=f-auto`}
                                                     alt={`${event.title} event poster`} 
                                                 />
                                             </section>

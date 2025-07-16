@@ -21,7 +21,8 @@ export const SingleEvent = () => {
         setLoading(true);
         fetchEventById(event_id)
         .then((returnedEvent) => {
-            setEvent(returnedEvent);
+            const imgFileName = returnedEvent.event_image_url.split("/")[9];
+            setEvent({ ...returnedEvent, event_image_url: imgFileName });
         })
         .catch((error) => {
             setError(error);
@@ -49,7 +50,7 @@ export const SingleEvent = () => {
             <p className="single-event-overview">{event.event_overview}</p>
             <img 
                 className="event-image" 
-                src={`${event.event_image_url}?v=${Date.now()}`}
+                src={`https://ik.imagekit.io/scott/${event.event_image_url}?tr=f-auto`}
                 alt={`${event.title} event poster`}
             />
             <section className="event-info">
