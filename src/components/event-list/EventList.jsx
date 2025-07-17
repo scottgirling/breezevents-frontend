@@ -232,36 +232,43 @@ export const EventList = () => {
                                         </section>
 
                                         <section className="flex md:my-4 xl:block">
-                                            <section className="m-auto">
+                                            <section className="m-auto flex items-center min-h-[16vh]">
                                                 <img 
-                                                    className="rounded-md max-w-[36vw] xl: w-auto xl:max-h-[25vh] xl:m-auto"
+                                                    className="rounded-md max-h-[15vh] xl: w-auto xl:max-h-[25vh] xl:m-auto"
                                                     src={`https://ik.imagekit.io/scott/${event.event_image_url}?tr=f-auto`}
                                                     alt={`${event.title} event poster`} 
                                                 />
                                             </section>
-                                            <section className="flex flex-col justify-around max-w-[50%] m-2 xl:min-w-fit">
+                                            <section className="flex flex-col justify-around min-h-[16vh] min-w-[50%] max-w-[50%] m-2 xl:min-w-fit">
                                                 <p className="mt-1 text-xs sm:text-base lg:text-xl">{event.event_overview}</p>
                                                 <p className="text-xs font-semibold my-2 md:text-base">{new Date(event.start_time).toDateString()}</p>
                                             </section>
                                         </section>
                                     </section>
                                     <section>
-                                        <section className="my-1 flex justify-around items-center text-xs sm:text-base lg:flex lg:flex-wrap">
+                                        <section className="mb-1 flex justify-around items-center text-xs sm:text-base lg:flex lg:flex-wrap">
                                             {event.price !== 0 ? (
                                                 <p className="ticket-price xl:m-1">£{event.price}</p>
                                             ) : (
                                                 <p className="bg-[#FFB593] text-black rounded-md py-1 px-3 xl:m-1">FREE</p>
                                             )}
-                                            {(event.capacity - event.attendees_count) < 100 ? (
+                                            {(event.attendees_count >= event.capacity) ? (
+                                                <p className="bg-[#FFB593] text-black rounded-md py-1 px-3 xl:m-1">SOLD OUT</p>
+                                            ) : (event.capacity - event.attendees_count) < 100 ? (
                                                 <p className="bg-[#FFB593] text-black rounded-md py-1 px-3 xl:m-1">LIMITED TICKETS</p>
                                             ) : (
                                                 <p></p>
                                             )}
                                             <Link to={`/events/${event.event_id}`}>
                                                 <button 
-                                                className="btn btn-white xl:m-1"
-                                                aria-label={`Find tickets for ${event.title}`}>
-                                                    Find Tickets
+                                                    className="btn btn-white xl:m-1"
+                                                    aria-label={`Find tickets for ${event.title}`}
+                                                >
+                                                    {(event.attendees_count >= event.capacity) ? (
+                                                        <p>View Event</p>
+                                                    ) : (
+                                                        <p>Find Tickets</p>
+                                                    )}
                                                 </button>
                                             </Link>
                                         </section>
