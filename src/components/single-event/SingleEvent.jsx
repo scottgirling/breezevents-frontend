@@ -50,7 +50,7 @@ export const SingleEvent = () => {
             <p className="single-event-overview">{event.event_overview}</p>
             <img 
                 className="event-image" 
-                src={`https://ik.imagekit.io/scott/${event.event_image_url}?v=${event.last_updated_at}?tr=f-auto`}
+                src={`https://ik.imagekit.io/scott/${event.event_image_url}?tr=f-auto`}
                 alt={`${event.title} event poster`}
             />
             <section className="event-info">
