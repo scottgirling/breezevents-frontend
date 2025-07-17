@@ -232,14 +232,14 @@ export const EventList = () => {
                                         </section>
 
                                         <section className="flex md:my-4 xl:block">
-                                            <section className="m-auto flex items-center min-h-[25vh]">
+                                            <section className="m-auto flex items-center max-h-[20vh]">
                                                 <img 
                                                     className="rounded-md max-h-[15vh] xl: w-auto xl:max-h-[25vh] xl:m-auto"
                                                     src={`https://ik.imagekit.io/scott/${event.event_image_url}?tr=f-auto`}
                                                     alt={`${event.title} event poster`} 
                                                 />
                                             </section>
-                                            <section className="flex flex-col justify-around min-h-[16vh] min-w-[50%] max-w-[50%] m-2 xl:min-w-fit">
+                                            <section className="flex flex-col justify-around max-h-[20vh] min-w-[50%] max-w-[50%] m-2 xl:min-w-fit">
                                                 <p className="mt-1 text-xs sm:text-base lg:text-xl">{event.event_overview}</p>
                                                 <p className="text-xs font-semibold my-2 md:text-base">{new Date(event.start_time).toDateString()}</p>
                                             </section>
