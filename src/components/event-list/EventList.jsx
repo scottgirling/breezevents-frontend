@@ -232,10 +232,10 @@ export const EventList = () => {
                                         </section>
 
                                         <section className="flex md:my-4 xl:block">
-                                            <section className="m-auto flex items-center min-h-[16vh]">
+                                            <section className="m-auto flex items-center min-h-[25vh]">
                                                 <img 
                                                     className="rounded-md max-h-[15vh] xl: w-auto xl:max-h-[25vh] xl:m-auto"
-                                                    src={`https://ik.imagekit.io/scott/${event.event_image_url}?tr=f-auto`}
+                                                    src={`https://ik.imagekit.io/scott/${event.event_image_url}?v=${event.last_updated_at}?tr=f-auto`}
                                                     alt={`${event.title} event poster`} 
                                                 />
                                             </section>
