@@ -224,7 +224,7 @@ export const EventList = () => {
                                     className="bg-[#317575] text-white text-left p-2 rounded-md mt-3 mx-0 sm:p-4 xl:max-w-[25vw] lg:m-2 xl:flex xl:flex-col xl:justify-between"
                                     key={event.event_id}>
                                     <section>
-                                        <section className="flex justify-between">
+                                        <section className="flex justify-between m-1">
                                             <h2 className="font-semibold sm:text-xl">{event.title}</h2>
                                             {event.is_online && (
                                                 <p className="bg-[#90ee90] h-max text-xs text-black rounded-md py-1 px-2 xl:text-sm">ONLINE</p>
@@ -246,7 +246,7 @@ export const EventList = () => {
                                         </section>
                                     </section>
                                     <section>
-                                        <section className="mb-1 flex justify-around items-center text-xs sm:text-base lg:flex lg:flex-wrap">
+                                        <section className="m-1 flex justify-around items-center text-xs sm:text-base lg:flex lg:flex-wrap">
                                             {event.price !== 0 ? (
                                                 <p className="ticket-price xl:m-1">£{event.price}</p>
                                             ) : (
