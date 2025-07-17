@@ -17,6 +17,7 @@
     margin: 1rem auto;
     border-radius: 6px;
     max-width: 75vw;
+    min-height: 25vh;
 }
 
 .event-info {

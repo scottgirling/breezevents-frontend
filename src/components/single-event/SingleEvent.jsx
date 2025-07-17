@@ -31,7 +31,7 @@ export const SingleEvent = () => {
             setLoading(false);
         });
     }, []);
-    
+
     if (loading) {
         return (
             <p className="loading">Loading event...</p>
@@ -60,27 +60,58 @@ export const SingleEvent = () => {
                 ) : (
                     <p className="free-ticket">FREE</p>
                 )}
-                <button onClick={() => setShowTicketQuantity(!showTicketQuantity)}className="btn-buy-tickets">Buy Tickets</button>
+                <button 
+                    className="btn-buy-tickets"
+                    onClick={() => {
+                        setShowTicketQuantity(!showTicketQuantity);
+                        if ((event.capacity - event.attendees_count) < 6) {
+                            setTicketQuantity(1);
+                        }
+                    }}
+                    disabled={(event.attendees_count >= event.capacity)}
+                    id={(event.attendees_count >= event.capacity) && "opacity-50"}
+                >
+                    {(event.attendees_count >= event.capacity) ? (
+                        <p>SOLD OUT</p>
+                    ) : (
+                        <p>Buy Tickets</p>
+                    )}
+                </button>
             </section>
 
             <section>
                 {showTicketQuantity && (
                     <section>
-                        <section className="quantity-section">
-                            <p>Select quantity:</p>
-                            <select onChange={(event) => setTicketQuantity(event.target.value)}className="drop-down-quantity-box" defaultValue="2" name="quantity" id="quantity">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                            </select>
-                        </section>
+                        {(event.capacity - event.attendees_count) < 6 && (
+                            <p className="text-xs mt-4">Due to a very limited number of tickets remaining, customers are restricted to one ticket with each purchase.</p>
+                        )}
+                        {(event.capacity - event.attendees_count) >= 6 && (
+                            <section className="quantity-section">
+                                <p>Select quantity:</p>
+                                <select 
+                                    className="drop-down-quantity-box" 
+                                    defaultValue="2" 
+                                    name="quantity" 
+                                    id="quantity"
+                                    onChange={(event) => setTicketQuantity(event.target.value)}
+                                >
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                </select>
+                            </section>
+                        )}
 
                         <section className="get-tickets">
                             <section className="ticket-quantity-price mx-2">
-                                <p>{ticketQuantity} Tickets</p>
+                                {(event.capacity - event.attendees_count) < 6 ? (
+                                    <p>1 Ticket</p>
+                                ) : (
+                                    <p>{ticketQuantity} Ticket(s)</p>
+                                )}
                                 {event.price !== 0 && (
                                     <p>£{event.price * ticketQuantity}</p>
                                 )}
@@ -92,7 +123,7 @@ export const SingleEvent = () => {
                                         startCheckoutSession(event, ticketQuantity, loggedInUser.id);
                                     }}
                                 >
-                                    Get Tickets
+                                    <p>Buy Now</p>
                                 </button>
                             ) : (
                                 <section className="mx-2">
