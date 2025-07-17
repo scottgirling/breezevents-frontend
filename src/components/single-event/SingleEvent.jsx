@@ -17,8 +17,6 @@ export const SingleEvent = () => {
     const [showHostDetails, setShowHostDetails] = useState(false);
     const [error, setError] = useState(null);
 
-    console.log(event, "<--- event")
-
     useEffect(() => {
         setLoading(true);
         fetchEventById(event_id)
