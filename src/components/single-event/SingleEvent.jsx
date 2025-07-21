@@ -45,15 +45,16 @@ export const SingleEvent = () => {
     }
 
     return (
-        <section className="single-event">
-            <h1 className="single-event-title">{event.title}</h1>
-            <p className="single-event-overview">{event.event_overview}</p>
-            <img 
-                className="event-image" 
-                src={`https://ik.imagekit.io/scott/${event.event_image_url}?tr=f-auto`}
-                alt={`${event.title} event poster`}
-            />
-            <section className="event-info">
+        <section className="sm:min-h-[70vh] xl:mx-12 2xl:mx-24">
+            <h1 className="mt-4 text-[#317575] text-2xl font-medium sm:text-3xl xl:text-4xl">{event.title}</h1>
+            <p className="mt-1 text-black text-xs sm:text-base xl:m-2 xl:text-xl">{event.event_overview}</p>
+            <section className="flex flex-col justify-center min-h-[20vh] sm:min-h-[30vh]">
+                <img className="my-4 mx-auto rounded-md max-w-[75vw] sm:w-[60vw] xl:w-[50vw]"
+                    src={`https://ik.imagekit.io/scott/${event.event_image_url}?tr=f-auto`}
+                    alt={`${event.title} event poster`}
+                />
+            </section>
+            <section className="flex bg-[#317575] rounded-md text-white justify-around p-1 text-xs items-center font-medium xl:my-8 xl:text-xl xl:p-3">
                 <p className="event-start-time">{new Date(event.start_time).toDateString()}</p>
                 {event.price !== 0 ? (
                     <p className="ticket-price">£{event.price}</p>
@@ -86,10 +87,10 @@ export const SingleEvent = () => {
                             <p className="text-xs mt-4">Due to a very limited number of tickets remaining, customers are restricted to one ticket with each purchase.</p>
                         )}
                         {(event.capacity - event.attendees_count) >= 6 && (
-                            <section className="quantity-section">
+                            <section className="flex pt-4 m-auto w-max text-sm xl:text-base xl:mt-[-1.5rem]">
                                 <p>Select quantity:</p>
                                 <select 
-                                    className="drop-down-quantity-box" 
+                                    className="w-[2.5rem] bg-white ml-2" 
                                     defaultValue="2" 
                                     name="quantity" 
                                     id="quantity"
@@ -105,7 +106,7 @@ export const SingleEvent = () => {
                             </section>
                         )}
 
-                        <section className="get-tickets">
+                        <section className="flex pt-4 w-max m-auto items-center text-xs xl:text-base">
                             <section className="ticket-quantity-price mx-2">
                                 {(event.capacity - event.attendees_count) < 6 ? (
                                     <p>1 Ticket</p>
@@ -142,11 +143,13 @@ export const SingleEvent = () => {
                 )}
             </section>
 
-            <section className="event-description-bar">
+            <section className="flex justify-between items-center mt-4 bg-[#317575] text-white py-1 px-4 font-medium rounded-md rounded-b-none xl:text-2xl xl:py-2 xl:px-8">
                 <p>Description</p>
                 <button 
-                onClick={() => setShowEventDescription(!showEventDescription)}
-                aria-label="View event description">
+                    className="event-details-bar-button"
+                    onClick={() => setShowEventDescription(!showEventDescription)}
+                    aria-label="View event description"
+                >
                     {!showEventDescription ? (
                         <i className="fa-solid fa-angle-down" aria-hidden="true"></i>
                     ) : (
@@ -157,19 +160,21 @@ export const SingleEvent = () => {
 
             <section>
                 {showEventDescription && (
-                    <section className="text-showing">
-                        <p>{event.description}</p>
-                        <p>Start Time: {event.start_time.replace("Z", "").split("T")[1]} {new Date(event.start_time).toDateString()} </p>
-                        <p>End Time: {event.end_time.replace("Z", "").split("T")[1]} {new Date(event.end_time).toDateString()}</p>
+                    <section className="m-4 text-xs xl:text-xl xl:w-[75vw] xl:my-4 xl:mx-auto">
+                        <p className="my-3 mx-auto xl:my-4">{event.description}</p>
+                        <p className="my-3 mx-auto xl:my-4">Start Time: {event.start_time.replace("Z", "").split("T")[1]} {new Date(event.start_time).toDateString()} </p>
+                        <p className="my-3 mx-auto xl:my-4">End Time: {event.end_time.replace("Z", "").split("T")[1]} {new Date(event.end_time).toDateString()}</p>
                     </section>
                 )}
             </section>
 
-            <section className="venue-bar">
+            <section className="flex justify-between items-center bg-[#317575] text-white py-1 px-4 font-medium xl:text-2xl xl:py-2 xl:px-8">
                 <p>Venue</p>
                 <button 
-                onClick={() => setShowVenueDetails(!showVenueDetails)}
-                aria-label="View venue details">
+                    className="event-details-bar-button"
+                    onClick={() => setShowVenueDetails(!showVenueDetails)}
+                    aria-label="View venue details"
+                >
                     {!showVenueDetails ? (
                         <i className="fa-solid fa-angle-down" aria-hidden="true"></i>
                     ) : (
@@ -178,62 +183,74 @@ export const SingleEvent = () => {
                 </button>
             </section>
 
-            <section>
+            <section className="text-xs xl:text-base">
                 {showVenueDetails && (
                     event.venue_id === 7 ? (
-                        <section className="venue-details">  
-                            <p>This is an online event.</p>
-                            <p>Upon confirming your place at this event you will receive more information on how to attend virtually!</p>
+                        <section className="my-4">  
+                            <p className="m-2 xl:my-4">This is an online event.</p>
+                            <p className="m-2 xl:my-4">Upon confirming your place at this event you will receive more information on how to attend virtually!</p>
                         </section>
                     ) : (
                         <section>
-                            <section className="venue-details">
-                                <p className="venue-subtitle">Address</p>
-                                <p className="text-showing">{event.venue_name}, {event.location}</p>
+                            <section className="my-4">
+                                <p className="text-sm font-bold xl:text-xl xl:my-4">Address</p>
+                                <p className="m-4 xl:text-xl xl:w-[75vw] xl:my-4 xl:mx-auto">{event.venue_name}, {event.location}</p>
                             </section>
 
-                            <section className="venue-details">
-                                <p className="venue-subtitle">Facilities</p>
-                                <section className="facilities-list">
-                                    <ul>
+                            <section className="my-4">
+                                <p className="text-sm font-bold m-2 xl:text-xl xl:my-4">Facilities</p>
+                                <section>
+                                    <ul className="flex flex-wrap justify-center">
                                         {event.facilities.map((facility) => {
                                             return (
-                                                <li className="facility" key={event.facilities.indexOf(facility)}>{facility}</li>
+                                                <li 
+                                                    className="m-2 border-1 border-[#317575] rounded-md p-2"
+                                                    key={event.facilities.indexOf(facility)}
+                                                >
+                                                    {facility}
+                                                </li>
                                             )
                                         })}
                                     </ul>
                                 </section>
                             </section>
 
-                            <section className="venue-details">
-                                <p className="venue-subtitle">Accessibility</p>
-                                <section className="accessibility-list">
-                                    <ul>
+                            <section className="text-sx my-4">
+                                <p className="text-sm font-bold m-2 xl:text-xl xl:my-4">Accessibility</p>
+                                <section>
+                                    <ul className="flex flex-wrap justify-center">
                                         {event.accessibility_features.map((feature) => {
                                             return (
-                                                <li className="accessibility" key={event.accessibility_features.indexOf(feature)}>{feature}</li>
+                                                <li 
+                                                    className="m-2 border-1 border-[#317575] rounded-md p-2"
+                                                    key={event.accessibility_features.indexOf(feature)}
+                                                >
+                                                    {feature}
+                                                </li>
                                             )
                                         })}
                                     </ul>
                                 </section>
                             </section>
 
-                            <section className="venue-details">
-                                <p className="venue-subtitle">Contact details:</p>
-                                <p>{event.website_url}</p>
-                                <p>{event.contact_email}</p>
-                                <p>{event.contact_phone}</p>
+                            <section className="text-sx my-4">
+                                <p className="text-sm font-bold m-2 xl:text-xl xl:my-4">Contact</p>
+                                <p className="m-2 xl:my-4">{event.website_url}</p>
+                                <p className="m-2 xl:my-4">{event.contact_email}</p>
+                                <p className="m-2 xl:my-4">{event.contact_phone}</p>
                             </section>
                         </section>
                     )
                 )}
             </section>
 
-            <section className="host-bar">
+            <section className="flex justify-between items-center bg-[#317575] text-white py-1 px-4 font-medium rounded-b-md xl:text-2xl xl:py-2 xl:px-8">
                 <p>Host</p>
                 <button 
-                onClick={() => setShowHostDetails(!showHostDetails)}
-                aria-label="View host details">
+                    className="event-details-bar-button"
+                    onClick={() => setShowHostDetails(!showHostDetails)}
+                    aria-label="View host details"
+                >
                     {!showHostDetails ? (
                         <i className="fa-solid fa-angle-down" aria-hidden="true"></i>
                     ) : (
@@ -244,9 +261,9 @@ export const SingleEvent = () => {
             <section>
                 {showHostDetails && (
                     <section>
-                        <p className="text-showing">{event.title} is hosted by <span className="host-info">{event.name}.</span></p>
-                        <p className="text-showing">A bit about {event.name}: <span className="host-info">{event.bio}</span></p>
-                        <p className="text-showing">Should you need to contact {event.name}: <span className="host-info">{event.email}</span></p>
+                        <p className="m-4 text-xs xl:text-xl xl:w-[75vw] xl:my-4 xl:mx-auto">{event.title} is hosted by <span className="font-bold">{event.name}.</span></p>
+                        <p className="m-4 text-xs xl:text-xl xl:w-[75vw] xl:my-4 xl:mx-auto">A bit about {event.name}: <span className="font-bold">{event.bio}</span></p>
+                        <p className="m-4 text-xs xl:text-xl xl:w-[75vw] xl:my-4 xl:mx-auto">Should you need to contact {event.name}: <span className="font-bold">{event.email}</span></p>
                     </section>
                 )}
             </section>
