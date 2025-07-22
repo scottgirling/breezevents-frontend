@@ -84,10 +84,10 @@ export const UserProfile = () => {
     }
 
     return (
-        <section className="user-profile">
-            <section className="welcome-back">
+        <section className="sm:min-h-[70vh] 2xl:mx-20">
+            <section className="my-4 text-left text-3xl font-medium xl:text-4xl">
                 {user.name && (
-                    <h1>Welcome back, <span className="users-name">{user.name.split(" ")[0]}!</span></h1>
+                    <h1>Welcome back, <span className="text-[#317575]">{user.name.split(" ")[0]}!</span></h1>
                 )}
             </section>
 
@@ -100,12 +100,12 @@ export const UserProfile = () => {
 
             )}
 
-            <section className="profile-section">
-                <section className="profile-header">
-                    <h3>Your Profile</h3>
-                    <section className="your-profile-button">
+            <section className="my-4 text-left">
+                <section className="flex items-center justify-between mt-4 mb-1">
+                    <h3 className="text-2xl xl:text-3xl">Your Profile</h3>
+                    <section className="text-xs text-[#317575]">
                         <button 
-                            className="your-profile-button"
+                            className="flex items-center bg-inherit !p-0"
                             onClick={() => {
                                 setIsDisabled(!isDisabled);
                                 setUpdateSuccess(null);
@@ -113,14 +113,19 @@ export const UserProfile = () => {
                             }}
                         >
                             <i className="fa-solid fa-user-pen"></i>
-                            <p>Edit Profile</p>
+                            <p className="ml-1">Edit Profile</p>
                         </button>
                     </section>
                 </section>
                 <section>
-                    <form className="user-profile-form">
-                        <section>
-                            <label htmlFor="name">Name:</label>
+                    <form>
+                        <section className="flex items-center">
+                            <label 
+                                className="w-[22vw] xl:w-[8vw]" 
+                                htmlFor="name"
+                            >
+                                Name:
+                            </label>
                             <input 
                                 type="text" 
                                 id="name" 
@@ -132,8 +137,13 @@ export const UserProfile = () => {
                             >
                             </input>
                         </section>
-                        <section>
-                            <label htmlFor="username">Username:</label>
+                        <section className="flex items-center">
+                            <label 
+                                className="w-[22vw] xl:w-[8vw]"
+                                htmlFor="username"
+                            >
+                                Username:
+                            </label>
                             <input 
                                 type="text" 
                                 id="username" 
@@ -145,8 +155,13 @@ export const UserProfile = () => {
                             >
                             </input>
                         </section>
-                        <section>
-                            <label htmlFor="email">Email:</label>
+                        <section className="flex items-center">
+                            <label 
+                                className="w-[22vw] xl:w-[8vw]"
+                                htmlFor="email"
+                            >
+                                Email:
+                            </label>
                             <input 
                                 type="text" 
                                 id="email" 
@@ -158,8 +173,13 @@ export const UserProfile = () => {
                             >
                             </input>
                         </section>
-                        <section>
-                            <label htmlFor="bio">Bio:</label>
+                        <section className="flex items-center">
+                            <label 
+                                className="w-[22vw] xl:w-[8vw]"
+                                htmlFor="bio"
+                            >
+                                Bio:
+                            </label>
                             <textarea 
                                 type="text" 
                                 id="bio" 
@@ -171,8 +191,13 @@ export const UserProfile = () => {
                             >
                             </textarea>
                         </section>
-                        <section>
-                            <label htmlFor="avatar_url">Avatar URL:</label>
+                        <section className="flex items-center">
+                            <label 
+                                className="w-[22vw] xl:w-[8vw]"
+                                htmlFor="avatar_url"
+                            >
+                                Avatar URL:
+                            </label>
                             <input 
                                 type="text" 
                                 id="avatar_url" 
@@ -185,7 +210,7 @@ export const UserProfile = () => {
                             </input>
                         </section>
 
-                        <section className="user-profile-buttons">
+                        <section className="my-2 flex justify-around text-xs xl:my-8 xl:mx-24 xl:justify-start xl:text-base">
                             <button 
                                 disabled={!Object.keys(userDetails).length}
                                 className={isDiscardButtonDisabled()}
@@ -206,16 +231,16 @@ export const UserProfile = () => {
                                 Save Changes
                             </button>
                         </section>
-                        <section>
+                        <section className="my-4 text-center">
                             {updateSuccess && (
-                                <p className="update-success">{updateSuccess}</p>
+                                <p>{updateSuccess}</p>
                             )}
                         </section>
                     </form>
                 </section>
 
-                <section>
-                    <button className="signout" onClick={handleSignOut}>
+                <section className="text-xs flex justify-center xl:text-base">
+                    <button onClick={handleSignOut}>
                         Sign Out <i className="fa-solid fa-arrow-right-from-bracket"></i>
                     </button>
                 </section>
