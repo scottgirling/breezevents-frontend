@@ -159,8 +159,7 @@ export const Home = () => {
                     <p className="my-4 text-xs lg:text-base">Loading events...</p>
                 ) : (
                     events.length ? (
-                        <ul className="lg:flex lg:max-w-[80vw] mx-auto justify-center"
-                        >
+                        <ul className="lg:flex lg:max-w-[80vw] mx-auto justify-center">
                         {events.map((event) => {
                             return (
                                 <li className="bg-[#317575] text-white text-left p-2 rounded-md mt-3 mx-0 sm:p-4 lg:max-w-[25vw] lg:m-2 flex flex-col justify-between"
