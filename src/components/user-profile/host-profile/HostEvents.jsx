@@ -44,9 +44,21 @@ export const HostEvents = () => {
                 } else {
                     eventsInThePast.push(event);
                 }
-            })
-            setUpcomingHostEvents(eventsInTheFuture);
-            setPastHostEvents(eventsInThePast);
+            });
+
+            let updatedFutureEvents = [];
+            eventsInTheFuture.map((event) => {
+                const imgFileName = event.event_image_url && event.event_image_url.split("/")[9];
+                return updatedFutureEvents.push({ ...event, event_image_url: imgFileName });
+            });
+
+            let updatedPastEvents = [];
+            eventsInThePast.map((event) => {
+                const imgFileName = event.event_image_url && event.event_image_url.split("/")[9];
+                return updatedPastEvents.push({ ...event, event_image_url: imgFileName });
+            });
+            setUpcomingHostEvents(updatedFutureEvents);
+            setPastHostEvents(updatedPastEvents);
             setLoading(false);
         })
     }, []);
@@ -63,65 +75,76 @@ export const HostEvents = () => {
     }
 
     return (
-        <section className="profile-section">
-            <section className="profile-header">
-                <h2>Your Events</h2>
-                <section className="your-profile-button">
+        <section className="my-4 text-left">
+            <section className="flex items-center justify-between mt-4 mb-1">
+                <h2 className="text-2xl xl:text-3xl">Your Events</h2>
+                <section className="text-xs text-[#317575]">
                     <Link to={`/breezer/${user_id}/new-event`}>
-                        <button className="your-profile-button">
+                        <button className="flex items-center bg-inherit !p-0">
                             <i className="fa-solid fa-plus"></i>
-                            <p>Add Event</p>
+                            <p className="pl-1 text-[#317575]">Add Event</p>
                         </button>
                     </Link>
                 </section>
             </section>
-            <section className="upcoming-past">
+            <section className="flex text-sm xl:text-base">
                 <button
+                    className="bg-inherit !p-0 mr-3"
                     onClick={() => {
                         setActiveTickets("Upcoming");
                     }}
                 >
                     {activeTickets === "Upcoming" ? (
-                        <p className="active-button">Upcoming Events</p>
+                        <p className="underline">Upcoming Events</p>
                     ) : (
-                        <p className="inactive-button">Upcoming Events</p>
+                        <p className="opacity-50">Upcoming Events</p>
                     )}
                 </button>
                 <button
+                    className="bg-inherit !p-0 mr-3"
                     onClick={() => {
                         setActiveTickets("Past");
                     }}
                 >
                     {activeTickets === "Past" ? (
-                        <p className="active-button">Past Events</p>
+                        <p className="underline">Past Events</p>
                     ) : (
-                        <p className="inactive-button">Past Events</p>
+                        <p className="opacity-50">Past Events</p>
                     )}
                 </button>
                 <button
+                    className="bg-inherit !p-0 mr-3"
                     onClick={() => {
                         setActiveTickets("Draft");
                     }}
                 >
                     {activeTickets === "Draft" ? (
-                        <p className="active-button">Draft Events</p>
+                        <p className="underline">Draft Events</p>
                     ) : (
-                        <p className="inactive-button">Draft Events</p>
+                        <p className="opacity-50">Draft Events</p>
                     )}
                 </button>
             </section>
 
             <section>
-                <ul className="event-grid">
+                <ul className="lg:flex lg:flex-wrap lg:max-w-[80vw] xl:mx-auto xl:justify-left">
                     {activeTickets === "Upcoming" && (
                         upcomingHostEvents.length ? (
                             upcomingHostEvents.map((event) => {
                                 return (
-                                    <li className="event-card" key={event.event_id}>
-                                        <h4 className="event-title">{event.title}</h4>
-                                        <p className="event-overview">{event.event_overview}</p>
+                                    <li className="bg-[#317575] text-white text-left p-2 rounded-md mt-3 mx-0 sm:p-4 sm:w-[60vw] sm:mx-auto lg:max-w-[40vw] lg:m-2 flex flex-col justify-between xl:max-w-[35vw] 2xl:max-w-[25vw]" 
+                                    key={event.event_id}>
+                                        <h4 className="font-semibold sm:text-xl">{event.title}</h4>
+                                        <section className="m-auto flex items-center max-h-[20vh] min-h-[15vh] xl:min-h-[30vh]">
+                                            <img 
+                                                className="rounded-md max-h-[15vh] xl: w-auto xl:max-h-[25vh] xl:m-auto"
+                                                src={`https://ik.imagekit.io/scott/${event.event_image_url}?tr=f-auto`}
+                                                alt={`${event.title} event poster`} 
+                                            />
+                                        </section>
+                                        <p className="mt-1 text-xs sm:text-base lg:text-xl lg:my-4">{event.event_overview}</p>
                                         <p id="event-date-left" className="event-price-date event-date">{new Date(event.start_time).toDateString()}</p>
-                                        <section className="event-price-date">
+                                        <section className="my-1 flex justify-around items-center text-xs sm:text-base lg:flex flex-wrap">
                                             <button 
                                                 className="delete-event"
                                                 onClick={() => setEventToDelete(event.event_id)}
@@ -145,7 +168,7 @@ export const HostEvents = () => {
                                         <section>
                                             {event.event_id === eventToDelete && (
                                                 <section>
-                                                    <section className="check-delete">
+                                                    <section className="my-2 mx-auto text-xs sm:text-base">
                                                         <p>Are you sure you want to delete this event?</p>
                                                         <p className="bold">This action cannot be undone.</p>
                                                     </section>
@@ -170,10 +193,10 @@ export const HostEvents = () => {
                                 )
                             })
                         ) : (
-                            <section className="no-past-events">
+                            <section className="my-4 text-center text-xs xl:text-base xl:my-8">
                                 <p>No Upcoming Events.</p>
                                 <Link to={`/breezer/${user_id}/new-event`}>
-                                    <button>
+                                    <button className="bg-[#317575] text-white mt-2">
                                         Add Event
                                     </button>
                                 </Link>
@@ -185,17 +208,28 @@ export const HostEvents = () => {
                         pastHostEvents.length ? (
                             pastHostEvents.map((event) => {
                                 return (
-                                    <li className="event-card" key={event.event_id}>
-                                        <h4 className="event-title">{event.title}</h4>
-                                        <p className="event-overview">{event.event_overview}</p>
-                                        <section className="event-price-date">
+                                    <li className="bg-[#317575] text-white text-left p-2 rounded-md mt-3 mx-0 sm:p-4 sm:w-[60vw] sm:mx-auto lg:max-w-[40vw] lg:m-2 flex flex-col justify-between xl:max-w-[35vw] 2xl:max-w-[25vw]" 
+                                    key={event.event_id}>
+                                        <h4 className="font-semibold sm:text-xl">{event.title}</h4>
+                                        <section className="m-auto flex items-center max-h-[20vh] min-h-[15vh] xl:min-h-[30vh]">
+                                            <img 
+                                                className="rounded-md max-h-[15vh] xl: w-auto xl:max-h-[25vh] xl:m-auto"
+                                                src={`https://ik.imagekit.io/scott/${event.event_image_url}?tr=f-auto`}
+                                                alt={`${event.title} event poster`} 
+                                            />
+                                        </section>
+                                        <p className="mt-1 text-xs sm:text-base lg:text-xl lg:my-4">{event.event_overview}</p>
+                                        <section className="my-1 flex justify-around items-center text-xs sm:text-base lg:flex flex-wrap">
                                             {event.price !== 0 ? (
                                                 <p className="ticket-price">£{event.price}</p>
                                             ) : (
-                                                <p className="free-ticket">FREE</p>
+                                                <p className="bg-[#FFB593] text-black rounded-md py-1 px-3">FREE</p>
                                             )}
-                                            <p className="event-date">{new Date(event.start_time).toDateString()}</p>
-                                            <Link to={`/events/${event.event_id}`}>
+                                            <p className="font-semibold">{new Date(event.start_time).toDateString()}</p>
+                                            <Link 
+                                                onClick={() => window.scroll(0,0)}
+                                                to={`/events/${event.event_id}`}
+                                            >
                                                 <button className="btn btn-white"
                                                 aria-label={`View ${event.title}`}>
                                                     View Event
@@ -206,7 +240,7 @@ export const HostEvents = () => {
                                 )
                             })
                         ) : (
-                            <section className="no-past-events">
+                            <section className="my-4 text-center text-xs xl:text-base xl:my-8">
                                 <p>No Past Events.</p>
                             </section>
                         )
@@ -216,11 +250,19 @@ export const HostEvents = () => {
                         draftEvents.length ? (
                             draftEvents.map((event) => {
                                 return (
-                                    <li className="event-card" key={event.event_id}>
-                                        <h4 className="event-title">{event.title}</h4>
-                                        <p className="event-overview">{event.event_overview}</p>
+                                    <li className="bg-[#317575] text-white text-left p-2 rounded-md mt-3 mx-0 sm:p-4 sm:w-[60vw] sm:mx-auto lg:max-w-[40vw] lg:m-2 flex flex-col justify-between xl:max-w-[35vw] 2xl:max-w-[25vw]" 
+                                    key={event.event_id}>
+                                        <h4 className="font-semibold sm:text-xl">{event.title}</h4>
+                                        <section className="m-auto flex items-center max-h-[20vh] min-h-[15vh] xl:min-h-[30vh]">
+                                            <img 
+                                                className="rounded-md max-h-[15vh] xl: w-auto xl:max-h-[25vh] xl:m-auto"
+                                                src={`https://ik.imagekit.io/scott/${event.event_image_url}?tr=f-auto`}
+                                                alt={`${event.title} event poster`} 
+                                            />
+                                        </section>
+                                        <p className="mt-1 text-xs sm:text-base lg:text-xl lg:my-4">{event.event_overview}</p>
                                         <p id="event-date-left" className="event-price-date event-date">{new Date(event.start_time).toDateString()}</p>
-                                        <section className="event-price-date">
+                                        <section className="my-1 flex justify-around items-center text-xs sm:text-base lg:flex flex-wrap">
                                             <button 
                                             className="delete-event"
                                             onClick={() => setEventToDelete(event.event_id)}
@@ -238,7 +280,7 @@ export const HostEvents = () => {
                                         <section>
                                             {event.event_id === eventToDelete && (
                                                 <section>
-                                                    <section className="check-delete">
+                                                    <section className="my-2 mx-auto text-xs sm:text-base">
                                                         <p>Are you sure you want to delete this event?</p>
                                                         <p className="bold">This action cannot be undone.</p>
                                                     </section>
@@ -263,7 +305,7 @@ export const HostEvents = () => {
                                 )
                             })
                         ) : (
-                            <section className="no-past-events">
+                            <section className="my-4 text-center text-xs xl:text-base xl:my-8">
                                 <p>No Draft Events.</p>
                             </section>
                         )

@@ -1,92 +1,11 @@
 @import "tailwindcss";
 
-.welcome-back {
-    margin: 1rem auto;
-    text-align: left;
-    font-size: 1.75rem;
-    font-weight: 500;
-}
-
-.users-name {
-    color: #317575;
-}
-
-.profile-section {
-    margin: 1rem auto;
-    text-align: left;
-}
-
-.profile-section h2, .profile-section h3 {
-    font-size: 1.5rem;
-}
-
-.upcoming-past {
-    display: flex;
-    font-size: .9rem;
-}
-
-.upcoming-past button {
-    background-color: #FFF1EA;
-    padding: 0;
-    margin-right: .75rem;
-}
-
-.active-button {
-    text-decoration: underline;
-}
-
-.inactive-button {
-    opacity: 50%;
-}
-
-.no-past-events {
-    margin: 1rem auto;
-    text-align: center;
-    font-size: .75rem;
-}
-
-.no-past-events button {
-    margin-top: .5rem;
-    background-color: #317575;
-    color: white;
-}
-
-/* Your Profile Section */
-
-.profile-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 1rem auto .2rem;
-}
-
-.your-profile-button {
-    display: flex;
-    align-items: center;
-}
-
-.your-profile-button button {
-    background-color: #FFF1EA;
-    padding: 0;
-    font-size: .75rem;
-}
-
-.your-profile-button p {
-    margin-left: .25rem;
-    color: #317575;
-}
-
 #event-date-left {
     width: fit-content;
 }
 
 .delete-event, .btn-delete-no {
     @apply bg-[#FFB593] text-black py-1 px-3 text-xs
-}
-
-.check-delete {
-    margin: .5rem auto;
-    font-size: .75rem;
 }
 
 .bold {
@@ -97,140 +16,36 @@
     margin: auto .2rem;
 }
 
-.fa-user-pen, .fa-plus {
-    color: #317575;
-}
-
-.user-profile-form section {
-    display: flex;
-}
-
 input, textarea {
-    margin: .25rem .5rem;
-    width: fit-content;
-    height: fit-content;
-    padding: 0 .25rem;
+    @apply my-1 mx-2 h-fit py-0 px-1 border-1 border-[#FFF1EA] w-[60vw] text-[#a9a9a9] xl:w-[40vw];
 }
 
-.user-profile-form label {
-    display: block;
-    width: 22vw;
+textarea {
+    @apply h-[6rem] xl:h-[4rem];
 }
 
-.user-profile-form input, .user-profile-form textarea {
-    display: block;
-    width: 60vw;
-    color: darkgray;
-}
-
-.user-profile-form textarea {
-    height: 6rem;
-}
-
-.user-profile-form .form-not-disabled {
-    border: 1px solid darkgray;
-    border-radius: 6px;
-    color: #213547;
-}
-
-.user-profile-buttons {
-    margin: .5rem auto;
-    display: flex;
-    justify-content: space-around;
-    font-size: .75rem;
+.form-not-disabled {
+    @apply border-1 border-[#a9a9a9] rounded-md text-[#213547];
 }
 
 .discard-changes, .discard-button-disabled {
-    color: black;
-    background-color: #FFB593;
+    @apply bg-[#FFB593] text-black xl:mx-4;
 }
 
 .discard-button-disabled {
-    opacity: 50%;
+    @apply opacity-50;
 }
 
 .save-changes, .submit-button-disabled {
-    background-color: #317575;
-    color: white;
+    @apply bg-[#317575] text-white xl:mx-4;
 }
 
 .submit-button-disabled {
-    opacity: 50%;
+    @apply opacity-50;
 }
 
-.update-success {
-    margin: .5rem auto;
-}
-
-.signout {
-    font-size: .75rem;
-    display: block;
-    margin: 1rem auto;
-}
-
-@media only screen and (min-width: 500px) {
-    .user-profile {
-        min-height: 70vh;
-    }
-
-    button.btn.btn-white {
-        font-size: .75rem;
-    }
-
-    .check-delete {
-        font-size: .9rem;
-    }
-}
-
-@media only screen and (min-width: 1200px) {
-    .welcome-back {
-        font-size: 2.5rem;
-    }
-
-    .profile-section h2, .profile-section h3 {
-        font-size: 2rem;
-    }
-
-    .upcoming-past {
-        font-size: 1rem;
-    }
-
-    .no-past-events {
-        margin: 2rem auto;
-        font-size: 1rem;
-    }
-
-    .your-profile-button button, .delete-event, .btn-delete-no, button.btn.btn-white, .signout {
-        font-size: 1rem;
-    }
-
-    .user-profile-form label {
-        width: 8vw;
-    }
-
-    .user-profile-form input, .user-profile-form textarea {
-        width: 40vw;
-    }
-
-    .user-profile-form textarea {
-        height: 4rem;
-    }
-
-    .user-profile-buttons {
-        margin: 2rem 6rem;
-        justify-content: left;
-        font-size: .9rem;
-    }
-
-    .user-profile-buttons button {
-        margin: auto 1rem;
-    }
-}
-
-@media only screen and (min-width: 1800px) {
-    .user-profile {
-        margin: auto 5rem;
-    }
+.delete-event, .btn-delete-no, button.btn.btn-white {
+    @apply sm:text-xs xl:text-base
 }
 
 @media (prefers-color-scheme: dark) {
