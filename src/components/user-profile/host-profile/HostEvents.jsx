@@ -78,10 +78,10 @@ export const HostEvents = () => {
         <section className="my-4 text-left">
             <section className="flex items-center justify-between mt-4 mb-1">
                 <h2 className="text-2xl xl:text-3xl">Your Events</h2>
-                <section className="text-xs text-[#317575]">
+                <section className="text-xs xl:text-base">
                     <Link to={`/breezer/${user_id}/new-event`}>
                         <button className="flex items-center bg-inherit !p-0">
-                            <i className="fa-solid fa-plus"></i>
+                            <i className="fa-solid fa-plus text-[#317575]"></i>
                             <p className="pl-1 text-[#317575]">Add Event</p>
                         </button>
                     </Link>

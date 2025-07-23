@@ -103,7 +103,7 @@ export const UserProfile = () => {
             <section className="my-4 text-left">
                 <section className="flex items-center justify-between mt-4 mb-1">
                     <h3 className="text-2xl xl:text-3xl">Your Profile</h3>
-                    <section className="text-xs text-[#317575]">
+                    <section className="text-xs text-[#317575] xl:text-base">
                         <button 
                             className="flex items-center bg-inherit !p-0"
                             onClick={() => {
