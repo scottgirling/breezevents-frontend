@@ -1,15 +1,15 @@
 @import "tailwindcss";
 
 .google-sign-in {
-  @apply bg-[#317575] text-white font-normal w-[70vw] my-4 mx-auto flex flex-row justify-around items-center border-0 sm:w-[40vw] sm:text-xl lg:max-w-[30vw] xl:w-[20vw]
+  @apply bg-[#317575] text-white font-normal w-[70vw] my-4 mx-auto flex flex-row justify-around items-center border-0 sm:w-[40vw] sm:text-xl lg:max-w-[30vw] xl:w-[20vw];
 }
 
 .account-input {
-  @apply border-1 border-[#d3d3d3] w-[80vw] m-auto p-1 rounded-sm sm:mt-2 sm:w-[50vw] lg:w-[40vw] xl:max-w-[30vw] text-sm sm:text-base lg:max-w-[30vw] xl:text-lg xl:w-[25vw]
+  @apply text-[#213547] border-1 border-[#d3d3d3] w-[80vw] m-auto p-1 rounded-sm sm:mt-2 sm:w-[50vw] lg:w-[40vw] xl:max-w-[30vw] text-sm sm:text-base lg:max-w-[30vw] xl:text-lg xl:w-[25vw];
 }
 
 .continue {
-  @apply my-4 mx-auto bg-[#FFB593] py-1 px-3 w-[70vw] mb-1 border-0 sm:w-[40vw] sm:text-xl lg:max-w-[30vw] xl:w-[20vw]
+  @apply my-4 mx-auto bg-[#FFB593] py-1 px-3 w-[70vw] mb-1 border-0 sm:w-[40vw] sm:text-xl lg:max-w-[30vw] xl:w-[20vw];
 }
 
 .switch-btn {
@@ -18,6 +18,6 @@
 
 @media (prefers-color-scheme: dark) {
   #dark-mode {
-    @apply bg-white
+    @apply bg-white;
   }
 }
