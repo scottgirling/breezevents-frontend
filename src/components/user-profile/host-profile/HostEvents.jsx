@@ -193,10 +193,10 @@ export const HostEvents = () => {
                                 )
                             })
                         ) : (
-                            <section className="my-4 text-center text-xs xl:text-base xl:my-8">
+                            <section className="my-4 mx-auto text-center text-xs xl:text-base xl:my-8">
                                 <p>No Upcoming Events.</p>
                                 <Link to={`/breezer/${user_id}/new-event`}>
-                                    <button className="bg-[#317575] text-white mt-2">
+                                    <button className="!bg-[#317575] text-white mt-2">
                                         Add Event
                                     </button>
                                 </Link>
@@ -240,7 +240,7 @@ export const HostEvents = () => {
                                 )
                             })
                         ) : (
-                            <section className="my-4 text-center text-xs xl:text-base xl:my-8">
+                            <section className="my-4 mx-auto text-center text-xs xl:text-base xl:my-8">
                                 <p>No Past Events.</p>
                             </section>
                         )
@@ -305,7 +305,7 @@ export const HostEvents = () => {
                                 )
                             })
                         ) : (
-                            <section className="my-4 text-center text-xs xl:text-base xl:my-8">
+                            <section className="my-4 mx-auto text-center text-xs xl:text-base xl:my-8">
                                 <p>No Draft Events.</p>
                             </section>
                         )
