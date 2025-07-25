@@ -121,10 +121,10 @@ export const AttendeeEvents = () => {
                                 )
                             })
                         ) : (
-                            <section className="my-4 text-center text-xs xl:text-base xl:my-8">
+                            <section className="my-4 mx-auto text-center text-xs xl:text-base xl:my-8">
                                 <p>No Upcoming Events.</p>
                                 <Link to="/events">
-                                    <button className="bg-[#317575] text-white mt-2">
+                                    <button className="!bg-[#317575] text-white mt-2">
                                         Find Events
                                     </button>
                                 </Link>
@@ -165,7 +165,7 @@ export const AttendeeEvents = () => {
                                 )
                             })
                         ) : (
-                            <section className="my-4 text-center text-xs xl:text-base xl:my-8">
+                            <section className="my-4 max-auto text-center text-xs xl:text-base xl:my-8">
                                 <p>No Past Events.</p>
                             </section>
                         )
