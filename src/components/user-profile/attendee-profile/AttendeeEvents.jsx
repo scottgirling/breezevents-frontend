@@ -165,7 +165,7 @@ export const AttendeeEvents = () => {
                                 )
                             })
                         ) : (
-                            <section className="my-4 max-auto text-center text-xs xl:text-base xl:my-8">
+                            <section className="w-[80vw] my-4 max-auto text-center text-xs xl:text-base xl:my-8">
                                 <p>No Past Events.</p>
                             </section>
                         )
