@@ -15,7 +15,7 @@ export const UserSignIn = () => {
     const [signInError, setSignInError] = useState(null);
 
     useEffect(() => {
-        getUserData();
+        getUserId();
     }, []);
 
     const handleSignUp = (event) => {
@@ -83,30 +83,14 @@ export const UserSignIn = () => {
         });
     }
 
-    const getUserData = async () => {
+    const getUserId = async () => {
         const { data: { session } } = await supabase.auth.getSession();
 
-        if (session.user.aud === "authenticated") {
-            const userDetails = {}
-    
-            userDetails.user_id = session.user.id;
-            userDetails.name = session.user.user_metadata.name;
-            userDetails.username = "";
-            userDetails.email = session.user.email;
-            userDetails.role = "attendee";
-
-            try {
-                const returnedUser = await fetchUserById(session.user.id)
-                
-                if (returnedUser) {
-                    navigate(`/breezer/${session.user.id}`);
-                } 
-            } catch {
-                addUser(userDetails)
-                .then(()=> {
-                    navigate(`/breezer/${session.user.id}`);
-                });
-            };
+        if (session?.user.aud === "authenticated") {
+            fetchUserById(session.user.id)
+            .then(() => {
+                navigate(`/breezer/${session.user.id}`);
+            });
         }
     }
 
