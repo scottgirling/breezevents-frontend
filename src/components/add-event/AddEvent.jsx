@@ -51,7 +51,7 @@ export const AddEvent = () => {
         });
     }, []);
 
-    const handleSubmit = async (event) => {
+    const handleSubmit = (event) => {
         event.preventDefault();
         const generatedslug = eventDetails.title.replaceAll(" ", "-").toLowerCase();
 
@@ -59,15 +59,14 @@ export const AddEvent = () => {
         const fileName = `${Date.now()}.${fileExt}`;
         const filePath = `admin-uploads/${fileName}`;
 
-        const { error: uploadError } = await supabase.storage.from("event-images").upload(filePath, eventImage)
-
-        if (uploadError) {
-            console.error("Upload failed:", uploadError.message);
-        }
-
-        const { data: { publicUrl } } = supabase.storage.from("event-images").getPublicUrl(filePath);
-
-        addEvent({ ...eventDetails, event_image_url: publicUrl, slug: generatedslug })
+        supabase.storage.from("event-images").upload(filePath, eventImage)
+        .then(() => {
+            const { data: { publicUrl } } = supabase.storage.from("event-images").getPublicUrl(filePath);
+            return publicUrl;
+        })
+        .then((publicUrl) => {
+            addEvent({ ...eventDetails, event_image_url: publicUrl, slug: generatedslug })
+        })
         .then((returnedEvent) => {
             addEventTag({ event_id: returnedEvent.event_id, tag_id: newEventTag })
         })
