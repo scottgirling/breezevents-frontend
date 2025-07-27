@@ -67,14 +67,14 @@ export const UserProfile = () => {
         });
     }
 
-    const handleSignOut = async () => {
-        const { error } = await supabase.auth.signOut()
-        if (error) {
-            console.log("Supabase Sign Out Error: ", error)
-        }
-
-        await supabase.auth.refreshSession();
-        navigate("/account");
+    const handleSignOut = () => {
+        supabase.auth.signOut()
+        .then(() => {
+            supabase.auth.refreshSession();
+        })
+        .then(() => {
+            navigate("/account");
+        });
     }
 
     if (loading) {

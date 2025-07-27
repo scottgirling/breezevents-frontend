@@ -17,7 +17,6 @@ export const Success = () => {
         const sessionID = searchParams.get("session_id");
         fetchSessionData(sessionID)
         .then((returnedData) => {
-            console.log(returnedData, "<")
             setCustomer(returnedData.customer_details);
             setEvent(JSON.parse(returnedData.metadata.eventDetails));
         })

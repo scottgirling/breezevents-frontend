@@ -13,7 +13,7 @@
 }
 
 .add-event-form input, .add-event-form textarea {
-    @apply border-1 border-[#808080] rounded-md w-[80vw] p-1 xl:w-[40vw];
+    @apply text-[#213547] border-1 border-[#808080] rounded-md w-[80vw] p-1 xl:w-[40vw];
 }
 
 #single-line {
