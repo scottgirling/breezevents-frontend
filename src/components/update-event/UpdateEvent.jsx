@@ -44,23 +44,18 @@ export const UpdateEvent = () => {
         });
     }, []);
 
-    const handleSubmit = async (event) => {
+    const handleSubmit = (event) => {
         event.preventDefault();
 
         const fileName = eventDetails.event_image_url.split("/").reverse()[0];
         const filePath = `admin-uploads/${fileName}`;
 
-        const { error } = await supabase.storage.from("event-images").upload(filePath, eventImage, {
+        supabase.storage.from("event-images").upload(filePath, eventImage, {
             upsert: true
-        });
-        
-        if (error) {
-            console.error("Failed to update image:", error.message);
-        } else {
-            console.log("Image updated successfully!");
-        }
-
-        updateEvent(event_id, eventDetails)
+        })
+        .then(() => {
+            updateEvent(event_id, eventDetails)
+        })
         .then(() => {
             navigate(`/breezer/${user_id}`);
         });
