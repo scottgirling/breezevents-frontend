@@ -96,7 +96,7 @@ export const AttendeeEvents = () => {
                                         <section className="m-auto flex items-center max-h-[20vh] min-h-[15vh] xl:min-h-[30vh]">
                                             <img 
                                                 className="rounded-md max-h-[15vh] xl: w-auto xl:max-h-[25vh] xl:m-auto"
-                                                src={`https://ik.imagekit.io/scott/${event.event_image_url}?tr=f-auto`}
+                                                src={`https://ik.imagekit.io/scott/${event.event_image_url}?v=${event.last_updated_at}&tr=f-auto`}
                                                 alt={`${event.title} event poster`} 
                                             />
                                         </section>
@@ -140,7 +140,7 @@ export const AttendeeEvents = () => {
                                         <section className="m-auto flex items-center max-h-[20vh] xl:min-h-[30vh]">
                                             <img 
                                                 className="rounded-md max-h-[15vh] xl: w-auto xl:max-h-[25vh] xl:m-auto"
-                                                src={`https://ik.imagekit.io/scott/${event.event_image_url}?tr=f-auto`}
+                                                src={`https://ik.imagekit.io/scott/${event.event_image_url}?v=${event.last_updated_at}&tr=f-auto`}
                                                 alt={`${event.title} event poster`} 
                                             />
                                         </section>

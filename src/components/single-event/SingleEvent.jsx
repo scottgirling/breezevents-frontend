@@ -50,7 +50,7 @@ export const SingleEvent = () => {
             <p className="mt-1 text-black text-xs sm:text-base xl:m-2 xl:text-xl">{event.event_overview}</p>
             <section className="flex flex-col justify-center min-h-[20vh] sm:min-h-[30vh]">
                 <img className="my-4 mx-auto rounded-md max-w-[75vw] sm:w-[60vw] xl:w-[50vw]"
-                    src={`https://ik.imagekit.io/scott/${event.event_image_url}?tr=f-auto`}
+                    src={`https://ik.imagekit.io/scott/${event.event_image_url}?v=${event.last_updated_at}&tr=f-auto`}
                     alt={`${event.title} event poster`}
                 />
             </section>
